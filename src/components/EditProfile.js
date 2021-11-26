@@ -1,5 +1,4 @@
 import React, {Fragment} from "react";
-import Avatar from "../images/image(2068).png";
 
 const EditProfile = () => {
 
@@ -8,7 +7,6 @@ const EditProfile = () => {
         <div className="container">
             <h1 className="text-center">Volunteer's Profile</h1>
             <image src={process.env.PUBLIC_URL + "../images/image(2068).png"}  alt="Avatar" style={{display: "block", height: "200px", width: "200px", visibility: "visible"}}></image>
-            <image src={Avatar}  alt="Avatar"></image>
             <h4 className="text-center">Username</h4>
             <h4 className="text-center">Full name</h4>
             <form>

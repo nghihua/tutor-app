@@ -1,5 +1,4 @@
 import React, {Fragment} from "react";
-import Avatar from "../images/Logo192.png";
 
 const EditCalendar = () => {
 
