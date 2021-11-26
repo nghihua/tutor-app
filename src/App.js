@@ -2,15 +2,15 @@ import './App.css';
 import React, {Fragment} from "react";
 
 //components
-import EditProfile from './components/EditProfile';
+import Profile from './components/Profile';
 import EditCalendar from './components/EditCalendar';
 
 function App() {
   return (
   <Fragment>
     <div className="container">
-      <p>Edit Profile</p>
-      <EditProfile />
+      <p>Profile</p>
+      <Profile />
       <br></br>
       <br></br>
       <br></br>

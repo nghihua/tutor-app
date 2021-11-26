@@ -1,6 +1,6 @@
 import React, {Fragment} from "react";
 
-const EditProfile = () => {
+const Profile = () => {
 
     return (
     <Fragment>
@@ -89,4 +89,4 @@ const EditProfile = () => {
     );
 };
 
-export default EditProfile;
+export default Profile;
