@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const ProfileEdit = ({ current, onSave }) => {
+  // Profile states
   const [fullName, setFullName] = useState(current.fullName);
   const [major, setMajor] = useState(current.major);
   const [intake, setIntake] = useState(current.intake);
@@ -12,6 +13,13 @@ const ProfileEdit = ({ current, onSave }) => {
     const newProfile = { fullName, major, intake, subject };
     onSave(newProfile);
   };
+
+  const isNotChanged = () => (
+    current.fullName === fullName &&
+    current.major === major &&
+    current.intake === intake &&
+    current.subject === subject
+  );
 
   return (
     <form onSubmit={handleSubmit}>
@@ -31,16 +39,25 @@ const ProfileEdit = ({ current, onSave }) => {
       />
 
       <label>Major:</label>
-      <input
-        type="text"
-        required
+      <select
         value={major}
         onChange={e => setMajor(e.target.value)}
-      />
+      >
+        <option value="ECE">EEIT/ECE</option>
+        <option value="MEN">MEN</option>
+        <option value="CSE">CSE</option>
+        <option value="BFA">BFA</option>
+        <option value="BBA">BBA</option>
+        <option value="BCE">BCE</option>
+        <option value="ARC">ARC</option>
+      </select>
 
       <label>Intake:</label>
       <input
-        type="text"
+        type="number"
+        min="2008"
+        max={new Date().getFullYear()}
+        step="1"
         required
         value={intake}
         onChange={e => setIntake(e.target.value)}
@@ -54,7 +71,7 @@ const ProfileEdit = ({ current, onSave }) => {
         onChange={e => setSubject(e.target.value)}
       />
 
-      <button>Save</button>
+      <button disabled={isNotChanged()}>Save</button>
     </form >
   );
 }
