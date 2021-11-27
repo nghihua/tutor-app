@@ -1,20 +1,25 @@
 import { useState } from "react";
 
 const ProfileEdit = ({ current, onSave }) => {
-  const [profilePic, setProfilePic] = useState(current.profilePic);
-  const [username, setUsername] = useState(current.username);
   const [fullName, setFullName] = useState(current.fullName);
   const [major, setMajor] = useState(current.major);
+  const [intake, setIntake] = useState(current.intake);
   const [subject, setSubject] = useState(current.subject);
 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const newProfile = { fullName, major, intake, subject };
+    onSave(newProfile);
+  };
+
   return (
-    <form onSubmit={e => onSave(e, { profilePic, username, fullName, major, subject })}>
-      <label>Username:</label>
-      <input
-        type="text"
-        required
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+    <form onSubmit={handleSubmit}>
+      <img
+        src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+        alt="profile pic"
+        width="100"
+        height="100"
       />
 
       <label>Full name:</label>
@@ -22,7 +27,7 @@ const ProfileEdit = ({ current, onSave }) => {
         type="text"
         required
         value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
+        onChange={e => setFullName(e.target.value)}
       />
 
       <label>Major:</label>
@@ -30,7 +35,15 @@ const ProfileEdit = ({ current, onSave }) => {
         type="text"
         required
         value={major}
-        onChange={(e) => setMajor(e.target.value)}
+        onChange={e => setMajor(e.target.value)}
+      />
+
+      <label>Intake:</label>
+      <input
+        type="text"
+        required
+        value={intake}
+        onChange={e => setIntake(e.target.value)}
       />
 
       <label>Subject:</label>
@@ -38,11 +51,11 @@ const ProfileEdit = ({ current, onSave }) => {
         type="text"
         required
         value={subject}
-        onChange={(e) => setSubject(e.target.value)}
+        onChange={e => setSubject(e.target.value)}
       />
 
       <button>Save</button>
-    </form>
+    </form >
   );
 }
 
