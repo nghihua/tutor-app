@@ -1,4 +1,8 @@
+import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
+import Container from 'react-bootstrap/Container'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
 const Volunteers = () => {
   const volunteers = [
@@ -26,9 +30,21 @@ const Volunteers = () => {
   ];
 
   return (
-    <div className="volunteers">
-      <VolunteerList volunteers={volunteers} />
-    </div>
+    <Fragment>
+        <Navbar bg="light" expand="lg" className="fixed-top">
+            <Container fluid>
+                <Navbar.Brand href="#" style={{color:"#7B61FF"}}>Tutor</Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Nav className="justify-content-end" style={{ maxHeight: '100px' }} navbarScroll>
+                    <Nav.Link href="#action1">Home</Nav.Link>
+                    <Nav.Link href="#action2">Edit Profile</Nav.Link>
+                </Nav>
+            </Container>
+        </Navbar>
+        <div className="volunteers pt-5">
+          <VolunteerList volunteers={volunteers} />
+        </div>
+    </Fragment>
   );
 }
 

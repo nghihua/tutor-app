@@ -7,17 +7,6 @@ const EditCalendar = () => {
         <div className="container">
         <h1 className="text-center">CSS Calendar</h1>
 
-        <div class="month">      
-        <ul>
-            <li class="prev">&#10094;</li>
-            <li class="next">&#10095;</li>
-            <li>
-            August<br></br>
-            <span>2021</span>
-            </li>
-        </ul>
-        </div>
-
         <ul class="weekdays">
         <li>Mo</li>
         <li>Tu</li>
