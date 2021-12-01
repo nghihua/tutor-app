@@ -4,8 +4,8 @@ const VolunteerList = ({ volunteers }) => {
 
       {volunteers.map(({ email, fullName, major, intake }) => (
         <li className="volunteer-preview" key={email} >
-          <div class="row justify-content-center p-5" background-color="white">
-            <div class="justify-content-center">
+          <div class="p-5 box" background-color="white">
+            <span class="box1">
               <a href={`/${email}`}>
                 <img
                   src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
@@ -15,15 +15,15 @@ const VolunteerList = ({ volunteers }) => {
                   class="image"
                 />
               </a>
-            </div>
-            <div class="justify-content-center">
-              <a>
-                <div>
+            </span>
+            <span class="box1">
+              <a href={`/${email}`}>
+                <div class="box2">
                   <h2>{fullName}</h2>
                   <p>{major} {intake}</p>
                 </div>
               </a>
-            </div>
+            </span>
             
           </div>
         </li>

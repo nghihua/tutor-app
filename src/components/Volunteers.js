@@ -34,7 +34,6 @@ const Volunteers = () => {
         <Navbar bg="light" expand="lg" className="fixed-top">
             <Container fluid>
                 <Navbar.Brand href="#" style={{color:"#7B61FF"}}>Tutor</Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
                 <Nav className="justify-content-end" style={{ maxHeight: '100px' }} navbarScroll>
                     <Nav.Link href="#action1">Home</Nav.Link>
                     <Nav.Link href="#action2">Edit Profile</Nav.Link>
@@ -44,6 +43,9 @@ const Volunteers = () => {
         <div className="volunteers pt-5">
           <VolunteerList volunteers={volunteers} />
         </div>
+        <footer>
+               <p class="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
+        </footer>
     </Fragment>
   );
 }

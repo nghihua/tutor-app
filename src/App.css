@@ -93,3 +93,23 @@ body {
 .image {
   border-radius: 50%;
 }
+
+.box {
+  background-color: white;
+  margin: 100px 400px 100px 400px;
+}
+
+.box1 {
+  display: inline-block;
+  width: auto;
+  height: 80px;
+  padding: 5px;
+  padding-top: 0px;
+  margin-left: 40px;
+}
+
+.box2 {
+  width: auto;
+  height: 100px;
+  margin-left: 10px;
+}
