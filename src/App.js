@@ -6,7 +6,9 @@ import React, { Fragment } from "react";
 // import Profile from './components/Profile';
 // import EditCalendar from './components/EditCalendar';
 // import Volunteers from "./components/Volunteers";
-import Profile2 from "./components/Profile2";
+// import Profile2 from "./components/Profile2";
+// import LoginForm from './components/LoginForm';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -17,7 +19,8 @@ function App() {
         <EditCalendar /> */}
         {/* <p>Volunteers</p> */}
         {/* <Volunteers /> */}
-        <Profile2 />
+        {/* <Profile2 /> */}
+        <Register/>
         <br></br>
       </div>
     </Fragment>
