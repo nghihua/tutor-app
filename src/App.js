@@ -3,10 +3,10 @@ import React, { Fragment } from "react";
 
 
 //components
-import Profile from './components/Profile';
+// import Profile from './components/Profile';
 // import EditCalendar from './components/EditCalendar';
-import Volunteers from "./components/Volunteers";
-// import Profile2 from "./components/Profile2";
+// import Volunteers from "./components/Volunteers";
+import Profile2 from "./components/Profile2";
 
 function App() {
   return (
@@ -15,10 +15,9 @@ function App() {
         {/* <Profile /> */}
         {/* <p>Edit Calendar</p>
         <EditCalendar /> */}
-        <p>Volunteers</p>
-        <Volunteers />
-        {/* <p>Profile2</p>
-        <Profile2 /> */}
+        {/* <p>Volunteers</p> */}
+        {/* <Volunteers /> */}
+        <Profile2 />
         <br></br>
       </div>
     </Fragment>

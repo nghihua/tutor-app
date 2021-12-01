@@ -10,7 +10,6 @@ const Profile = () => {
         <Navbar bg="light" expand="lg" className="fixed-top">
             <Container fluid>
                 <Navbar.Brand href="#" style={{color:"#7B61FF"}}>Tutor</Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
                 <Nav className="justify-content-end" style={{ maxHeight: '100px' }} navbarScroll>
                     <Nav.Link href="#action1">Home</Nav.Link>
                     <Nav.Link href="#action2">Edit Profile</Nav.Link>
