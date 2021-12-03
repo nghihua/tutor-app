@@ -1,14 +1,14 @@
 import {useState} from 'react';
 import LoginForm from './LoginForm';
 import Register from './Register';
-import User from './User.js';
+import Volunteers from './Volunteers';
 
 function App() {
   const adminUser = {
     email: "thodeptrai@gmail.com",
     password: "123456"
   }
-  const [user, setUser] = useState({email: "", password: ""});
+  // const [user, setUser] = useState({email: "", password: ""});
   const [error, setError] = useState("");
   const [state, setState] = useState(0);
   const [addUser, setaddUser] = useState({email: "", password: ""});
@@ -19,7 +19,7 @@ function App() {
   }
   const Login = (details) => {
     if((details.email === adminUser.email && details.password === adminUser.password) || (details.email === addUser.email && details.password === addUser.password)){
-      setUser(details);
+      // setUser(details);
       console.log("Hello " + details.email);
       setError("");
       changePage(2);
@@ -45,7 +45,7 @@ function App() {
     }
     else if(num === 2){
       return(
-        <User user = {user} changePage = {changePage}/>
+        <Volunteers/>
       )
     }
   }
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <div className="App">     
-      {Page(state)}
+      {Page(state)}      
     </div>
   )
 }
