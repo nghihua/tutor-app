@@ -1,12 +1,24 @@
 import {useState} from 'react'
 
-const Register = ({createAccount}) => {
+const Register = ({changePage, createUser}) => {
     const [details, setDetails] = useState({name :"", username: "", email: "", password: "", repeatPassword: ""});
+    const [error, setError] = useState("");
 
     const handleSubmit = (event) =>{
-        event.preventDefault();
-        console.log(details);
-        createAccount();
+        if(details.name === "" || details.username === "" || details.email === "" || details.password === "" || details.repeatPassword === ""){
+                event.preventDefault();
+                console.log(details)
+                setError("Please insert all input");
+            }
+        else{
+            event.preventDefault();  
+            createUser(details);      
+            changePage(0);
+        }
+    }
+
+    const returnLogin = () =>{
+        changePage(0);
     }
     return ( 
     <div className="register">
@@ -30,10 +42,15 @@ const Register = ({createAccount}) => {
             </div>
             <div className ="form-register">
                 <label htmlFor="repeatpassword">Repeat Password:</label>
-                <input type = "password" id ="repeatpassword" onChange={(event) => setDetails({...details, repeatpassword: event.target.value}) } value = {details.value}></input>
+                <input type = "password" id ="repeatpassword" onChange={(event) => setDetails({...details, repeatPassword: event.target.value}) } value = {details.value}></input>
             </div>
+            {(error !== "") ? (<div className= "error"><h2> {error} </h2></div>) : ""}            
+            
             <div className ="form-register">
                 <button type ="submit">Submit</button>
+            </div>
+            <div className ="form-register">
+                <button type ="submit" onClick = {returnLogin}>Return</button>
             </div>
         </form>
     </div>
