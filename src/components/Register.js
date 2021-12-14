@@ -56,6 +56,9 @@ const Register = ({changePage, createUser}) => {
                 </div>
             </form>
         </div>
+        <footer>
+               <p className="center">@tutor2021</p> 
+        </footer>
     </Fragment>
     );
 }

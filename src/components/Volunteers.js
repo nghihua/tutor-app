@@ -54,7 +54,7 @@ const Volunteers = () => {
           <VolunteerList volunteers={volunteers}/>
         </div>
         <footer>
-               <p class="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
+               <p className="center">@tutor2021</p> 
         </footer>
     </Fragment>
   );

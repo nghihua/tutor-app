@@ -34,6 +34,9 @@ const LoginForm = ({Login, error, changePage}) => {
                         </div>
                 </form>
             </div>
+            <footer>
+               <p className="center">@tutor2021</p> 
+            </footer>
         </Fragment>
     );
 }
