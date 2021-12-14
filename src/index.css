@@ -63,3 +63,13 @@ button {
 button:hover {
   opacity: 0.8;
 }
+
+/*Home*/
+li {
+  list-style-type: none;
+}
+
+.center {
+  margin-top: 10px;
+  text-align: center;
+}

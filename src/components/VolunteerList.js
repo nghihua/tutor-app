@@ -1,6 +1,6 @@
 const VolunteerList = ({ volunteers }) => {
   return (
-    <ul className="volunteer-list">
+    <ul className="volunteer-list center">
 
       {volunteers.map(({ email, fullName, major, intake }) => (
         <li className="volunteer-preview" key={email} >

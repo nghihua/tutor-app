@@ -30,9 +30,11 @@ const Volunteers = () => {
   return (
     <Fragment>
         <div className="volunteers">
-          <button type="button" data-toggle="modal" data-target="#exampleModal">
-            Do you want to be a volunteer?
-          </button>
+          <div className="center">
+            <button type="button" data-toggle="modal" data-target="#exampleModal">
+              Do you want to be a volunteer?
+            </button>
+          </div>
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -42,17 +44,14 @@ const Volunteers = () => {
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  
-                </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-primary">Yes</button>
                 </div>
               </div>
             </div>
           </div>
-          <VolunteerList volunteers={volunteers} />
+          <VolunteerList volunteers={volunteers}/>
         </div>
         <footer>
                <p class="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
