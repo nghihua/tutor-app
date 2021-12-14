@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import LoginForm from './LoginForm';
+import Menu from './Navbar';
 import Register from './Register';
 import Volunteers from './Volunteers';
 
@@ -35,7 +36,10 @@ function App() {
   const Page = (num) =>{
     if(num === 0){
       return(
-      <LoginForm Login = {Login} error = {error} changePage = {changePage}/>
+      <div>
+        <Menu />
+        <LoginForm Login = {Login} error = {error} changePage = {changePage} className="purple"/>
+      </div>
       )
     }
     else if(num === 1){
@@ -45,7 +49,10 @@ function App() {
     }
     else if(num === 2){
       return(
-        <Volunteers/>
+        <div>
+          <Menu />
+          <Volunteers/>
+        </div>
       )
     }
   }

@@ -1,21 +1,11 @@
 import React, {Fragment} from "react";
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
+import Menu from "./Navbar";
 
 const Profile = () => {
 
     return (
     <Fragment>
-        <Navbar bg="light" expand="lg" className="fixed-top">
-            <Container fluid>
-                <Navbar.Brand href="#" style={{color:"#7B61FF"}}>Tutor</Navbar.Brand>
-                <Nav className="justify-content-end" style={{ maxHeight: '100px' }} navbarScroll>
-                    <Nav.Link href="#action1">Home</Nav.Link>
-                    <Nav.Link href="#action2">Edit Profile</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+        <Menu />
         <div className="container pt-3">
             <main class="mb-5">
                 <h1 className="text-center pt-5">Volunteer's Profile</h1>

@@ -82,10 +82,6 @@ body {
   color: white !important;
 }
 
-.purple {
-  background-color: #d2c9ff;
-}
-
 .footer1 {
   color: #140664;
 }
@@ -113,3 +109,33 @@ body {
   height: 100px;
   margin-left: 10px;
 }
+/* Login */
+
+.login {
+  margin: 70px;
+  border: 1px solid #4caf50;
+}
+/* .login form {
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+.login h2 {
+  color: red;
+  margin-top: 5px;
+  padding-top: 5px !important;
+} */
+
+/* Register */
+/* .register {
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+.form-register h2 {
+  margin-top: 20px;
+}
+
+.form-register form {
+  align-items: center;
+} */

@@ -1,8 +1,6 @@
 import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
+import ProfileEdit from "./ProfileEdit"
 
 const Volunteers = () => {
   const volunteers = [
@@ -31,16 +29,29 @@ const Volunteers = () => {
 
   return (
     <Fragment>
-        <Navbar bg="light" expand="lg" className="fixed-top">
-            <Container fluid>
-                <Navbar.Brand href="#" style={{color:"#7B61FF"}}>Tutor</Navbar.Brand>
-                <Nav className="justify-content-end" style={{ maxHeight: '100px' }} navbarScroll>
-                    <Nav.Link href="#action1">Home</Nav.Link>
-                    <Nav.Link href="#action2">Edit Profile</Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
-        <div className="volunteers pt-5">
+        <div className="volunteers">
+          <button type="button" data-toggle="modal" data-target="#exampleModal">
+            Do you want to be a volunteer?
+          </button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <VolunteerList volunteers={volunteers} />
         </div>
         <footer>
