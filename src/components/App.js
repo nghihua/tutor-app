@@ -5,6 +5,7 @@ import Register from './Register';
 import Profile from './Profile';
 import Volunteers from './Volunteers';
 import Profile2 from './Profile2';
+import ProfileEdit from './ProfileEdit';
 const App = () => {
     return ( 
         <Router>

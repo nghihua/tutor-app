@@ -14,7 +14,7 @@ const Menu = () => {
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
                     {/* replace the Nav.Link with Link router */}
                     <Link to ="/">Home</Link>
-                    <Link to ="/EditProfile">Edit Profile</Link>
+                    <Link to ="/profile">Edit Profile</Link>
                 </Nav>
             </Container>
         </Navbar>
