@@ -19,7 +19,7 @@ const EditCalendar = () => {
         <div className="container pt-3 mb-5">
             <h1 className="text-center mb-5 mt-5">CSS Calendar</h1>
 
-            <ul class="weekdays">
+            <ul className="weekdays">
             <li>Mo</li>
             <li>Tu</li>
             <li>We</li>
@@ -29,7 +29,7 @@ const EditCalendar = () => {
             <li>Su</li>
             </ul>
 
-            <ul class="days">  
+            <ul className="days">  
             <li>1</li>
             <li>2</li>
             <li>3</li>
@@ -39,7 +39,7 @@ const EditCalendar = () => {
             <li>7</li>
             <li>8</li>
             <li>9</li>
-            <li><span class="active">10</span></li>
+            <li><span className="active">10</span></li>
             <li>11</li>
             <li>12</li>
             <li>13</li>
@@ -64,7 +64,7 @@ const EditCalendar = () => {
             </ul>
         </div>
         <footer>
-            <p class="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
+            <p className="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
         </footer>
   </Fragment>
     );
