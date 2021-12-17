@@ -1,6 +1,6 @@
-##API ENDPOINTS
+## API ENDPOINTS
 
-#Authentication
+# Authentication
 [POST] /api/auth/signup ({ email, password, full_name, major, intake, is_volunteer }) //sua lai is_volunteer default
 	--> if email is invalid, return a 400 code error with message "Invalid email"
 	--> if email already exists, return a 400 code error with message "Email already exists"
@@ -14,7 +14,7 @@
 [GET] /api/auth/logout
 	--> remove jwt from cookie and return "successfully log out!"
 	
-#User
+# User
 [GET] /api/user/current
 	--> if user is not logged in (no jwt in cookie or jwt is invalid), return false
 	--> if user is logged in but cannot find user_id in database, return false
