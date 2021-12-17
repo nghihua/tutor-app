@@ -56,7 +56,9 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 	
 [GET] /api/user/tutors
 
-	--> if user is not logged in (no jwt in cookie or jwt is invalid), return false
+	--> if user is not logged in (no jwt in cookie or jwt is invalid), return a 401 error code with message "Unauthorized!"
+	
+	--> if user is logged in but cannot find user_id in database, return a 401 error code with message "Unauthorized!"
 	
 	--> otherwise, return an array of tutor objects
 
