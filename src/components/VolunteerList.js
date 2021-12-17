@@ -24,7 +24,7 @@ const VolunteerList = ({ volunteers }) => {
                 </div>
               </a>
             </span>
-            
+
           </div>
         </li>
       ))}
