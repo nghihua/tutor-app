@@ -22,8 +22,6 @@ const Register = () => {
     }
 
     return ( 
-    // <Fragment>
-    //     <Menu />
     <div>
         <div className='register'>
             <form onSubmit = {handleSubmit}>
@@ -62,7 +60,6 @@ const Register = () => {
                <p className="center">@tutor2021</p> 
         </footer>
     </div>
-    // </Fragment>
     );
 }
  
