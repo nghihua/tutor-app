@@ -1,3 +1,5 @@
+cd vào đây rồi gõ npm start để chạy server nha, default port chị để là 5000, muốn đổi thì vào app.js đổi
+
 ## API ENDPOINTS
 
 # Authentication
