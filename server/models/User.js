@@ -18,6 +18,12 @@ const get_by_id = async (user_id, callback) => {
   });
 }
 
+const get_all_tutors = async (callback) => {
+  pool.query('SELECT full_name, major, subjects FROM full_info', (error, results) => {
+    callback(error, results);
+  });
+}
+
 const update_info = async (user_id, full_name, major, intake, is_volunteer, subject) => {
 	console.log(user_id, full_name, major, intake, is_volunteer, subject);
   //console.log(error);
@@ -34,4 +40,4 @@ const update_info = async (user_id, full_name, major, intake, is_volunteer, subj
   }
 }
 
-module.exports = {login, signup, get_by_id, update_info};
+module.exports = {login, signup, get_by_id, update_info, get_all_tutors};
