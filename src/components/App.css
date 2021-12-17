@@ -44,39 +44,6 @@ body {
   font-family: Verdana, sans-serif;
 }
 
-/* Month header */
-.month {
-  padding: 70px 25px;
-  width: 100%;
-  background: #1abc9c;
-  text-align: center;
-}
-
-/* Month list */
-.month ul {
-  margin: 0;
-  padding: 0;
-}
-
-.month ul li {
-  color: white;
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-}
-
-/* Previous button inside month header */
-.month .prev {
-  float: left;
-  padding-top: 10px;
-}
-
-/* Next button */
-.month .next {
-  float: right;
-  padding-top: 10px;
-}
-
 /* Weekdays (Mon-Sun) */
 .weekdays {
   margin: 0;
@@ -111,6 +78,64 @@ body {
 /* Highlight the "current" day */
 .days li .active {
   padding: 5px;
-  background: #1abc9c;
+  background: plum;
   color: white !important;
 }
+
+.footer1 {
+  color: #140664;
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.box {
+  background-color: white;
+  margin: 100px 400px 100px 400px;
+}
+
+.box1 {
+  display: inline-block;
+  width: auto;
+  height: 80px;
+  padding: 5px;
+  padding-top: 0px;
+  margin-left: 40px;
+}
+
+.box2 {
+  width: auto;
+  height: 100px;
+  margin-left: 10px;
+}
+/* Login */
+
+.login {
+  margin: 70px;
+  border: 1px solid #4caf50;
+}
+/* .login form {
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+.login h2 {
+  color: red;
+  margin-top: 5px;
+  padding-top: 5px !important;
+} */
+
+/* Register */
+/* .register {
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+.form-register h2 {
+  margin-top: 20px;
+}
+
+.form-register form {
+  align-items: center;
+} */

@@ -1,13 +1,75 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d2c9ff;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/*Login, Register*/
+.login,
+.register,
+.volunteers {
+  margin: 70px;
+}
+
+form {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.login h2,
+.register h2 {
+  text-align: center;
+}
+
+label {
+  text-align: right;
+  clear: both;
+  float: left;
+  margin-right: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+form .center {
+  margin-top: 10px;
+  text-align: center;
+}
+button {
+  background-color: #4423ff;
+  color: white;
+  padding: 14px 100px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/*Home*/
+li {
+  list-style-type: none;
+}
+
+.center {
+  margin-top: 10px;
+  text-align: center;
 }
