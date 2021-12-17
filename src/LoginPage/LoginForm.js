@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-// const LoginForm = ({Login, error, changePage}) => {
 const LoginForm = () => {
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
   // const [error, setError] = useState(false) // set something if login not correct
