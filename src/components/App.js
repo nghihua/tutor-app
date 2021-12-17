@@ -19,8 +19,7 @@ const App = () => {
                     </Route>
                     <ProtectedRoute exact path="/volunteer" component={Volunteers} />
                     <ProtectedRoute exact path="/profile" component={Profile2} />
-                    <ProtectedRoute exact path="/volunteer/profile" component={Profile} />
-
+                    <ProtectedRoute exact path="/t" component={Profile} />
                 </Switch>
             </div>
         </Router>
