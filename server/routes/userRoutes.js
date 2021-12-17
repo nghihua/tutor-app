@@ -4,6 +4,7 @@ const userController = require('../controllers/userController');
 const router = Router();
 
 router.get('/current', userController.current_user_get);
+router.get('/tutors', userController.tutors_get);
 router.get('/:id', userController.user_get);
 router.put('/:id/edit', userController.user_put);
 
