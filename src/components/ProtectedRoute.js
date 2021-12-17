@@ -1,6 +1,6 @@
 import { Route, Redirect } from 'react-router-dom'
 import React from 'react'
-import Menu from '../Navbar';
+import Menu from './Navbar';
 // Một hàm fetch data từ server về đây?
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
