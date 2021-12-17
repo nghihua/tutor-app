@@ -45,7 +45,7 @@ const ProfileEdit = ({ current, onSave }) => {
           />
         </div>
       </div>
-      
+
       <div className="form-group row">
         <label className="col col-form-label">Major:</label>
         <div className="col-6">
