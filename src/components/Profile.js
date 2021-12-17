@@ -7,29 +7,30 @@ const Profile = () => {
     <Fragment>
         <Menu />
         <div className="container pt-3">
-            <main class="mb-5">
+            <main className="mb-5">
                 <h1 className="text-center pt-5">Volunteer's Profile</h1>
                 <div className="text-center">
-                    <a>
+                    <a href ="/#"> 
+                    {/* add href to make console stop warning */}
                         <img
                             src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                             alt="profile pic"
                             width="90"
                             height="90"
-                            class="image"
+                            className="image"
                         />
                     </a>
                 </div>
                 
                 <h4 className="text-center font-weight-bold display-6 text-uppercase">Username</h4>
                 <h4 className="text-center display-7 mb-5">Full name</h4>
-                <div class="row justify-content-center">
-                        <p class="mr-5  font-weight-bold">Major</p>
-                        <p class="ml-5">Major</p>
+                <div className="row justify-content-center">
+                        <p className="mr-5  font-weight-bold">Major</p>
+                        <p className="ml-5">Major</p>
                 </div>
-                <div class="row d-flex justify-content-center">
-                        <p class="mr-5 font-weight-bold">Subject</p>
-                        <p class="ml-5">Subject</p>
+                <div className="row d-flex justify-content-center">
+                        <p className="mr-5 font-weight-bold">Subject</p>
+                        <p className="ml-5">Subject</p>
                 </div>
                 <br></br>
                 <br></br>
@@ -41,7 +42,7 @@ const Profile = () => {
                 <div className="container">
                     <h1 className="text-center">CSS Calendar</h1>
 
-                    <ul class="weekdays">
+                    <ul className="weekdays">
                         <li>Mo</li>
                         <li>Tu</li>
                         <li>We</li>
@@ -51,7 +52,7 @@ const Profile = () => {
                         <li>Su</li>
                         </ul>
 
-                        <ul class="days">  
+                        <ul className="days">  
                         <li>1</li>
                         <li>2</li>
                         <li>3</li>
@@ -61,7 +62,7 @@ const Profile = () => {
                         <li>7</li>
                         <li>8</li>
                         <li>9</li>
-                        <li><span class="active">10</span></li>
+                        <li><span className="active">10</span></li>
                         <li>11</li>
                         <li>12</li>
                         <li>13</li>
@@ -87,7 +88,7 @@ const Profile = () => {
                 </div>
             </main>
             <footer>
-               <p class="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
+               <p className="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
             </footer>
         </div>
   </Fragment>

@@ -1,29 +1,30 @@
-import {Fragment, useState} from 'react'
-import Menu from './Navbar';
+import { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
-const Register = ({changePage, createUser}) => {
+// const Register = ({changePage, createUser}) => {
+const Register = () => {
     const [details, setDetails] = useState({name :"", username: "", email: "", password: "", repeatPassword: ""});
     const [error, setError] = useState("");
 
+    const history = useHistory() // This will automatically push to the specific site
     const handleSubmit = (event) =>{
         if(details.name === "" || details.username === "" || details.email === "" || details.password === "" || details.repeatPassword === ""){
                 event.preventDefault();
-                console.log(details)
+                console.log(details);
                 setError("Please insert all input");
             }
         else{
             event.preventDefault();  
-            createUser(details);      
-            changePage(0);
+            // add user to the server
+            console.log(details);
+            history.push('/');
         }
     }
 
-    const returnLogin = () =>{
-        changePage(0);
-    }
     return ( 
-    <Fragment>
-        <Menu />
+    // <Fragment>
+    //     <Menu />
+    <div>
         <div className='register'>
             <form onSubmit = {handleSubmit}>
                 <h2>Register</h2>
@@ -52,14 +53,16 @@ const Register = ({changePage, createUser}) => {
                     <button type ="submit">Submit</button>
                 </div>
                 <div className='center'>
-                    <button type ="submit" onClick = {returnLogin}>Return</button>
+                    {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
+                    <Link to="/" >Return to Login</Link>
                 </div>
             </form>
         </div>
         <footer>
                <p className="center">@tutor2021</p> 
         </footer>
-    </Fragment>
+    </div>
+    // </Fragment>
     );
 }
  
