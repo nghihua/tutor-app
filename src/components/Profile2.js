@@ -34,7 +34,7 @@ const Profile2 = () => {
         <ProfileEdit current={volunteer} onSave={handleSave} />
       </div>
       <footer>
-        <p className="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p> 
+        <p className="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p>
       </footer>
     </Fragment>
   );
