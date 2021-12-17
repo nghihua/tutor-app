@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
+import { useHistory } from "react-router-dom";
 import ProfileEdit from "./ProfileEdit"
 
 const Volunteers = () => {
@@ -27,6 +28,13 @@ const Volunteers = () => {
     }
   ];
 
+  const history = useHistory();
+
+  const routeChange = () =>{ 
+    let path = `profile`; 
+    history.push(path);
+  }
+
   return (
     <Fragment>
         <div className="volunteers">
@@ -46,7 +54,7 @@ const Volunteers = () => {
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary">Yes</button>
+                  <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={routeChange}>Yes</button>
                 </div>
               </div>
             </div>
