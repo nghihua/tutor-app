@@ -1,8 +1,8 @@
 cd vào đây rồi gõ npm start để chạy server nha, default port chị để là 5000, muốn đổi thì vào app.js đổi
 
-## API ENDPOINTS
+# API ENDPOINTS
 
-# Authentication
+## Authentication
 
 [POST] /api/auth/signup ({ email, password, full_name, major, intake, is_volunteer }) //sua lai is_volunteer default
 
@@ -28,7 +28,7 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 
 	--> remove jwt from cookie and return "successfully log out!"
 	
-# User
+## User
 
 [GET] /api/user/current
 
