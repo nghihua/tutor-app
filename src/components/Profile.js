@@ -1,11 +1,9 @@
 import React, { Fragment } from "react";
-import Menu from "./Menu";
 
 const Profile = () => {
 
   return (
     <Fragment>
-      <Menu />
       <div className="container pt-3">
         <main className="mb-5">
           <h1 className="text-center pt-5">Volunteer's Profile</h1>
