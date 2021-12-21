@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // const Register = ({changePage, createUser}) => {
 const Register = () => {
   const [details, setDetails] = useState({ name: "", username: "", email: "", password: "", repeatPassword: "" });
   const [error, setError] = useState("");
 
-  const history = useHistory() // This will automatically push to the specific site
   const handleSubmit = (event) => {
     if (details.name === "" || details.username === "" || details.email === "" || details.password === "" || details.repeatPassword === "") {
       event.preventDefault();
@@ -17,7 +16,7 @@ const Register = () => {
       event.preventDefault();
       // add user to the server
       console.log(details);
-      history.push('/');
+      // history.push('/');
     }
   }
 
