@@ -13,7 +13,7 @@ const Menu = () => {
           {/* <Nav.Link href="/Home">Home</Nav.Link>
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
           {/* replace the Nav.Link with Link router */}
-          <Link to="/">Home</Link>
+          <Link to="/">Home</Link> 
           <Link to="/profile">Edit Profile</Link>
         </Nav>
       </Container>
