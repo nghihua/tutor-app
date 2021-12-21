@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-// import Menu from './Menu'
+import Menu from './Menu'
 import LoginForm from './LoginForm';
 import Register from './Register';
 import Profile from './Profile';
@@ -9,14 +9,15 @@ import ProtectedRoute from './ProtectedRoute';
 const App = () => {
   return (
     <Router>
+      <Menu />
       <div className="App">
         <Routes>
           <Route exact path="/" element={<LoginForm />} />
           <Route path="/register" element={<Register />} />
             
-          {/* <ProtectedRoute exact path="/volunteer" component={Volunteers} />
-          <ProtectedRoute exact path="/profile" component={Profile2} />
-          <ProtectedRoute exact path="/t" component={Profile} /> */}
+          <Route path="/volunteer" element={<ProtectedRoute component={Volunteers} />} />
+          {/* <ProtectedRoute path="/profile" component={Profile2} />
+          <ProtectedRoute path="/volunteer/profile" component={Profile} /> */}
         </Routes>
       </div>
     </Router>
