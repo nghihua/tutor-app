@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
-import ProfileEdit from "./ProfileEdit"
 
 const Volunteers = () => {
   const volunteers = [
