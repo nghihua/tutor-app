@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
-import { useHistory } from "react-router-dom";
 import ProfileEdit from "./ProfileEdit"
 
 const Volunteers = () => {
@@ -28,11 +27,8 @@ const Volunteers = () => {
     }
   ];
 
-  const history = useHistory();
-
-  const routeChange = () => {
-    let path = `profile`;
-    history.push(path);
+  const routeChange = () =>{
+    //Do something in here
   }
 
   return (
