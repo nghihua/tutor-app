@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Menu from "./Navbar";
+import Menu from "./Menu";
 
 const Profile = () => {
 
