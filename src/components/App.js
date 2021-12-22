@@ -9,6 +9,7 @@ import ProtectedRoute from './ProtectedRoute';
 const App = () => {
   return (
     <Router>
+	  <Menu />
       <div className="App">
         <Switch>
           <Route exact path="/">
@@ -22,6 +23,9 @@ const App = () => {
           <ProtectedRoute exact path="/t" component={Profile} />
         </Switch>
       </div>
+	  <footer>
+        <p>@tutor2021</p>
+      </footer>
     </Router>
   );
 }
