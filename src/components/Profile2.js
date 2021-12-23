@@ -1,8 +1,5 @@
-import { useState, Fragment } from "react";
+import { useState} from "react";
 import ProfileEdit from "./ProfileEdit";
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
 
 const Profile2 = () => {
   const [volunteer, setVolunteer] = useState({

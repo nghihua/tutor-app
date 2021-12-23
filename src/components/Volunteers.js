@@ -1,6 +1,5 @@
 import VolunteerList from "./VolunteerList";
 import { useHistory } from "react-router-dom";
-import ProfileEdit from "./ProfileEdit"
 
 const Volunteers = () => {
   const volunteers = [
