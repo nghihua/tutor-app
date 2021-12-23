@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Menu from './Navbar'
+import Navbar from './Navbar'
 import LoginForm from './LoginForm';
 import Register from './Register';
 import Profile from './Profile';
@@ -10,7 +10,7 @@ import Footer from './Footer';
 const App = () => {
   return (
     <Router>
-	  <Menu />
+	  <Navbar />
       <div className="App">
         <Switch>
           <Route exact path="/">
