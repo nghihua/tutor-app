@@ -1,16 +1,11 @@
 import React from "react";
-import Container from 'react-bootstrap/Container'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
 import { Link } from 'react-router-dom'
-const Menu = () => {
+const Navbar = () => {
   return (
     <nav  expand="lg" className="fixed-top b-5">
-      <Container fluid>
 	    {/*Add logo here*/}
-        <Navbar.Brand href="/" className="brand">Tutor</Navbar.Brand>
+        <p href="/" className="brand">Tutor</p>
         {/* try to figure how to connect Bootstrap and react router */}
-        <Nav className="justify-content-end" style={{ maxHeight: '100px' }} navbarScroll>
           {/* <Nav.Link href="/Home">Home</Nav.Link>
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
           {/* replace the Nav.Link with Link router */}
@@ -18,10 +13,9 @@ const Menu = () => {
           <Link to="/">Home</Link>
           <Link to="/profile">Edit Profile</Link>
 		  </div>
-        </Nav>
-      </Container>
     </nav>
+    
   );
 };
 
-export default Menu;
+export default Navbar;

@@ -27,6 +27,7 @@ nav .brand {
 nav .redirect {
   position: relative;
   top: -60px;
+  float: right;
 }
 
 nav a {
