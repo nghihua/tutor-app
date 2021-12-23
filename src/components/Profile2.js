@@ -19,7 +19,7 @@ const Profile2 = () => {
   };
 
   return (
-    <Fragment>
+    <div>
       {/* <Navbar bg="light" expand="lg" className="fixed-top">
             <Container fluid>
                 <Navbar.Brand href="#" style={{color:"#7B61FF"}}>Tutor</Navbar.Brand>
@@ -33,10 +33,7 @@ const Profile2 = () => {
       <div className="volunteer-profile pt-5 mb-5">
         <ProfileEdit current={volunteer} onSave={handleSave} />
       </div>
-      <footer>
-        <p className="d-flex justify-content-center footer footer1 font-weight-bold navbar-fixed-bottom ">@tutor2021</p>
-      </footer>
-    </Fragment>
+    </div>
   );
 }
 

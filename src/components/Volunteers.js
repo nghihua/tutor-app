@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
 import { useHistory } from "react-router-dom";
 import ProfileEdit from "./ProfileEdit"
@@ -36,7 +35,6 @@ const Volunteers = () => {
   }
 
   return (
-    <Fragment>
       <div className="volunteers">
         <div className="center">
           <button type="button" data-toggle="modal" data-target="#exampleModal">
@@ -61,10 +59,6 @@ const Volunteers = () => {
         </div>
         <VolunteerList volunteers={volunteers} />
       </div>
-      <footer>
-        <p className="center">@tutor2021</p>
-      </footer>
-    </Fragment>
   );
 }
 
