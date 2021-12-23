@@ -6,6 +6,7 @@ import Profile from './Profile';
 import Volunteers from './Volunteers';
 import Profile2 from './Profile2';
 import ProtectedRoute from './ProtectedRoute';
+import Footer from './Footer';
 const App = () => {
   return (
     <Router>
@@ -23,9 +24,7 @@ const App = () => {
           <ProtectedRoute exact path="/t" component={Profile} />
         </Switch>
       </div>
-	  <footer>
-        <p>@tutor2021</p>
-      </footer>
+      <Footer/>
     </Router>
   );
 }

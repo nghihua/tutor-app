@@ -1,4 +1,5 @@
 body {
+  padding-top: 4px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Rubik",
@@ -16,16 +17,16 @@ code {
 nav {
   height: 100px;
   background: white;
-  border-bottom: 4px solid rgba(0,0,0,0.1);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.1);
   padding: 0px;
 }
-nav .brand{
+nav .brand {
   font-family: Rubik;
   font-size: 60px;
 }
 nav .redirect {
   position: relative;
-  top:-60px;
+  top: -60px;
 }
 
 nav a {
@@ -37,12 +38,6 @@ nav a {
 nav a:hover {
   font-weight: bold;
   color: black;
-}
-/*footer*/
-footer {
-  text-align: center;
-  font-family: Rosarivo;
-  font-size: 15px;
 }
 
 /*Login, Register*/
@@ -56,11 +51,11 @@ footer {
 }
 .leftcolumn {
   float: left;
-  width: 50%
+  width: 50%;
 }
 .rightcolumn {
   float: left;
-  width: 50%
+  width: 50%;
 }
 form {
   margin: 180px auto;
@@ -104,8 +99,8 @@ button {
   width: 350px;
   height: 65px;
   border-radius: 15px;
-  border: 1px solid #ff900D;
-  background: #ff900D;
+  border: 1px solid #ff900d;
+  background: #ff900d;
   display: block;
   margin: 0px auto;
   cursor: pointer;
@@ -118,7 +113,7 @@ button:hover {
   opacity: 0.8;
 }
 
-.toregister{
+.toregister {
   width: 350px;
   text-align: right;
   margin: 15px auto;
@@ -132,4 +127,11 @@ li {
 .center {
   margin-top: 10px;
   text-align: center;
+}
+
+/*footer*/
+footer {
+  text-align: center;
+  font-family: Rosarivo;
+  font-size: 15px;
 }
