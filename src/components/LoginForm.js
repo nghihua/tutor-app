@@ -32,7 +32,7 @@ const LoginForm = () => {
 			</form>
 		</div>
 		<div className="rightcolumn">
-		  <img src="https://i.ibb.co/z7Dr64h/signup-hinh2.png" className="loginbanner"/>
+		  <img src="https://i.ibb.co/SRCsgM8/signup-hinh2.png" className="loginpicture"/>
 		</div>
       </div>
     </div>
