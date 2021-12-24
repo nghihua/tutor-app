@@ -27,17 +27,17 @@ const Volunteers = () => {
   ];
 
   return (
-      <div className="volunteers">
-        <VolunteerList volunteers={volunteers} />
-        <CookieConsent
-          debug={true}
-          style={{background: 'black', textAlign: "center", size:"50px"}}
-          buttonStyle={{color: 'black', background:"white"}}
-          buttonText={"Skip!"}
-          expires={365}>
-          Do you want to become a tutor? Register <a href="/profile">here</a>.
-        </CookieConsent>
-          </div>
+    <div className="volunteers">
+      <VolunteerList volunteers={volunteers} />
+      <CookieConsent
+        debug={true}
+        style={{ background: 'black', textAlign: "center", size: "50px" }}
+        buttonStyle={{ color: 'black', background: "white" }}
+        buttonText={"Skip!"}
+        expires={365}>
+        Do you want to become a tutor? Register <a href="/profile">here</a>.
+      </CookieConsent>
+    </div>
   );
 }
 
