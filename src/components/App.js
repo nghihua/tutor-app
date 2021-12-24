@@ -2,9 +2,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Menu from './Navbar'
 import LoginForm from './LoginForm';
 import Register from './Register';
-import Profile from './Profile';
 import Volunteers from './Volunteers';
-import Profile2 from './Profile2';
+import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 const App = () => {
   return (
@@ -18,8 +17,7 @@ const App = () => {
             <Register />
           </Route>
           <ProtectedRoute exact path="/volunteer" component={Volunteers} />
-          <ProtectedRoute exact path="/profile" component={Profile2} />
-          <ProtectedRoute exact path="/t" component={Profile} />
+          <ProtectedRoute exact path="/profile" component={Profile} />
         </Switch>
       </div>
     </Router>
