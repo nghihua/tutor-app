@@ -1,35 +1,46 @@
+import { useState } from "react";
+import ProfileEdit from "./ProfileEdit";
+import ProfileView from "./ProfileView";
+
 const Profile = () => {
+  const [profile, setProfile] = useState({
+    "email": "xxxx1@student.vgu.edu.vn",
+    "fullName": "Nguyen Van A",
+    "major": "CSE",
+    "intake": "2019",
+    "isTutor": true,
+    "subjects": [
+      "Math",
+      "C Programming"
+    ],
+  });
+
+  const isOwner = true; // performs check on whether the profile belongs to the current logged in account
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = newProfile => {
+    console.log(JSON.stringify(newProfile));
+    setProfile(newProfile);
+    setIsEditing(false);
+  };
 
   return (
-      <div className="container pt-3">
-        <main className="mb-5">
-          <h1 className="text-center pt-5">Volunteer's Profile</h1>
-          <div className="text-center">
-            <a href="/#">
-              {/* add href to make console stop warning */}
-              <img
-                src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                alt="profile pic"
-                width="90"
-                height="90"
-                className="image"
-              />
-            </a>
-          </div>
-
-          <h4 className="text-center font-weight-bold display-6 text-uppercase">Username</h4>
-          <h4 className="text-center display-7 mb-5">Full name</h4>
-          <div className="row justify-content-center">
-            <p className="mr-5  font-weight-bold">Major</p>
-            <p className="ml-5">Major</p>
-          </div>
-          <div className="row d-flex justify-content-center">
-            <p className="mr-5 font-weight-bold">Subject</p>
-            <p className="ml-5">Subject</p>
-          </div>
-        </main>
-      </div>
+    <div className="profile">
+      {
+        isEditing ?
+          <ProfileEdit
+            profile={profile}
+            onSave={handleSave}
+            onCancel={() => setIsEditing(false)}
+          /> :
+          <ProfileView
+            profile={profile}
+            isOwner={isOwner}
+            onEdit={() => setIsEditing(true)}
+          />
+      }
+    </div>
   );
-};
+}
 
 export default Profile;
