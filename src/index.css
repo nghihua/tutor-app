@@ -1,32 +1,75 @@
 body {
+  padding-top: 4px;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Rubik",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #d2c9ff;
+  background-color: white;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+/*Navbar a.k.a Menu*/
+nav {
+  height: 100px;
+  background: white;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.1);
+  padding: 0px;
+}
+nav .brand {
+  font-family: Rubik;
+  font-size: 60px;
+}
+nav .redirect {
+  position: relative;
+  top: -60px;
+  float: right;
+}
+
+nav a {
+  font-family: Rubik;
+  font-size: 20px;
+  color: black;
+  margin: 0 20px;
+}
+nav a:hover {
+  font-weight: bold;
+  color: black;
+}
 
 /*Login, Register*/
-.login,
+.login {
+  margin: 0 auto;
+  height: 750px;
+}
 .register,
 .volunteers {
   margin: 70px;
 }
-
-form {
-  margin: auto;
+.leftcolumn {
+  float: left;
   width: 50%;
-  padding: 10px;
+}
+.rightcolumn {
+  float: left;
+  width: 50%;
+}
+form {
+  margin: 180px auto;
+  padding: 20px;
 }
 
-.login h2,
+.login h2 {
+  font-family: Rubik;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 56px;
+  text-align: center;
+}
 .register h2 {
   text-align: center;
 }
@@ -39,10 +82,13 @@ label {
 }
 
 input {
-  width: 100%;
+  width: 350px;
+  height: 65px;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: block;
+  margin: 30px auto;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   resize: vertical;
 }
 
@@ -51,17 +97,27 @@ form .center {
   text-align: center;
 }
 button {
-  background-color: #4423ff;
-  color: white;
-  padding: 14px 100px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
+  width: 350px;
+  height: 65px;
+  border-radius: 15px;
+  border: 1px solid #ff900d;
+  background: #ff900d;
+  display: block;
+  margin: 0px auto;
   cursor: pointer;
+  color: white;
+  font-family: Tauri;
+  font-size: 22px;
 }
 
 button:hover {
   opacity: 0.8;
+}
+
+.toregister {
+  width: 350px;
+  text-align: right;
+  margin: 15px auto;
 }
 
 /*Home*/
@@ -72,4 +128,11 @@ li {
 .center {
   margin-top: 10px;
   text-align: center;
+}
+
+/*footer*/
+footer {
+  text-align: center;
+  font-family: Rosarivo;
+  font-size: 15px;
 }
