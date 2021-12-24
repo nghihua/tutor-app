@@ -7,27 +7,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
 /*Navigation bar a.k.a Menu*/
 nav {
-  height: 100px;
+  height: 80px;
   background: white;
   border-bottom: 4px solid rgba(0,0,0,0.1);
   padding: 0px;
 }
+nav .logo {
+  width: 70px;
+  display: inline;
+  position: relative;
+  top: -15px;
+  margin: 0px;
+}
 nav .brand{
   font-family: Rubik;
-  font-size: 60px;
+  font-size: 50px;
 }
 nav .redirect {
   position: relative;
   top:-60px;
 }
-
 nav a {
   font-family: Rubik;
   font-size: 20px;
@@ -38,6 +44,7 @@ nav a:hover {
   font-weight: bold;
   color: black;
 }
+
 /*footer*/
 footer {
   text-align: center;
@@ -48,10 +55,9 @@ footer {
 
 /*Login, Register*/
 .login {
-  margin: 0 auto;
+  margin: 80px 0 0 0;
   height: 750px;
 }
-.register,
 .volunteers {
   margin: 70px;
 }
@@ -66,20 +72,14 @@ footer {
   height: 750px;
   padding: 100px 0 100px 0;
 }
-img {
-  position: relative;
-  display: block;
-  margin: 80px auto;
+.loginpicture {	
+  width: 420px;
+  margin: auto 30px;
 }
-.loginbanner {	
-  width: 1010px;
-  left: 40px;
-}
-form {
-  margin: 180px auto;
+.login form {
+  margin: 120px auto;
   padding: 20px;
 }
-
 .login h2 {
   font-family: Rubik;
   font-size: 48px;
@@ -87,18 +87,12 @@ form {
   line-height: 56px;
   text-align: center;
 }
-.register h2 {
-  text-align: center;
-}
-
-
 label {
   text-align: right;
   clear: both;
   float: left;
   margin-right: 15px;
 }
-
 input {
   width: 350px;
   height: 65px;
@@ -109,10 +103,6 @@ input {
   padding: 12px;
   resize: vertical;
 }
-.register input {
-  height: 45px;
-}
-
 button {
   width: 350px;
   height: 65px;
@@ -126,23 +116,37 @@ button {
   font-family: Tauri;
   font-size: 22px;
 }
-
-.register button {
-  height: 45px;
-  font-size: 17px;
-}
-
 button:hover {
   opacity: 0.8;
 }
-
 .reference{
   width: 350px;
   text-align: right;
   margin: 15px auto;
 }
 
-/*Home*/
+/* Register */
+.register {
+  margin: 80px auto;
+}
+.defaultavatar {
+  display: block;
+  position: relative;
+  top: 22px;
+  margin: 60px auto;
+}
+.register h2 {
+  text-align: center;
+}
+.register input {
+  height: 45px;
+}
+.register button {
+  height: 45px;
+  font-size: 17px;
+}
+
+/* Home */
 li {
   list-style-type: none;
 }
