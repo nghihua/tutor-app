@@ -2,7 +2,12 @@ const ProfileView = ({ profile: { fullName, major, intake, isTutor, subjects }, 
   return (
     <div className="container pt-3">
       <main className="mb-5">
-        {isOwner && <button type="button" onClick={onEdit}>Edit</button>}
+        {
+          isOwner &&
+          <div className="my-5 pt-5">
+            <button type="button" onClick={onEdit}>Edit</button>
+          </div>
+        }
 
         <div className="text-center">
           <img
