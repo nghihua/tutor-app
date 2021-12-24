@@ -1,7 +1,5 @@
-import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
-import { useHistory } from "react-router-dom";
-import ProfileEdit from "./ProfileEdit"
+import CookieConsent from 'react-cookie-consent';
 
 const Volunteers = () => {
   const volunteers = [
@@ -28,43 +26,18 @@ const Volunteers = () => {
     }
   ];
 
-  const history = useHistory();
-
-  const routeChange = () => {
-    let path = `profile`;
-    history.push(path);
-  }
-
   return (
-    <Fragment>
       <div className="volunteers">
-        <div className="center">
-          <button type="button" data-toggle="modal" data-target="#exampleModal">
-            Do you want to be a volunteer?
-          </button>
-        </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={routeChange}>Yes</button>
-              </div>
-            </div>
-          </div>
-        </div>
         <VolunteerList volunteers={volunteers} />
-      </div>
-      <footer>
-        <p className="center">@tutor2021</p>
-      </footer>
-    </Fragment>
+        <CookieConsent
+          debug={true}
+          style={{background: 'black', textAlign: "center", size:"50px"}}
+          buttonStyle={{color: 'black', background:"white"}}
+          buttonText={"Skip!"}
+          expires={365}>
+          Do you want to become a tutor? Register <a href="/profile">here</a>.
+        </CookieConsent>
+          </div>
   );
 }
 
