@@ -9,7 +9,8 @@ import ProtectedRoute from './ProtectedRoute';
 import Footer from './Footer';
 const App = () => {
   return (
-    <Router>
+    <div>
+      <Router>
 	  <Navbar />
       <div className="App">
         <Switch>
@@ -26,6 +27,7 @@ const App = () => {
       </div>
       <Footer/>
     </Router>
+    </div>
   );
 }
 
