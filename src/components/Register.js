@@ -22,17 +22,15 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <div className='register'>
+    <div className='register'>
 		<form onSubmit={handleSubmit}>
-		  
 		  <img
           src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
           alt="profile pic"
           width="100"
           height="100"
-          className="image"
-          />
+          className="defaultavatar"
+      />
 		
 		  <input type="text" placeholder="Full name" id="name" onChange={(event) => setDetails({ ...details, name: event.target.value })} value={details.value}></input>
 
@@ -51,11 +49,10 @@ const Register = () => {
 		  <button type="submit">Submit</button>
 		  {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
 		  <div className="reference">
-		  <Link to="/" >Return to Login</Link>
+		    <Link to="/" >Return to Login</Link>
 		  </div>
 		</form>
-      </div>
-    </div>
+  </div>
   );
 }
 
