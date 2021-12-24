@@ -73,11 +73,12 @@ img {
 }
 .loginbanner {	
   width: 1010px;
-  left: 40px;
 }
 form {
   margin: 180px auto;
   padding: 20px;
+  position: relative;
+  left: 40px;
 }
 
 .login h2 {
