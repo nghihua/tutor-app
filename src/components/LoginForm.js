@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const LoginForm = () => {
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
   // const [error, setError] = useState(false) // set something if login not correct
-
+  let navigate = useNavigate();
   const submitHandle = (event) => {
     // Login(details);
     // fetch data to the server ???
     // check if success then
-    // history.push("/volunteer");
+    navigate("/volunteer");
     //else => error
   };
 
