@@ -4,7 +4,7 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 
 ## Authentication
 
-[POST] /api/auth/signup ({ email, password, full_name, major, intake, is_volunteer }) //sua lai is_volunteer default
+[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_volunteer is defaulted to false
 
 	--> if email is invalid, return a 400 code error with message "Invalid email"
 	
