@@ -15,21 +15,28 @@ code {
 }
 /*Navbar a.k.a Menu*/
 nav {
-  height: 100px;
+  height: 90px;
   background: white;
   border-bottom: 4px solid rgba(0, 0, 0, 0.1);
   padding: 0px;
 }
+nav .logo {
+  width: 70px;
+  display: inline;
+  position: relative;
+  top: -15px;
+  margin: 10px;
+}
 nav .brand {
   font-family: Rubik;
-  font-size: 60px;
+  font-size: 55px;
+  display: inline;
 }
 nav .redirect {
   position: relative;
-  top: -60px;
   float: right;
+  top: 29px;
 }
-
 nav a {
   font-family: Rubik;
   font-size: 20px;
@@ -44,25 +51,16 @@ nav a:hover {
 /*Login, Register*/
 .login {
   margin: 0 auto;
-  height: 750px;
+  height: 550px;
 }
 .register,
 .volunteers {
   margin: 70px;
 }
-.leftcolumn {
-  float: left;
-  width: 50%;
-}
-.rightcolumn {
-  float: left;
-  width: 50%;
-}
 form {
   margin: 180px auto;
   padding: 20px;
 }
-
 .login h2 {
   font-family: Rubik;
   font-size: 48px;
@@ -130,9 +128,16 @@ li {
   text-align: center;
 }
 
+/*Profile View*/
+.profile {
+  margin: 70px auto 150px auto;
+}
+
 /*footer*/
 footer {
   text-align: center;
   font-family: Rosarivo;
-  font-size: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: brown;
 }
