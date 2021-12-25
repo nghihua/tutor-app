@@ -46,7 +46,7 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 	
 	--> otherwise, return an object with that user's data
 	
-[PUT] /api/user/:id/edit ({ full_name, major, intake, is_volunteer, subject })
+[PUT] /api/user/:id/edit ({ full_name, major, intake, is_volunteer, subjects })
 
 	--> if user is not logged in (no jwt in cookie or jwt is invalid), return a 401 error code with message "Unauthorized!"
 	

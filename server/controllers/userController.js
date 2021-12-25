@@ -46,9 +46,9 @@ const user_get = (req, res) => {
 
 const user_put = async (req, res) => {
     const user_id = req.params.id;
-    const { full_name, major, intake, is_volunteer, subject } = req.body;
+    const { full_name, major, intake, is_volunteer, subjects } = req.body;
     try {
-        await User.update_info(user_id, full_name, major, intake, is_volunteer, subject);
+        await User.update_info(user_id, full_name, major, intake, is_volunteer, subjects);
         res.send("update successfully!");
     }
     catch (e) {
