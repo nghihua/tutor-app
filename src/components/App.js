@@ -5,13 +5,14 @@ import Profile from './Profile';
 import Volunteers from './Volunteers';
 import Profile2 from './Profile2';
 import ProtectedRoute from './ProtectedRoute';
-
+import Home from './Home';
 const App = () => {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path="/" element={<LoginForm />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<LoginForm />} />
           <Route path="/register" element={<Register />} />
 
           <Route path="/volunteer" element={<ProtectedRoute component={Volunteers} />} />

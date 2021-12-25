@@ -3,7 +3,8 @@ import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Link } from 'react-router-dom'
-const Menu = () => {
+const Menu = ({Logout}) => {
+
   return (
     <Navbar bg="light" expand="lg" className="fixed-top b-5">
       <Container fluid>
@@ -15,6 +16,7 @@ const Menu = () => {
           {/* replace the Nav.Link with Link router */}
           <Link to="/">Home</Link> 
           <Link to="/profile/edit">Edit Profile</Link>
+          <Link to="#" onClick ={() => Logout()}>Log out</Link>
         </Nav>
       </Container>
     </Navbar>
