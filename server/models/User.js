@@ -1,7 +1,7 @@
 const pool = require('../config/database-config');
 
-const signup = async (email, password, full_name, major, intake, is_volunteer, callback) => {
-  pool.query('INSERT INTO users (email, password, full_name, major, intake, is_volunteer) VALUES ($1, $2, $3, $4, $5, $6) RETURNING user_id', [email, password, full_name, major, intake, is_volunteer], (error, results) => {
+const signup = async (email, password, full_name, major, intake, callback) => {
+  pool.query('INSERT INTO users (email, password, full_name, major, intake) VALUES ($1, $2, $3, $4, $5) RETURNING user_id', [email, password, full_name, major, intake], (error, results) => {
     callback(error, results);
   });
 }
