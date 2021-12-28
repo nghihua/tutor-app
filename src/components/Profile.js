@@ -39,6 +39,7 @@ const Profile = () => {
             onEdit={() => setIsEditing(true)}
           />
       }
+      
     </div>
   );
 }
