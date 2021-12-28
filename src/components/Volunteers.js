@@ -1,5 +1,6 @@
 import VolunteerList from "./VolunteerList";
-import CookieConsent from 'react-cookie-consent';
+import ProfileEdit from './ProfileEdit';
+import { useState } from "react";
 
 const Volunteers = () => {
   const volunteers = [
@@ -26,17 +27,54 @@ const Volunteers = () => {
     }
   ];
 
+  const [profile, setProfile] = useState({
+    "email": "xxxx1@student.vgu.edu.vn",
+    "fullName": "Nguyen Van A",
+    "major": "CSE",
+    "intake": "2019",
+    "isTutor": true,
+    "subjects": [
+      "Math",
+      "C Programming"
+    ],
+  });
+
+  const isOwner = true; // performs check on whether the profile belongs to the current logged in account
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = newProfile => {
+    console.log(JSON.stringify(newProfile));
+    setProfile(newProfile);
+    setIsEditing(false);
+  };
+
   return (
     <div className="volunteers">
       <VolunteerList volunteers={volunteers} />
-      <CookieConsent
-        debug={true}
-        style={{ background: 'black', textAlign: "center", size: "50px" }}
-        buttonStyle={{ color: 'black', background: "white" }}
-        buttonText={"Skip!"}
-        expires={365}>
-        Do you want to become a tutor? Register <a href="/profile">here</a>.
-      </CookieConsent>
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Do you want to be a volunteer?
+      </button>
+
+      <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
+            </div>
+            <div class="modal-body">
+            <ProfileEdit
+            profile={profile}
+            onSave={handleSave}
+            onCancel={() => setIsEditing(false)}
+          />
+            </div>
+            {/* <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> */}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
