@@ -4,7 +4,7 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 
 ## Authentication
 
-[POST] /api/auth/signup ({ email, password, full_name, major, intake, is_volunteer }) //sua lai is_volunteer default
+[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_volunteer is defaulted to false
 
 	--> if email is invalid, return a 400 code error with message "Invalid email"
 	
@@ -42,11 +42,11 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 
 	--> if user is not logged in, return a 401 error code with message "Unauthorized!"
 
-	--> if cannot find user_id in database, return false
+	--> if cannot find user_id in database, return a 404 error code with message "User not found"
 	
 	--> otherwise, return an object with that user's data
 	
-[PUT] /api/user/:id/edit ({ full_name, major, intake, is_volunteer, subject })
+[PUT] /api/user/:id/edit ({ full_name, major, intake, is_volunteer, subjects })
 
 	--> if user is not logged in (no jwt in cookie or jwt is invalid), return a 401 error code with message "Unauthorized!"
 	
@@ -59,6 +59,8 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 [GET] /api/user/tutors
 
 	--> if user is not logged in, return a 401 error code with message "Unauthorized!"
+
+	--> if there are other errors, return the error
 	
 	--> otherwise, return an array of tutor objects
 
