@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Footer from './Footer';
+
 import LoginForm from './LoginForm';
 import Register from './Register';
-import Profile from './Profile';
 import Volunteers from './Volunteers';
-import Profile2 from './Profile2';
+import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import Home from './Home';
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           {/* <Route path="/volunteer/:id" element={<ProtectedRoute component={VolunteerProfile} />} /> */}
 
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
