@@ -1,5 +1,6 @@
-import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
+import ProfileEdit from './ProfileEdit';
+import { useState } from "react";
 
 const Volunteers = () => {
   const volunteers = [
@@ -26,40 +27,55 @@ const Volunteers = () => {
     }
   ];
 
-  const routeChange = () =>{
-    //Do something in here
-  }
+  const [profile, setProfile] = useState({
+    "email": "xxxx1@student.vgu.edu.vn",
+    "fullName": "Nguyen Van A",
+    "major": "CSE",
+    "intake": "2019",
+    "isTutor": true,
+    "subjects": [
+      "Math",
+      "C Programming"
+    ],
+  });
+
+  const isOwner = true; // performs check on whether the profile belongs to the current logged in account
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = newProfile => {
+    console.log(JSON.stringify(newProfile));
+    setProfile(newProfile);
+    setIsEditing(false);
+  };
 
   return (
-    <Fragment>
-      <div className="volunteers">
-        <div className="center">
-          <button type="button" data-toggle="modal" data-target="#exampleModal">
-            Do you want to be a volunteer?
-          </button>
-        </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={routeChange}>Yes</button>
-              </div>
+    <div className="volunteers">
+      <VolunteerList volunteers={volunteers} />
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Do you want to be a volunteer?
+      </button>
+
+      <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
             </div>
+            <div class="modal-body">
+            <ProfileEdit
+            profile={profile}
+            onSave={handleSave}
+            onCancel={() => setIsEditing(false)}
+          />
+            </div>
+            {/* <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> */}
           </div>
         </div>
-        <VolunteerList volunteers={volunteers} />
       </div>
-      <footer>
-        <p className="center">@tutor2021</p>
-      </footer>
-    </Fragment>
+    </div>
   );
 }
 
