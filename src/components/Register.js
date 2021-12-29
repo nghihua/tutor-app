@@ -26,23 +26,17 @@ const Register = () => {
         <form onSubmit={handleSubmit}>
           <h2>Register</h2>
 
-          <label htmlFor="name">Name: </label>
-          <input type="text" id="name" onChange={(event) => setDetails({ ...details, name: event.target.value })} value={details.value}></input>
+          <input type="text" placeholder="Full name" id="name" onChange={(event) => setDetails({ ...details, name: event.target.value })} value={details.value}></input>
 
-          <label htmlFor="email">Email: </label>
-          <input type="email" id="email" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
+          <input type="email" placeholder="Email" id="email" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
 
-          <label htmlFor="major">Major: </label>
-          <input type="major" id="major" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
+          <input type="major" placeholder="Major" id="major" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
 
-          <label htmlFor="intake">Intake: </label>
-          <input type="intake" id="intake" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
+          <input type="intake" placeholder="Intake" id="intake" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
 
-          <label htmlFor="password">Password: </label>
-          <input type="password" id="password" onChange={(event) => setDetails({ ...details, password: event.target.value })} value={details.value}></input>
+          <input type="password" placeholder="Password" id="password" onChange={(event) => setDetails({ ...details, password: event.target.value })} value={details.value}></input>
 
-          <label htmlFor="repeatpassword">Repeat Password:</label>
-          <input type="password" id="repeatpassword" onChange={(event) => setDetails({ ...details, repeatPassword: event.target.value })} value={details.value}></input>
+          <input type="password" placeholder="Repeat password" id="repeatpassword" onChange={(event) => setDetails({ ...details, repeatPassword: event.target.value })} value={details.value}></input>
 
           {(error !== "") ? (<div className="error"><h2> {error} </h2></div>) : ""}
 
@@ -55,9 +49,6 @@ const Register = () => {
           </div>
         </form>
       </div>
-      <footer>
-        <p className="center">@tutor2021</p>
-      </footer>
     </div>
   );
 }
