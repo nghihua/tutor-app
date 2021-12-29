@@ -1,6 +1,7 @@
 import VolunteerList from "./VolunteerList";
 import ProfileEdit from './ProfileEdit';
 import { useState } from "react";
+import $ from "jquery";
 
 const Volunteers = () => {
   const volunteers = [
@@ -39,7 +40,6 @@ const Volunteers = () => {
     ],
   });
 
-  const isOwner = true; // performs check on whether the profile belongs to the current logged in account
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = newProfile => {
@@ -48,6 +48,10 @@ const Volunteers = () => {
     setIsEditing(false);
   };
 
+  const cancel = () => {
+    setIsEditing(false);
+  }
+
   return (
     <div className="volunteers">
       <VolunteerList volunteers={volunteers} />
@@ -55,7 +59,7 @@ const Volunteers = () => {
         Do you want to be a volunteer?
       </button>
 
-      <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-dialog-scrollable">
           <div class="modal-content">
             <div class="modal-header">
@@ -65,13 +69,9 @@ const Volunteers = () => {
             <ProfileEdit
             profile={profile}
             onSave={handleSave}
-            onCancel={() => setIsEditing(false)}
+            onCancel={cancel}
           />
             </div>
-            {/* <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div> */}
           </div>
         </div>
       </div>
