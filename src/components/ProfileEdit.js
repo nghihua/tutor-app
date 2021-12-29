@@ -134,12 +134,14 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
         <button
           disabled={isNotChanged()}
           className="btn btn-primary btn-lg mx-3"
+          data-bs-dismiss="modal"
         >Save</button>
 
         <button
           type="button"
           className="btn btn-secondary btn-lg"
           onClick={onCancel}
+          data-bs-dismiss="modal"
         >Cancel</button>
       </div>
     </form >
