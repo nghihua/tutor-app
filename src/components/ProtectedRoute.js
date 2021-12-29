@@ -5,7 +5,7 @@ import Menu from './Menu';
 
 const ProtectedRoute = ({ component: Component }) => {
   let location = useLocation();
-  let isAuth = true;
+  let isAuth = false;
   // const Logout =() =>{
   //   setIsAuth(true);
   // }
