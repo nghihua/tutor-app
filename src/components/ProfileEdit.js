@@ -35,7 +35,7 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="container edit">
+    <form className="profileedit" onSubmit={handleSubmit}>
       <div className="text-center pb-5 pt-5">
         <img
           src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
@@ -46,9 +46,8 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
         />
       </div>
 
-      <div className="form-group row">
-        <label htmlFor="name" className="col col-form-label">Full name:</label>
-        <div className="col-6">
+      <div className="section form-group row">
+        <label className="title" htmlFor="name">Full name:</label>
           <input
             id="name"
             type="text"
@@ -58,7 +57,6 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
             onChange={e => setFullName(e.target.value)}
             placeholder="Enter your name..."
           />
-        </div>
       </div>
 
       <div className="form-group row">
