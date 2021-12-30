@@ -15,7 +15,7 @@ const Navbar = () => {
       {/* replace the Nav.Link with Link router */}
       <div className="redirect">
         <Link to="/">Home</Link>
-        <Link to="/profile">Edit Profile</Link>
+        <Link to="/profile">My Profile</Link>
       </div>
     </nav>
 
