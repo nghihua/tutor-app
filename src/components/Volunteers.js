@@ -25,6 +25,27 @@ const Volunteers = () => {
       "major": "ECE",
       "intake": "2020",
       "subject": "Explore Engineering",
+    },
+    {
+      "email": "xxxx4@student.vgu.edu.vn",
+      "fullName": "Nguyen Tuan D",
+      "major": "ECE",
+      "intake": "2019",
+      "subject": "Explore Engineering",
+    },
+    {
+      "email": "xxxx5@student.vgu.edu.vn",
+      "fullName": "Vo Quang E",
+      "major": "ECE",
+      "intake": "2019",
+      "subject": "Explore Engineering",
+    },
+    {
+      "email": "xxxx6@student.vgu.edu.vn",
+      "fullName": "Nguyen Tien F",
+      "major": "ARC",
+      "intake": "2018",
+      "subject": "Physics",
     }
   ];
 
