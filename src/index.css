@@ -114,48 +114,263 @@ li {
 
 /*Profile View*/
 .profile {
-  margin: 70px auto 150px auto;
+  margin: 0px auto 150px auto;
+}
+.profile img {
+  display: block;
+  margin: 0 auto;
+}
+.profile-detail {
+  background: rgba(245,230,230);
+  margin: 140px auto 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  width: 700px;
+}
+.profile h4 {
+  text-align: center;
+  font-family: Rosarivo;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 38px;
+  margin: 10px auto 20px auto;
+}
+.profile p {
+  line-height: 35px;
+}
+.title {
+  margin: 3px 20px;
+  padding: 0px 70px;
+  font-weight: bold;
+  position: absolute;
+  left: 0px;
+}
+.info {
+  margin: 3px 20px;
+}
+.tutor-detail {
+  background: rgba(255,155,0,0.6);
+  border-radius: 10px;
+  margin: 40px 0 0 0;
+  padding: 14px;
+}
+.profile h2 {
+  position: relative;
+  left: 30px;
+}
+.profile button {
+  margin: 30px auto;
+}
+
+/*Profile Edit*/
+.profileedit {
+  background: rgba(245,230,230);
+  margin: 140px auto 0 auto;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  width: 700px;
+}
+.profileedit input {
+  display: inline;
+  width: 300px;
+  height: 45px;
+  margin: 0 auto;
+  border: 2px solid black;
+}
+.profileedit .title {
+  line-height: 30px;
+  margin-top: 10px;
+}
+.profileedit .section{
+  height: 50px;
 }
 
 /*Volunteer page*/
 .volunteers {
-  margin: 100px;
+  margin: 100px 30px;
 }
+  /*Option 1:
+  .volunteer-preview {
+    text-align: center;
+    display: inline-block;
+    margin: 7px 25px;
+  }
+  .volunteer-block {
+    width: 180px;
+    height: 300px;
+    position: relative;
+  }
+  .volunteers .image {
+    position: relative;
+    top: 45px;
+    border-radius: 50%;
+  }
+  .volunteers .box2 {
+    background: rgba(210,210,210,1);
+    background: linear-gradient(rgba(210,210,210,1), rgba(140,140,140,1));
+    height: 210px;
+    padding: 100px auto auto auto;
+  }
+  .volunteers h2 {
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    color: black;
+    padding: 55px 0 0 0;
+  }
+  .volunteers p {
+    font-family: Rubik;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 22px;
+  }
+  .volunteers a {
+    color: black;
+  }
+  .seemore {
+    font-family: Rubik;
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 180px;
+    height: 35px;
+    padding: 5px;
+    background: orange;
+  }
+  .volunteers button {
+    display: block;
+    margin: 50px auto;
+  }*/
+  /*Option 2
+  .volunteers {
+    margin: 120px auto;
+  }
+  .volunteer-preview {
+
+  }
+  .volunteer-block {
+    width: 600px;
+    height: 130px;
+    margin: 50px auto;
+    position: relative;
+    background: rgba(243,230,210,1);
+    border-radius: 15px;
+    box-shadow: 5px 10px rgba(210,207,200,1);
+  }
+  .volunteers .image {
+    float: left;
+    position: relative;
+    top: 15px;
+    left: 30px;
+    border-radius: 50%;
+  }
+  .volunteers h2 {
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    padding: 20px 150px;
+    padding-bottom: 0px;
+  }
+  .volunteers p {
+    font-family: Rubik;
+    font-size: 18px;
+    font-style: italic;
+    text-align: left;
+    padding: 0px 150px;
+  }
+  .volunteers button {
+    display: block;
+    margin: 10px auto;
+  }
+  .seemore {
+    font-family: Rubik;
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 130px;
+    padding: 2px;
+    background: orange;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  } 
+  .seemore .rotate {
+    transform: rotate(-90deg);
+    width: 100px;
+    position: relative;
+    left: -30px;
+    top: 50px;
+  }*/
+/* Option 3*/
 .volunteer-preview {
-  float: left;
-}
-.volunteer-block {
-  width: 180px;
-  height: 300px;
-  margin: 10px;
-}
-.volunteers .image {
-  position: relative;
-  top: 45px;
-}
-.volunteers .box2 {
-  background: rgba(210,210,210,1);
-  height: 210px;
-  padding: 100px auto auto auto;
-}
-.volunteers h2 {
-  font-family: Rubik;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 28px;
-  text-align: center;
-  color: black;
-  padding: 55px 0 0 0;
-}
-.volunteers p {
-  font-family: Rubik;
-  font-size: 18px;
-  font-style: italic;
-  line-height: 22px;
-}
-.volunteers a {
-  color: black;
-}
+    text-align: center;
+    display: inline-block;
+    margin: 7px 30px 40px 30px;
+  }
+  .volunteer-block {
+    width: 210px;
+    height: 300px;
+    position: relative;
+    box-shadow: 5px 10px rgba(235,225,225);
+  }
+  .volunteers .image {
+    width: 210px;
+    height: 190px;
+    z-index: -1;
+  }
+  .volunteers .box2 {
+    background: white;
+    height: 210px;
+    padding: 10px 5px auto 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 210px;
+    height: 150px;
+    text-align: left;
+  }
+  .volunteers h2 {
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 28px;
+    color: black;
+    padding: 30px 10px 0 10px;
+  }
+  .volunteers p {
+    font-family: Rubik;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 22px;
+    padding: 0 10px;
+  }
+  .volunteers a {
+    color: black;
+  }
+  .seemore {
+    font-family: Rubik;
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 210px;
+    height: 35px;
+    padding: 5px;
+    background: rgba(245,165,0,1);
+    text-align: center;
+  }
+  .volunteers button {
+    display: block;
+    margin: 50px auto;
+  }*
 
 /*footer*/
 footer {

@@ -5,6 +5,7 @@ const VolunteerList = ({ volunteers }) => {
       {volunteers.map(({ email, fullName, major, intake }) => (
 <div className="volunteer-preview" key={email} >
   <div className="volunteer-block" background-color="white">
+    
     <span className="box1">
       <a href={"/${email}"}>
         <img
@@ -12,18 +13,21 @@ const VolunteerList = ({ volunteers }) => {
           alt="profile pic"
           width="90"
           height="90"
-          className="image rounded-circle"
+          className="image"
         />
       </a>
     </span>
-    <span className="volunteer-info">
+    <div className="volunteer-info">
+    <div className="box2">
+        <h2>{fullName}</h2>
+        <p>{major} {intake}</p>
       <a href={"/${email}"}>
-        <div className="box2">
-          <h2>{fullName}</h2>
-          <p>{major} {intake}</p>
+        <div className="seemore">
+          <div className="rotate">See more</div>
         </div>
       </a>
-    </span>
+    </div>
+    </div>
 
   </div>
 </div>
