@@ -17,7 +17,7 @@ code {
 /*Navbar a.k.a Menu*/
 nav {
   height: 90px;
-  background: rgba(254, 245, 245,1);
+  background: rgba(254, 245, 245, 1);
   border-bottom: 4px solid rgba(0, 0, 0, 0.1);
   padding: 0px;
 }
@@ -121,7 +121,7 @@ li {
   margin: 0 auto;
 }
 .profile-detail {
-  background: rgba(245,230,230);
+  background: rgba(245, 230, 230);
   margin: 140px auto 0 auto;
   padding: 30px;
   border-radius: 20px;
@@ -150,7 +150,7 @@ li {
   margin: 3px 20px;
 }
 .tutor-detail {
-  background: rgba(255,155,0,0.6);
+  background: rgba(255, 155, 0, 0.6);
   border-radius: 10px;
   margin: 40px 0 0 0;
   padding: 14px;
@@ -165,7 +165,7 @@ li {
 
 /*Profile Edit*/
 .profileedit {
-  background: rgba(245,230,230);
+  background: rgba(245, 230, 230);
   margin: 140px auto 0 auto;
   padding: 30px;
   border-radius: 20px;
@@ -183,7 +183,7 @@ li {
   line-height: 30px;
   margin-top: 10px;
 }
-.profileedit .section{
+.profileedit .section {
   height: 50px;
 }
 
@@ -191,7 +191,7 @@ li {
 .volunteers {
   margin: 100px 30px;
 }
-  /*Option 1:
+/*Option 1:
   .volunteer-preview {
     text-align: center;
     display: inline-block;
@@ -246,7 +246,7 @@ li {
     display: block;
     margin: 50px auto;
   }*/
-  /*Option 2
+/*Option 2
   .volunteers {
     margin: 120px auto;
   }
@@ -311,66 +311,67 @@ li {
   }*/
 /* Option 3*/
 .volunteer-preview {
-    text-align: center;
-    display: inline-block;
-    margin: 7px 30px 40px 30px;
-  }
-  .volunteer-block {
-    width: 210px;
-    height: 300px;
-    position: relative;
-    box-shadow: 5px 10px rgba(235,225,225);
-  }
-  .volunteers .image {
-    width: 210px;
-    height: 190px;
-    z-index: -1;
-  }
-  .volunteers .box2 {
-    background: white;
-    height: 210px;
-    padding: 10px 5px auto 5px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 210px;
-    height: 150px;
-    text-align: left;
-  }
-  .volunteers h2 {
-    font-family: Rubik;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 28px;
-    color: black;
-    padding: 30px 10px 0 10px;
-  }
-  .volunteers p {
-    font-family: Rubik;
-    font-size: 18px;
-    font-style: italic;
-    line-height: 22px;
-    padding: 0 10px;
-  }
-  .volunteers a {
-    color: black;
-  }
-  .seemore {
-    font-family: Rubik;
-    font-size: 18px;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    width: 210px;
-    height: 35px;
-    padding: 5px;
-    background: rgba(245,165,0,1);
-    text-align: center;
-  }
-  .volunteers button {
-    display: block;
-    margin: 50px auto;
-  }*
+  text-align: center;
+  display: inline-block;
+  margin: 7px 30px 40px 30px;
+}
+.volunteer-block {
+  width: 210px;
+  height: 300px;
+  position: relative;
+  box-shadow: 5px 10px rgba(235, 225, 225);
+}
+.volunteers .image {
+  width: 210px;
+  height: 190px;
+  z-index: -1;
+}
+.volunteers .box2 {
+  background: white;
+  height: 210px;
+  padding: 10px 5px auto 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 210px;
+  height: 150px;
+  text-align: left;
+}
+.volunteers h2 {
+  font-family: Rubik;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 28px;
+  color: black;
+  padding: 30px 10px 0 10px;
+}
+.volunteers p {
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 22px;
+  padding: 0 10px;
+}
+.volunteers a {
+  color: black;
+}
+.seemore {
+  font-family: Rubik;
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 210px;
+  height: 35px;
+  padding: 5px;
+  background: rgba(245, 165, 0, 1);
+  text-align: center;
+}
+.volunteers button {
+  display: block;
+  margin: 50px auto;
+}
+*
 
 /*footer*/
 footer {
