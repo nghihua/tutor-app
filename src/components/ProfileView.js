@@ -1,6 +1,5 @@
 const ProfileView = ({ profile: { fullName, major, intake, isTutor, subjects }, isOwner, onEdit }) => {
   return (
-    <div className="container pt-3">
       <main className="mb-5">
       <div className="profile-detail">
         <img
@@ -30,7 +29,9 @@ const ProfileView = ({ profile: { fullName, major, intake, isTutor, subjects }, 
             <h2>Tutor:</h2>
             <div className="row d-flex justify-content-center">
               <p className="title">Subjects</p>
-              <p className="info">{subjects.join(", ")}</p>
+              <div className="subject-box">
+              <p className="info">{subjects.map(s=><div>{s}<br/></div>)}</p>
+              </div>
             </div>
           </div>
         }
@@ -40,7 +41,6 @@ const ProfileView = ({ profile: { fullName, major, intake, isTutor, subjects }, 
             <button type="button" onClick={onEdit}>Edit</button>
         }
       </main>
-    </div>
   );
 };
 
