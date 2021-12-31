@@ -25,7 +25,7 @@ const LoginForm = () => {
 
             <input type="password" placeholder="Password" name="password" id="password" onChange={(event) => setDetails({ ...details, password: event.target.value })} value={details.password} />
 
-            <button type="submit" value="submit" >Submit</button>
+            <button type="submit" value="submit">Submit</button>
             <div className="toregister">
               <Link to="/register">Register here</Link>
             </div>
