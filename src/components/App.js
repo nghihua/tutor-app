@@ -22,6 +22,7 @@ const App = () => {
             </Route>
             <ProtectedRoute exact path="/volunteer" component={Volunteers} />
             <ProtectedRoute exact path="/profile" component={Profile} />
+            
           </Switch>
         </div>
         <Footer />
