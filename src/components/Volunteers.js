@@ -87,9 +87,9 @@ const Volunteers = () => {
         Do you want to be a volunteer?
       </button>
 
-      <div className="modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
+      <div className="temp modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog modal-dialog-scrollable">
-          <div class="modal-content">
+          <div class="temp modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
             </div>
@@ -98,7 +98,7 @@ const Volunteers = () => {
             profile={profile}
             onSave={handleSave}
             onCancel={cancel}
-          />
+            />
             </div>
           </div>
         </div>
