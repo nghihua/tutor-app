@@ -12,113 +12,62 @@ const createToken = (data) => {
 }
 
 const current_user_get = (req, res) => {
-    const token = req.cookies.jwt;
-    if (token) {
-        jwt.verify(token, process.env.PRIVATE_KEY, (err, decodedToken) => {
-            if (err) {
-                res.send(false);
-            }
-            else {
-                User.get_by_id(decodedToken.user_id, (error, results) => {
-                    if(error || (!results.rowCount)) {
-                        res.send(false);
-                    }
-                    res.send(results.rows[0]);
-                });
-            }
-        });
-    }
-    else {
+
+    if (!res.locals.loggedin) {
         res.send(false);
     }
+    else {
+        res.send(res.locals.current_user);
+    }
+
 }
 
 const user_get = (req, res) => {
     const user_id = req.params.id;
 
-    if (token) {
-        jwt.verify(token, process.env.PRIVATE_KEY, async (err, decodedToken) => {
-            if (err || (decodedToken.user_id!=user_id)) {
-                res.status(401).send({message: "Unauthorized"});
-            }
-            else {
-                
-                User.get_by_id(decodedToken.user_id, (error, results) => {
-                    if(error || (!results.rowCount)) {
-                        res.status(401).send({message: "Unauthorized"});
-                    }
-                });
-
-                User.get_by_id(user_id, async (error, results) => {
-                    if (error) {
-                        res.send(false);
-                    }
-                    else {
-                        if (!results.rowCount) {
-                            res.send(false);
-                        }
-                        res.send(results.rows[0]);
-                    }
-                });
-            }
-        });
+    if (!res.locals.loggedin) {
+        res.status(401).send({message: "Unauthorized"});
     }
     else {
-        res.status(401).send({message: "Unauthorized"});
+        User.get_by_id(user_id, async (error, results) => {
+            if (error) {
+                res.send(error);
+            }
+            else {
+                if (!results.rowCount) {
+                    res.status(404).send({message: "User not found"});
+                }
+                res.send(results.rows[0]);
+            }
+        });
     }
 
 }
 
-const user_put = (req, res) => {
-    const token = req.cookies.jwt;
+const user_put = async (req, res) => {
     const user_id = req.params.id;
-    const { full_name, major, intake, is_volunteer, subject } = req.body;
-    if (token) {
-        jwt.verify(token, process.env.PRIVATE_KEY, async (err, decodedToken) => {
-            if (err || (decodedToken.user_id!=user_id)) {
-                res.status(401).send({message: "Unauthorized"});
-            }
-            else {
-                try {
-            		await User.update_info(user_id, full_name, major, intake, is_volunteer, subject);
-            		res.send("update successfully!");
-                }
-                catch (e) {
-                	res.send(e);
-                }
-            }
-        });
+    const { full_name, major, intake, is_volunteer, subjects } = req.body;
+    try {
+        await User.update_info(user_id, full_name, major, intake, is_volunteer, subjects);
+        res.send("update successfully!");
     }
-    else {
-        res.status(401).send({message: "Unauthorized"});
+    catch (e) {
+        res.send(e);
     }
 }
 
 const tutors_get = (req, res) => {
-    const token = req.cookies.jwt;
-    if (token) {
-        jwt.verify(token, process.env.PRIVATE_KEY, async (err, decodedToken) => {
-            if (err) {
-                res.status(401).send({message: "Unauthorized"});
-            }
-            else {
 
-                User.get_by_id(decodedToken.user_id, (error, results) => {
-                    if(error || (!results.rowCount)) {
-                        res.status(401).send({message: "Unauthorized"});
-                    }
-                });
-
-                User.get_all_tutors((error, results) => {
-                    if (error) {res.send(error)}
-                    res.send(results.rows);
-                });
-            }
-        });
-    }
-    else {
+    if (!res.locals.loggedin) {
         res.status(401).send({message: "Unauthorized"});
     }
+    else {
+        User.get_all_tutors((error, results) => {
+            if (error) {res.send(error)}
+            res.send(results.rows);
+        });
+    }
+
 }
 
 

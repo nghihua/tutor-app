@@ -1,7 +1,8 @@
-import { Fragment } from "react";
 import VolunteerList from "./VolunteerList";
-import { useHistory } from "react-router-dom";
-import ProfileEdit from "./ProfileEdit"
+import ProfileEdit from './ProfileEdit';
+import { useState } from "react";
+import $ from "jquery";
+import { useHistory } from 'react-router'
 
 const Volunteers = () => {
   const volunteers = [
@@ -25,46 +26,84 @@ const Volunteers = () => {
       "major": "ECE",
       "intake": "2020",
       "subject": "Explore Engineering",
+    },
+    {
+      "email": "xxxx4@student.vgu.edu.vn",
+      "fullName": "Nguyen Tuan D",
+      "major": "ECE",
+      "intake": "2019",
+      "subject": "Explore Engineering",
+    },
+    {
+      "email": "xxxx5@student.vgu.edu.vn",
+      "fullName": "Vo Quang E",
+      "major": "ECE",
+      "intake": "2019",
+      "subject": "Explore Engineering",
+    },
+    {
+      "email": "xxxx6@student.vgu.edu.vn",
+      "fullName": "Nguyen Tien F",
+      "major": "ARC",
+      "intake": "2018",
+      "subject": "Physics",
     }
   ];
 
-  const history = useHistory();
+  const [profile, setProfile] = useState({
+    "email": "xxxx1@student.vgu.edu.vn",
+    "fullName": "Nguyen Van A",
+    "major": "CSE",
+    "intake": "2019",
+    "isTutor": true,
+    "subjects": [
+      "Math",
+      "C Programming"
+    ],
+  });
 
-  const routeChange = () => {
-    let path = `profile`;
-    history.push(path);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSave = newProfile => {
+    console.log(JSON.stringify(newProfile));
+    setProfile(newProfile);
+    setIsEditing(false);
+  };
+
+  const cancel = () => {
+    setIsEditing(false);
+  }
+
+  window.onload = () => {
+    console.log("Hello");
+    var myModal = document.getElementById('button1');
+    myModal.click();
   }
 
   return (
-    <Fragment>
-      <div className="volunteers">
-        <div className="center">
-          <button type="button" data-toggle="modal" data-target="#exampleModal">
-            Do you want to be a volunteer?
-          </button>
-        </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={routeChange}>Yes</button>
-              </div>
+    <div className="volunteers">
+      <VolunteerList volunteers={volunteers} />
+      <button type="button" id = "button1" className="btn btn-primary invisible" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Do you want to be a volunteer?
+      </button>
+
+      <div className="temp modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="temp modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
+            </div>
+            <div class="modal-body">
+            <ProfileEdit
+            profile={profile}
+            onSave={handleSave}
+            onCancel={cancel}
+            />
             </div>
           </div>
         </div>
-        <VolunteerList volunteers={volunteers} />
       </div>
-      <footer>
-        <p className="center">@tutor2021</p>
-      </footer>
-    </Fragment>
+    </div>
   );
 }
 
