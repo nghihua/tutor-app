@@ -22,37 +22,35 @@ const Register = () => {
   }
 
   return (
-    <div className='register'>
-		<form onSubmit={handleSubmit}>
-		  <img
-          src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-          alt="profile pic"
-          width="100"
-          height="100"
-          className="defaultavatar"
-      />
-		
-		  <input type="text" placeholder="Full name" id="name" onChange={(event) => setDetails({ ...details, name: event.target.value })} value={details.value}></input>
+    <div>
+      <div className='register'>
+        <form onSubmit={handleSubmit}>
+          <h2>Register</h2>
 
-		  <input type="email" placeholder="E-mail" id="email" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
-			  {/*
-		  <input type="major" placeholder="Password" id="major" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
+          <input type="text" placeholder="Full name" id="name" onChange={(event) => setDetails({ ...details, name: event.target.value })} value={details.value}></input>
 
-		  <input type="intake" placeholder="Intake" id="intake" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
-			  */}
-		  <input type="password" placeholder="Password" id="password" onChange={(event) => setDetails({ ...details, password: event.target.value })} value={details.value}></input>
+          <input type="email" placeholder="Email" id="email" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
 
-		  <input type="password" placeholder="Confirm password" id="repeatpassword" onChange={(event) => setDetails({ ...details, repeatPassword: event.target.value })} value={details.value}></input>
+          <input type="major" placeholder="Major" id="major" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
 
-		  {(error !== "") ? (<div className="error"><h2> {error} </h2></div>) : ""}
+          <input type="intake" placeholder="Intake" id="intake" onChange={(event) => setDetails({ ...details, email: event.target.value })} value={details.value}></input>
 
-		  <button type="submit">Submit</button>
-		  {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
-		  <div className="reference">
-		    <Link to="/" >Return to Login</Link>
-		  </div>
-		</form>
-  </div>
+          <input type="password" placeholder="Password" id="password" onChange={(event) => setDetails({ ...details, password: event.target.value })} value={details.value}></input>
+
+          <input type="password" placeholder="Repeat password" id="repeatpassword" onChange={(event) => setDetails({ ...details, repeatPassword: event.target.value })} value={details.value}></input>
+
+          {(error !== "") ? (<div className="error"><h2> {error} </h2></div>) : ""}
+
+          <div className='center'>
+            <button type="submit">Submit</button>
+          </div>
+          <div className='center'>
+            {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
+            <Link to="/" >Return to Login</Link>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 
