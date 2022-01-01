@@ -49,7 +49,7 @@ nav .redirect {
   line-height: 70px;
   float: right;
 }
-nav .redirect:hover{
+nav .redirect:hover {
   font-weight: bold;
 }
 
@@ -58,8 +58,12 @@ nav .redirect:hover{
   margin: 0 auto;
   height: 550px;
 }
-form {
-  margin: 180px auto;
+.loginpicture {
+  width: 420px;
+  margin: auto 30px;
+}
+.login form {
+  margin: 120px auto;
   padding: 20px;
 }
 .login h2 {
@@ -107,7 +111,28 @@ button:hover {
   color: black;
 }
 
-/*Home*/
+/* Register */
+.register {
+  margin: 80px auto;
+}
+.defaultavatar {
+  display: block;
+  position: relative;
+  top: 22px;
+  margin: 60px auto;
+}
+.register h2 {
+  text-align: center;
+}
+.register input {
+  height: 45px;
+}
+.register button {
+  height: 45px;
+  font-size: 17px;
+}
+
+/* Home */
 li {
   list-style-type: none;
 }
@@ -164,7 +189,7 @@ li {
   margin: 20px 0 0 0;
   padding: 14px;
 }
-.tutor-detail .title{
+.tutor-detail .title {
   left: 15px;
 }
 .profile h2 {
