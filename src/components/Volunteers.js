@@ -1,8 +1,7 @@
 import VolunteerList from "./VolunteerList";
 import ProfileEdit from './ProfileEdit';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import $ from "jquery";
-import { useHistory } from 'react-router'
 
 const Volunteers = () => {
   const volunteers = [
@@ -74,11 +73,10 @@ const Volunteers = () => {
     setIsEditing(false);
   }
 
-  window.onload = () => {
-    console.log("Hello");
+  useEffect(() => {
     var myModal = document.getElementById('button1');
     myModal.click();
-  }
+  })
 
   return (
     <div className="volunteers">
