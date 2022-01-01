@@ -5,7 +5,7 @@ password text NOT NULL,
 full_name text NOT NULL,
 major text NOT NULL,
 intake int NOT NULL,
-is_volunteer boolean,
+is_volunteer boolean DEFAULT false,
 PRIMARY KEY(user_id));
 
 CREATE TABLE tutor_subject (
