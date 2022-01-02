@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-const Navbar = () => {
+const Navbar = ({ Logout }) => {
   return (
     <nav expand="lg" className="fixed-top b-5">
       <Link to="/">
@@ -15,10 +15,13 @@ const Navbar = () => {
       {/* <Nav.Link href="/Home">Home</Nav.Link>
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
       {/* replace the Nav.Link with Link router */}
-      <Link to="/profile" className="redirect">My Profile</Link>
-      <Link to="/" className="redirect">Home</Link>
-    </nav>
 
+      <div className="redirect">
+        <Link to="/">Home</Link>
+        <Link to="/profile">Edit Profile</Link>
+        <Link to="/" onClick={() => Logout()}>Log out</Link>
+      </div>
+    </nav>
   );
 };
 
