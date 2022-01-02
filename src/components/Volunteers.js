@@ -62,11 +62,11 @@ const Volunteers = () => {
               <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
             </div>
             <div class="modal-body">
-            <ProfileEdit
-            profile={profile}
-            onSave={handleSave}
-            onCancel={() => setIsEditing(false)}
-          />
+              <ProfileEdit
+                profile={profile}
+                onSave={handleSave}
+                onCancel={() => setIsEditing(false)}
+              />
             </div>
             {/* <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

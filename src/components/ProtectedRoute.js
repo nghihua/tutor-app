@@ -1,11 +1,11 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import {React} from 'react'
+import { React } from 'react'
 import Menu from './Menu';
 // Một hàm fetch data từ server về đây?
 
 const ProtectedRoute = ({ component: Component }) => {
   let location = useLocation();
-  let isAuth = false;
+  let isAuth = true;
   // const Logout =() =>{
   //   setIsAuth(true);
   // }
@@ -13,7 +13,7 @@ const ProtectedRoute = ({ component: Component }) => {
     console.log(isAuth);
     return (
       <div className="user">
-        <Menu/>
+        <Menu />
         <Component />
       </div>
     )
