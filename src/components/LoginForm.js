@@ -1,15 +1,27 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 const LoginForm = () => {
-  const [details, setDetails] = useState({ name: "", email: "", password: "" });
+  const [details, setDetails] = useState({email: "", password: "" });
   // const [error, setError] = useState(false) // set something if login not correct
-  let navigate = useNavigate();
+  let navigate = useNavigate(); // navigate to the volunteer page
+
+  const url = 'http://localhost:5000/api/auth/login';
+  const postData = async (url, data = {}) => {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    return response.json();
+  }
   const submitHandle = (event) => {
-    // Login(details);
-    // fetch data to the server ???
-    // check if success then
-    navigate("/volunteer");
-    //else => error
+    postData(url, {details})
+    .then(result => console.log(result))
+    .catch(error => console.log(error))
+    event.preventDefault();
+    // navigate("/volunteer");
   };
 
   return (
