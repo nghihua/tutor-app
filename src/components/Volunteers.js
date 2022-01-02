@@ -1,7 +1,6 @@
 import VolunteerList from "./VolunteerList";
 import ProfileEdit from './ProfileEdit';
 import { useState, useEffect } from "react";
-import $ from "jquery";
 
 const Volunteers = () => {
   const volunteers = [
