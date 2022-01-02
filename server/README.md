@@ -27,6 +27,11 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 [GET] /api/auth/logout
 
 	--> remove jwt from cookie and return "successfully log out!"
+
+[GET] /api/auth/login_status
+
+	--> if logged in, return true
+	--> otherwise, return false
 	
 ## User
 
@@ -45,6 +50,11 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 	--> if cannot find user_id in database, return a 404 error code with message "User not found"
 	
 	--> otherwise, return an object with that user's data
+
+[GET] /api/auth/:id/edit_permission
+
+	--> if has edit permission, return true
+	--> otherwise, return false
 	
 [PUT] /api/user/:id/edit ({ full_name, major, intake, is_volunteer, subjects })
 
