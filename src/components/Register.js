@@ -15,7 +15,7 @@ const Register = () => {
       },
       body: JSON.stringify(data)
     });
-    return response.json
+    return response.json();
   }
 
   const handleSubmit = (event) => {
@@ -33,12 +33,13 @@ const Register = () => {
       else{
         event.preventDefault();
         console.log(details);
+
         sendData('http://localhost:5000/api/auth/signup', {details})
           .then(data => {
             console.log("data sent")
             console.log(data);
           })
-          .catch(error => console.log(error));
+          .catch(error => console.log(`error: ${error}`));
       }
     }
   }

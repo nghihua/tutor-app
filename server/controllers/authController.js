@@ -41,7 +41,16 @@ const login_post = (req,res) => {
 const signup_post = async (req,res) => {
     const { email, password, full_name, major, intake } = req.body;
     const salt = await bcrypt.genSalt();
-    const hashed_password = await bcrypt.hash(password, salt);
+    let hashed_password;
+
+    try {
+        hashed_password = await bcrypt.hash(password, salt);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(400).send({message: "malformed password"});
+        return;
+    }
     
     User.signup(email, hashed_password, full_name, major, intake, (error, results) => {
         if (error) {
@@ -52,7 +61,7 @@ const signup_post = async (req,res) => {
                 res.status(400).send({message: "Email already exists"});
             }
             else {
-            console.log(error);
+                console.log(error);
                 res.send(error);
             }
         }
