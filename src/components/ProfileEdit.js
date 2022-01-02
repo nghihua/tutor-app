@@ -35,7 +35,7 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="container edit">
+    <form className="profileedit" onSubmit={handleSubmit}>
       <div className="text-center pb-5 pt-5">
         <img
           src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
@@ -46,9 +46,8 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
         />
       </div>
 
-      <div className="form-group row">
-        <label htmlFor="name" className="col col-form-label">Full name:</label>
-        <div className="col-6">
+      <div className="section form-group row">
+        <label className="title" htmlFor="name">Full name:</label>
           <input
             id="name"
             type="text"
@@ -58,64 +57,58 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
             onChange={e => setFullName(e.target.value)}
             placeholder="Enter your name..."
           />
-        </div>
       </div>
 
-      <div className="form-group row">
-        <label htmlFor="major" className="col col-form-label">Major:</label>
-        <div className="col-6">
-          <select
-            id="major"
-            value={major}
-            onChange={e => setMajor(e.target.value)}
-            className="form-control"
-          >
-            <option value="ECE">EEIT/ECE</option>
-            <option value="MEN">MEN</option>
-            <option value="CSE">CSE</option>
-            <option value="BFA">BFA</option>
-            <option value="BBA">BBA</option>
-            <option value="BCE">BCE</option>
-            <option value="ARC">ARC</option>
-          </select>
-        </div>
+      <div className="section form-group row">
+        <label className="title" htmlFor="major">Major:</label>
+        <select
+          id="major"
+          value={major}
+          onChange={e => setMajor(e.target.value)}
+          className="form-control"
+        >
+          <option value="ECE">EEIT/ECE</option>
+          <option value="MEN">MEN</option>
+          <option value="CSE">CSE</option>
+          <option value="BFA">BFA</option>
+          <option value="BBA">BBA</option>
+          <option value="BCE">BCE</option>
+          <option value="ARC">ARC</option>
+        </select>
       </div>
 
-      <div className="form-group row">
-        <label htmlFor="intake" className="col col-form-label">Intake:</label>
-        <div className="col-6">
-          <input
-            id="intake"
-            type="number"
-            min="2008"
-            max={new Date().getFullYear()}
-            step="1"
-            required
-            value={intake}
-            onChange={e => setIntake(e.target.value)}
-            className="form-control"
-          />
-        </div>
+      <div className="section form-group row">
+        <label htmlFor="intake" className="title">Intake:</label>
+        <input
+          id="intake"
+          type="number"
+          min="2008"
+          max={new Date().getFullYear()}
+          step="1"
+          required
+          value={intake}
+          onChange={e => setIntake(e.target.value)}
+          className="form-control"
+        />
       </div>
 
-      <div className="form-group row">
-        <label htmlFor="is-tutor" className="col col-form-label">Is Tutor:</label>
-        <div className="col-6">
-          <input
-            id="is-tutor"
-            type="checkbox"
-            checked={isTutor}
-            onChange={() => setIsTutor(!isTutor)}
-          />
-        </div>
+      <div className="section form-group row">
+        <label htmlFor="is-tutor" className="title">Is Tutor:</label>
+        <input
+          id="is-tutor"
+          type="checkbox"
+          className="checkBox"
+          checked={isTutor}
+          onChange={() => setIsTutor(!isTutor)}
+        />
       </div>
 
       {
         // Only show if isTutor
         isTutor &&
-        <div className="form-group row">
-          <label className="col col-form-label">Subjects:</label>
-          <div className="col-6">
+        <div className="section form-group row">
+          <label className="title">Subjects:</label>
+          <div className="subject-box">
             <Typeahead
               id="subjects-typeahead"
               multiple
@@ -130,16 +123,16 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
         </div>
       }
 
-      <div className="text-center pt-5">
+      <div className="data-buttons">
         <button
           disabled={isNotChanged()}
-          className="btn btn-primary btn-lg mx-3"
+          data-bs-dismiss="modal"
         >Save</button>
 
         <button
           type="button"
-          className="btn btn-secondary btn-lg"
           onClick={onCancel}
+          data-bs-dismiss="modal"
         >Cancel</button>
       </div>
     </form >
