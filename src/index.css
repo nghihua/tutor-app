@@ -16,27 +16,24 @@ code {
 
 /*Navbar a.k.a Menu*/
 nav {
-  height: 90px;
+  height: 70px;
   background: rgba(254, 245, 245, 1);
   border-bottom: 4px solid rgba(0, 0, 0, 0.1);
-  padding: 0px;
+  padding: 0px 10px;
 }
 nav .logo {
   width: 70px;
   display: inline;
   position: relative;
-  top: -15px;
+  top: -10px;
+  left: 10px;
   margin: 10px;
 }
 nav .brand {
   font-family: Rubik;
-  font-size: 55px;
+  font-size: 45px;
   display: inline;
-}
-nav .redirect {
-  position: relative;
-  float: right;
-  top: 29px;
+  line-height: 68px;
 }
 nav a {
   font-family: Rubik;
@@ -45,8 +42,15 @@ nav a {
   margin: 0 20px;
 }
 nav a:hover {
-  font-weight: bold;
+  text-decoration: none;
   color: black;
+}
+nav .redirect {
+  line-height: 70px;
+  float: right;
+}
+nav .redirect:hover {
+  font-weight: bold;
 }
 
 /*Login, Register*/
@@ -54,8 +58,12 @@ nav a:hover {
   margin: 0 auto;
   height: 550px;
 }
-form {
-  margin: 180px auto;
+.loginpicture {
+  width: 420px;
+  margin: auto 30px;
+}
+.login form {
+  margin: 120px auto;
   padding: 20px;
 }
 .login h2 {
@@ -103,7 +111,28 @@ button:hover {
   color: black;
 }
 
-/*Home*/
+/* Register */
+.register {
+  margin: 80px auto;
+}
+.defaultavatar {
+  display: block;
+  position: relative;
+  top: 22px;
+  margin: 60px auto;
+}
+.register h2 {
+  text-align: center;
+}
+.register input {
+  height: 45px;
+}
+.register button {
+  height: 45px;
+  font-size: 17px;
+}
+
+/* Home */
 li {
   list-style-type: none;
 }
@@ -114,7 +143,7 @@ li {
 
 /*Profile View*/
 .profile {
-  margin: 0px auto 150px auto;
+  margin-bottom: 80px;
 }
 .profile img {
   display: block;
@@ -122,8 +151,8 @@ li {
 }
 .profile-detail {
   background: rgba(245, 230, 230);
-  margin: 140px auto 0 auto;
-  padding: 30px;
+  margin: 130px auto 0px auto;
+  padding: 30px 30px 20px 30px;
   border-radius: 20px;
   position: relative;
   width: 700px;
@@ -144,30 +173,44 @@ li {
   padding: 0px 70px;
   font-weight: bold;
   position: absolute;
-  left: 0px;
+  left: -60px;
+  line-height: 45px;
+  margin-top: 0px;
+  font-size: 20px;
 }
 .info {
   margin: 3px 20px;
+  font-family: Times-New-Roman;
+  font-size: 20px;
 }
 .tutor-detail {
   background: rgba(255, 155, 0, 0.6);
   border-radius: 10px;
-  margin: 40px 0 0 0;
+  margin: 20px 0 0 0;
   padding: 14px;
+}
+.tutor-detail .title {
+  left: 15px;
 }
 .profile h2 {
   position: relative;
   left: 30px;
+  font-weight: normal;
+}
+.profile .subject-box {
+  text-align: center;
+  width: 300px;
 }
 .profile button {
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 /*Profile Edit*/
 .profileedit {
   background: rgba(245, 230, 230);
-  margin: 140px auto 0 auto;
+  margin: 130px auto 100px auto;
   padding: 30px;
+  padding-bottom: 0px;
   border-radius: 20px;
   position: relative;
   width: 700px;
@@ -175,16 +218,42 @@ li {
 .profileedit input {
   display: inline;
   width: 300px;
-  height: 45px;
+  height: 40px;
   margin: 0 auto;
   border: 2px solid black;
 }
-.profileedit .title {
-  line-height: 30px;
-  margin-top: 10px;
+.profileedit select {
+  display: flex;
+  margin: 0 auto;
+  width: 300px;
+  height: 40px;
+  border: 2px solid black;
+}
+.profileedit .checkBox {
+  background: green;
+  margin: 0;
+  position: relative;
+  left: 53px;
+}
+.profileedit .subject-box {
+  display: inline;
+  margin: 0 auto;
+  width: 300px;
+  border: 2px solid black;
 }
 .profileedit .section {
   height: 50px;
+  position: relative;
+}
+.data-buttons {
+  padding: 0 70px;
+}
+.profileedit button {
+  display: inline;
+  width: 200px;
+  height: 50px;
+  border-radius: 8px;
+  margin: 50px 20px;
 }
 
 /*Volunteer page*/
@@ -371,7 +440,11 @@ li {
   display: block;
   margin: 50px auto;
 }
-*
+.temp {
+  width: 750px;
+  padding: 0;
+  margin: 0;
+}
 
 /*footer*/
 footer {
