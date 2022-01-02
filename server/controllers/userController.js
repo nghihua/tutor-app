@@ -14,7 +14,7 @@ const createToken = (data) => {
 const current_user_get = (req, res) => {
 
     if (!res.locals.loggedin) {
-        res.send(false);
+        res.status(401).send({message: "Unauthorized"});
     }
     else {
         res.send(res.locals.current_user);
@@ -44,15 +44,31 @@ const user_get = (req, res) => {
 
 }
 
-const user_put = async (req, res) => {
-    const user_id = req.params.id;
-    const { full_name, major, intake, is_volunteer, subjects } = req.body;
-    try {
-        await User.update_info(user_id, full_name, major, intake, is_volunteer, subjects);
-        res.send("update successfully!");
+const edit_permission_get = (req, res) => {
+
+    if (res.locals.edit_permission) {
+        res.send(true);
     }
-    catch (e) {
-        res.send(e);
+    else {
+        res.send(false);
+    }
+
+}
+
+const user_put = async (req, res) => {
+    if (!res.locals.edit_permission) {
+        res.status(401).send({message: "Unauthorized"});
+    }
+    else {
+        const user_id = req.params.id;
+        const { full_name, major, intake, is_volunteer, subjects } = req.body;
+        try {
+            await User.update_info(user_id, full_name, major, intake, is_volunteer, subjects);
+            res.send({message: "Update successfully!"});
+        }
+        catch (e) {
+            res.send(e);
+        }
     }
 }
 
@@ -71,4 +87,4 @@ const tutors_get = (req, res) => {
 }
 
 
-module.exports = {current_user_get, user_get, user_put, tutors_get};
+module.exports = {current_user_get, user_get, edit_permission_get, user_put, tutors_get};
