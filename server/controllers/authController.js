@@ -41,8 +41,8 @@ const login_post = (req,res) => {
 const signup_post = async (req,res) => {
     const { email, password, full_name, major, intake } = req.body;
     const salt = await bcrypt.genSalt();
+    console.log(password);
     const hashed_password = await bcrypt.hash(password, salt);
-    
     User.signup(email, hashed_password, full_name, major, intake, (error, results) => {
         if (error) {
             if(error.constraint == "email_valid") {
