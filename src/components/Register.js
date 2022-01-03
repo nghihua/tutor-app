@@ -15,7 +15,7 @@ const Register = () => {
       },
       body: JSON.stringify(data)
     });
-    return response.text()
+    return response.json();
   }
 
   const handleSubmit = (event) => {
@@ -38,7 +38,7 @@ const Register = () => {
             console.log("data sent")
             console.log(data);
           })
-          .catch(error => console.log(error.response));
+          .catch(error => console.log(`error: ${error}`));
       }
     }
   }
