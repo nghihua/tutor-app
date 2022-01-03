@@ -30,23 +30,27 @@ const verifyLoggedIn = (req, res, next) => {
     }
 }
 
-const verifyProfileOwner = (req, res, next) => {
+const checkEditPermission = (req, res, next) => {
 	const token = req.cookies.jwt;
     const user_id = req.params.id;
+    res.locals.edit_permission = false;
+
     if (token) {
         jwt.verify(token, process.env.PRIVATE_KEY, async (err, decodedToken) => {
             if (err || (decodedToken.user_id!=user_id)) {
-                res.status(401).send({message: "Unauthorized"});
+                next();
+                //res.status(401).send({message: "Unauthorized"});
             }
             else {
-            	console.log("verified!");
+                res.locals.edit_permission = true;
                 next();
             }
         });
     }
     else {
-        res.status(401).send({message: "Unauthorized"});
+        next();
+        //res.status(401).send({message: "Unauthorized"});
     }
 }
 
-module.exports = { verifyLoggedIn, verifyProfileOwner };
+module.exports = { verifyLoggedIn, checkEditPermission };
