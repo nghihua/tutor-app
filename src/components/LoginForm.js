@@ -14,13 +14,15 @@ const LoginForm = () => {
       },
       body: JSON.stringify(data)
     })
-    return response.json();
+    return response.text();
   }
   const submitHandle = (event) => {
-    postData(url, {details})
-    .then(result => console.log(result))
-    .catch(error => console.log(error))
     event.preventDefault();
+    postData(url, details)
+    .then(result => {
+      console.log(result)
+    })
+    .catch(error => console.log(error.response));
     // navigate("/volunteer");
   };
 

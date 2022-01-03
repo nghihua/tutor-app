@@ -30,7 +30,7 @@ const Profile2 = () => {
             </Container>
       </Navbar> */}
       {/* no need navbar */}
-      <div className="volunteer-profile pt-5 mb-5">
+      <div className="volunteer-prfile pt-5 mb-5">
         <ProfileEdit current={volunteer} onSave={handleSave} />
       </div>
       <footer>
