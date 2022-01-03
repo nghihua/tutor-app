@@ -38,7 +38,7 @@ const ProfileView = ({ profile: { fullName, major, intake, isTutor, subjects }, 
         </div>
         {
           isOwner &&
-            <button type="button" onClick={onEdit}>Edit</button>
+            <button type="button" className="clickButton" onClick={onEdit}>Edit</button>
         }
       </main>
   );
