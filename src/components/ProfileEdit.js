@@ -110,6 +110,7 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
           <label className="title">Subjects:</label>
           <div className="subject-box">
             <Typeahead
+              className="typo"
               id="subjects-typeahead"
               multiple
               selected={subjects}
@@ -125,12 +126,14 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
 
       <div className="data-buttons">
         <button
+          className="clickButton"
           disabled={isNotChanged()}
           data-bs-dismiss="modal"
         >Save</button>
 
         <button
           type="button"
+          className="clickButton"
           onClick={onCancel}
           data-bs-dismiss="modal"
         >Cancel</button>
