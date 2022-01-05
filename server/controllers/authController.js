@@ -31,6 +31,7 @@ const login_post = (req,res) => {
                 }
             }
             else {
+                console.log("testing");
                 res.status(400).send({message: "Email doesn't exist."});
             }
         }
@@ -79,9 +80,11 @@ const logout_get = (req, res) => {
 
 const login_status_get = (req, res) => {
     if (res.locals.loggedin) {
+      console.log("logined")
         res.send(true);
     }
     else {
+      console.log("no login")
         res.send(false);
     }
 }
