@@ -9,6 +9,7 @@ const LoginForm = () => {
   const postData = async (url, data = {}) => {
     const response = await fetch(url, {
       method: 'POST',
+      credentials: "same-origin",
       headers: {
         'Content-Type': 'application/json'
       },
@@ -21,9 +22,9 @@ const LoginForm = () => {
     postData(url, details)
     .then(result => {
       console.log(result)
+      navigate("/volunteer");
     })
     .catch(error => console.log(error.response));
-    // navigate("/volunteer");
   };
 
   return (

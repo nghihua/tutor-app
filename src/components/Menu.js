@@ -1,6 +1,14 @@
 import React from "react";
-import { Link } from 'react-router-dom'
-const Navbar = ({ Logout }) => {
+import { Link, useNavigate } from 'react-router-dom'
+import useFetch from "./useFetch2";
+const Navbar = () => {
+  const Logout = () =>{
+    const navigate = useNavigate();
+    const url = "http://localhost:5000/api/auth/logout";
+    const {data, error} = useFetch(url);
+    navigate('/home')
+  }
+  
   return (
     <nav expand="lg" className="fixed-top b-5">
       <Link to="/">
