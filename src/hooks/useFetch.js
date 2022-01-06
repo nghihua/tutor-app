@@ -23,19 +23,18 @@ import { useMountStatus } from "./custom-hooks";
  *
  * Example usage:
  * ```
- * const { doFetch: postData } = useFetch(
- *   url,
- *   useCallback(() => {
- *     return {
- *       method: "POST",
- *       headers: {
- *         "Content-Type": "application/json",
- *       },
- *       credentials: "include",
- *       body: JSON.stringify(data),
- *     };
- *   }, [data])
- * );
+ * const requestInit = useCallback(() => {
+ *   return {
+ *     method: "POST",
+ *     headers: {
+ *       "Content-Type": "application/json",
+ *     },
+ *     credentials: "include",
+ *     body: JSON.stringify(data),
+ *   };
+ * }, [data]);
+ *
+ * const { doFetch: postData } = useFetch(url, requestInit);
  * ```
  */
 const useFetch = (
