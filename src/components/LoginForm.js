@@ -9,13 +9,13 @@ const LoginForm = () => {
   const postData = async (url, data = {}) => {
     const response = await fetch(url, {
       method: 'POST',
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
-    return response.text();
+    return response.json();
   }
   const submitHandle = (event) => {
     event.preventDefault();

@@ -1,37 +1,61 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
-const useFetch2 = (url) => {
-  const [data, setData] = useState(null)
+const useFetch2 = (url, isUseEffect) => {
+  const [data, setData] = useState(null);
+  const [pending, setPending] = useState(true);
   const [error, setError] = useState(null);
-  const abortCont = new AbortController();
-  useEffect(() => {
-    fetch(url , {
+  const doFetch = useCallback(async () => {
+    fetch(url, {
       method: 'GET',
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
         'Content-Type': 'application/json'
-      }}, {signal: abortCont.signal })
+      },
+    })
       .then(response => {
-        if(!response.ok){
-          throw Error("Can not fetch data")
+        if (!response.ok) {
+          throw Error("can not fetch data")
         }
-        return response.json();
+        return response.json()
       })
       .then(data => {
-        setData(data);
-        setError(null);
+        if (isUseEffect) {
+          setData(data)
+          setError(null);
+          setPending(false);
+        }
       })
       .catch(error => {
-        if(error.name === "AbortError"){
+        if (error.name === "AbortError") {
           console.log("fetch aborted");
-        }else{
-          console.log(error.message);
-          setError(error.message);
         }
-      })   
-      return () => abortCont.abort();   
-  }, [url]);
-  return {data, error}
+        else {
+          if (isUseEffect) {
+            console.log(error.message);
+            setError(error.message);
+            setPending(false);
+          }
+        }
+      })
+  }, [url, isUseEffect])
+  useEffect(() => {
+    if (isUseEffect) {
+      doFetch();
+    }
+  }, [isUseEffect, doFetch]);
+  return { data, pending, error, doFetch };
 }
 
 export default useFetch2;
+
+// .then(response => {
+//   if(!response.ok){
+//     throw Error("Can not fetch data");
+//   }
+//   return response.json();
+// })
+// .then(data => {
+//   console.log(data);
+//   auth.current = data;
+//   console.log(auth.current);
+// }) 
