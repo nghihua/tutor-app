@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer>
+    <footer id="footer">
       <p>@tutor2021</p>
     </footer>
   );
