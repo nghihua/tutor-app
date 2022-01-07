@@ -8,6 +8,7 @@ const Profile = () => {
   const { id } = useParams();
   const {
     data: [user, canEdit],
+    error: [errorUser],
     isLoading: [isLoadingUser, isLoadingCanEdit],
     doFetch: loadProfile,
   } = useFetch(
@@ -42,7 +43,10 @@ const Profile = () => {
   return (
     <div className="profile">
       {(isLoadingUser || isLoadingCanEdit) && <h3>Loading...</h3>}
-      {user &&
+      {errorUser ? (
+        <h3>{errorUser.message}</h3>
+      ) : (
+        user &&
         (isEditing ? (
           <ProfileEdit
             user={user}
@@ -55,7 +59,8 @@ const Profile = () => {
             canEdit={canEdit}
             onEdit={() => setIsEditing(true)}
           />
-        ))}
+        ))
+      )}
     </div>
   );
 };
