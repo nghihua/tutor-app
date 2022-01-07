@@ -1,47 +1,68 @@
 import { useState } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
+import { useFetch, useConst } from "../hooks/custom-hooks";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const [profile, setProfile] = useState({
-    "email": "xxxx1@student.vgu.edu.vn",
-    "fullName": "Nguyen Van A",
-    "major": "CSE",
-    "intake": "2019",
-    "isTutor": true,
-    "subjects": [
-      "Math",
-      "C Programming"
+  const { id } = useParams();
+  const {
+    data: [user, canEdit],
+    error: [errorUser],
+    isLoading: [isLoadingUser, isLoadingCanEdit],
+    doFetch: loadProfile,
+  } = useFetch(
+    [
+      `http://localhost:5000/api/user/${id}`,
+      `http://localhost:5000/api/user/${id}/edit_permission`,
     ],
-  });
+    useConst({ credentials: "include" }),
+    { asEffect: true, throwError: false }
+  );
+  const { doFetch: saveUser } = useFetch();
 
-  const isOwner = true; // performs check on whether the profile belongs to the current logged in account
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleSave = newProfile => {
-    console.log(JSON.stringify(newProfile));
-    setProfile(newProfile);
-    setIsEditing(false);
+  const handleSave = (newProfile) => {
+    saveUser(`http://localhost:5000/api/user/${id}/edit`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProfile),
+      credentials: "include",
+    })
+      .then(() => {
+        alert("Saved successfully!");
+        return loadProfile();
+      })
+      .then(() => setIsEditing(false))
+      .catch((err) => alert(err));
   };
 
   return (
     <div className="profile">
-      {
-        isEditing ?
+      {(isLoadingUser || isLoadingCanEdit) && <h3>Loading...</h3>}
+      {errorUser ? (
+        <h3>{errorUser.message}</h3>
+      ) : (
+        user &&
+        (isEditing ? (
           <ProfileEdit
-            profile={profile}
+            user={user}
             onSave={handleSave}
             onCancel={() => setIsEditing(false)}
-          /> :
+          />
+        ) : (
           <ProfileView
-            profile={profile}
-            isOwner={isOwner}
+            user={user}
+            canEdit={canEdit}
             onEdit={() => setIsEditing(true)}
           />
-      }
-
+        ))
+      )}
     </div>
   );
-}
+};
 
 export default Profile;
