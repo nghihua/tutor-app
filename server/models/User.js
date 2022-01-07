@@ -19,7 +19,7 @@ const get_by_id = async (user_id, callback) => {
 }
 
 const get_all_tutors = async (callback) => {
-  pool.query('SELECT full_name, major, subjects FROM full_info', (error, results) => {
+  pool.query('SELECT user_id, full_name, major, intake, subjects FROM full_info WHERE is_volunteer = true', (error, results) => {
     callback(error, results);
   });
 }
