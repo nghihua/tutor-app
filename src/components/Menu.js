@@ -16,11 +16,9 @@ const Navbar = ({ Logout }) => {
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
       {/* replace the Nav.Link with Link router */}
 
-      <div className="redirect">
-        <Link to="/">Home</Link>
-        <Link to="/profile">Edit Profile</Link>
-        <Link to="/" onClick={() => Logout()}>Log out</Link>
-      </div>
+      <Link to="/" className="redirect" onClick={() => Logout()}>Log out</Link>
+      <Link to="/profile" className="redirect">My Profile</Link>
+      <Link to="/" className="redirect">Home</Link>
     </nav>
   );
 };

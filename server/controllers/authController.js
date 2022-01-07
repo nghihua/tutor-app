@@ -23,9 +23,8 @@ const login_post = (req,res) => {
             if(results.rowCount) {
                 if(await bcrypt.compare(password, results.rows[0].password)) {
                     const token = createToken(results.rows[0].user_id);
-                    console.log(`token here: ${token}`);
                     res.cookie("jwt", token, {httpOnly:true, maxAge: maxAge*1000});
-                    res.send("Log in successfully!");
+                    res.send({message: "Log in successfully!"});
                 }
                 else {
                     res.status(400).send({message: "Incorrect password."});
@@ -68,14 +67,23 @@ const signup_post = async (req,res) => {
         else {
             const token = createToken(results.rows[0].user_id);
             res.cookie("jwt", token, {httpOnly:true, maxAge: maxAge*1000});
-            res.send("create new user successfully!");
+            res.send({message: "Create new user successfully!"});
         }
     });
 }
 
 const logout_get = (req, res) => {
     res.clearCookie("jwt");
-    res.send("successfully log out!");
+    res.send({message: "Log out successfully!"});
 }
 
-module.exports = {login_post, signup_post, logout_get};
+const login_status_get = (req, res) => {
+    if (res.locals.loggedin) {
+        res.send(true);
+    }
+    else {
+        res.send(false);
+    }
+}
+
+module.exports = {login_status_get, login_post, signup_post, logout_get};
