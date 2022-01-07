@@ -2,35 +2,61 @@ import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 
-const ProfileEdit = ({ profile, onSave, onCancel }) => {
-  const subjectList = ["Math", "Physics", "C Programming", "Database", "German", "Calculus", "Algebra", "English"];
+const subjectList = [
+  "Math",
+  "Physics",
+  "C Programming",
+  "Database",
+  "German",
+  "Calculus",
+  "Algebra",
+  "English",
+];
 
+const ProfileEdit = ({
+  user: {
+    full_name: currFullName,
+    major: currMajor,
+    intake: currIntake,
+    is_volunteer: currIsTutor,
+    subjects: currSubjects,
+  },
+  onSave,
+  onCancel,
+}) => {
   // Profile states
-  const [fullName, setFullName] = useState(profile.fullName);
-  const [major, setMajor] = useState(profile.major);
-  const [intake, setIntake] = useState(profile.intake);
-  const [isTutor, setIsTutor] = useState(profile.isTutor);
-  const [subjects, setSubjects] = useState(profile.subjects);
+  const [fullName, setFullName] = useState(currFullName);
+  const [major, setMajor] = useState(currMajor);
+  const [intake, setIntake] = useState(currIntake);
+  const [isTutor, setIsTutor] = useState(currIsTutor);
+  const [subjects, setSubjects] = useState(currSubjects);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const newProfile = { fullName, major, intake, isTutor, subjects };
+    const newProfile = {
+      full_name: fullName,
+      major,
+      intake,
+      is_volunteer: isTutor,
+      subjects,
+    };
     onSave(newProfile);
   };
 
   const isNotChanged = () => {
-    const arrayEquals = (a, b) => (
-      a.length === b.length &&
-      a.every((val, index) => val === b[index])
-    );
+    const isEmpty = (arr) =>
+      arr.length === 0 || (arr.length === 1 && arr[0] === null);
+    const arrayEquals = (a, b) =>
+      (isEmpty(a) && isEmpty(b)) ||
+      (a.length === b.length && a.every((val, index) => val === b[index]));
 
     return (
-      profile.fullName === fullName &&
-      profile.major === major &&
-      profile.intake === intake &&
-      profile.isTutor === isTutor &&
-      arrayEquals(profile.subjects, subjects)
+      currFullName === fullName &&
+      currMajor === major &&
+      currIntake === intake &&
+      currIsTutor === isTutor &&
+      arrayEquals(currSubjects, subjects)
     );
   };
 
@@ -47,24 +73,28 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
       </div>
 
       <div className="section form-group row">
-        <label className="title" htmlFor="name">Full name:</label>
-          <input
-            id="name"
-            type="text"
-            required
-            value={fullName}
-            className="form-control"
-            onChange={e => setFullName(e.target.value)}
-            placeholder="Enter your name..."
-          />
+        <label className="title" htmlFor="name">
+          Full name:
+        </label>
+        <input
+          id="name"
+          type="text"
+          required
+          value={fullName}
+          className="form-control"
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Enter your name..."
+        />
       </div>
 
       <div className="section form-group row">
-        <label className="title" htmlFor="major">Major:</label>
+        <label className="title" htmlFor="major">
+          Major:
+        </label>
         <select
           id="major"
           value={major}
-          onChange={e => setMajor(e.target.value)}
+          onChange={(e) => setMajor(e.target.value)}
           className="form-control"
         >
           <option value="ECE">EEIT/ECE</option>
@@ -78,7 +108,9 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
       </div>
 
       <div className="section form-group row">
-        <label htmlFor="intake" className="title">Intake:</label>
+        <label htmlFor="intake" className="title">
+          Intake:
+        </label>
         <input
           id="intake"
           type="number"
@@ -87,13 +119,15 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
           step="1"
           required
           value={intake}
-          onChange={e => setIntake(e.target.value)}
+          onChange={(e) => setIntake(e.target.value)}
           className="form-control"
         />
       </div>
 
       <div className="section form-group row">
-        <label htmlFor="is-tutor" className="title">Is Tutor:</label>
+        <label htmlFor="is-tutor" className="title">
+          Is Tutor:
+        </label>
         <input
           id="is-tutor"
           type="checkbox"
@@ -105,23 +139,24 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
 
       {
         // Only show if isTutor
-        isTutor &&
-        <div className="section form-group row">
-          <label className="title">Subjects:</label>
-          <div className="subject-box">
-            <Typeahead
-              className="typo"
-              id="subjects-typeahead"
-              multiple
-              selected={subjects}
-              onChange={setSubjects}
-              options={subjectList}
-              placeholder="Choose the subjects you can tutor..."
-              flip
-              highlightOnlyResult
-            />
+        isTutor && (
+          <div className="section form-group row">
+            <label className="title">Subjects:</label>
+            <div className="subject-box">
+              <Typeahead
+                className="typo"
+                id="subjects-typeahead"
+                multiple
+                selected={subjects[0] === null ? [] : subjects}
+                onChange={setSubjects}
+                options={subjectList}
+                placeholder="Choose the subjects you can tutor..."
+                flip
+                highlightOnlyResult
+              />
+            </div>
           </div>
-        </div>
+        )
       }
 
       <div className="data-buttons">
@@ -129,17 +164,21 @@ const ProfileEdit = ({ profile, onSave, onCancel }) => {
           className="clickButton"
           disabled={isNotChanged()}
           data-bs-dismiss="modal"
-        >Save</button>
+        >
+          Save
+        </button>
 
         <button
           type="button"
           className="clickButton"
           onClick={onCancel}
           data-bs-dismiss="modal"
-        >Cancel</button>
+        >
+          Cancel
+        </button>
       </div>
-    </form >
+    </form>
   );
-}
+};
 
 export default ProfileEdit;
