@@ -16,7 +16,7 @@ const App = () => {
           <Route exact path="/login" element={<LoginForm />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/volunteer" element={<ProtectedRoute component={Volunteers} />} />
+          <Route path="/volunteers" element={<ProtectedRoute component={Volunteers} />} />
           <Route path="/profile/:id" element={<ProtectedRoute component={Profile} />} />
 
         </Routes>
