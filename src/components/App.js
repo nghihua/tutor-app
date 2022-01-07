@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Routes>
+        <Routes className="content-wrap">
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<LoginForm />} />
           <Route path="/register" element={<Register />} />
