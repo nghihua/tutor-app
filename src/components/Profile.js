@@ -2,22 +2,14 @@ import { useState } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
 import { useFetch, useConst } from "../hooks/custom-hooks";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-const Profile = ({ id }) => {
-  // const [profile, setProfile] = useState({
-  //   email: "xxxx1@student.vgu.edu.vn",
-  //   fullName: "Nguyen Van A",
-  //   major: "CSE",
-  //   intake: "2019",
-  //   isTutor: true,
-  //   subjects: ["Math", "C Programming"],
-  // });
-
+const Profile = () => {
+  const { id } = useParams();
   const {
     data: [user, canEdit],
-    error,
-    isLoading,
+    isLoading: [isLoadingUser, isLoadingCanEdit],
+    doFetch: loadProfile,
   } = useFetch(
     [
       `http://localhost:5000/api/user/${id}`,
@@ -26,34 +18,44 @@ const Profile = ({ id }) => {
     useConst({ credentials: "include" }),
     { asEffect: true, throwError: false }
   );
+  const { doFetch: saveUser } = useFetch();
 
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (newProfile) => {
-    console.log(JSON.stringify(newProfile));
-    // setProfile(newProfile);
-    setIsEditing(false);
+    saveUser(`http://localhost:5000/api/user/${id}/edit`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProfile),
+      credentials: "include",
+    })
+      .then(() => {
+        alert("Saved successfully!");
+        return loadProfile();
+      })
+      .then(() => setIsEditing(false))
+      .catch((err) => alert(err));
   };
 
   return (
     <div className="profile">
-      {JSON.stringify(user)}
-      <br />
-      <br />
-      {JSON.stringify(canEdit)}
-      {/* {isEditing ? (
-        <ProfileEdit
-          user={user}
-          onSave={handleSave}
-          onCancel={() => setIsEditing(false)}
-        />
-      ) : (
-        <ProfileView
-          user={user}
-          isOwner={canEdit}
-          onEdit={() => setIsEditing(true)}
-        />
-      )} */}
+      {(isLoadingUser || isLoadingCanEdit) && <h3>Loading...</h3>}
+      {user &&
+        (isEditing ? (
+          <ProfileEdit
+            user={user}
+            onSave={handleSave}
+            onCancel={() => setIsEditing(false)}
+          />
+        ) : (
+          <ProfileView
+            user={user}
+            canEdit={canEdit}
+            onEdit={() => setIsEditing(true)}
+          />
+        ))}
     </div>
   );
 };
