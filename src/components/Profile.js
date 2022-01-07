@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
 import { useFetch, useConst } from "../hooks/custom-hooks";
+import { useEffect } from "react";
 
 const Profile = ({ id }) => {
   // const [profile, setProfile] = useState({
@@ -13,7 +14,7 @@ const Profile = ({ id }) => {
   //   subjects: ["Math", "C Programming"],
   // });
   const requestInit = useConst({ credentials: "include" });
-  const options = { asEffect: true };
+  const options = { asEffect: true, throwError: false };
 
   const {
     data: user,
@@ -36,7 +37,11 @@ const Profile = ({ id }) => {
 
   return (
     <div className="profile">
-      {isEditing ? (
+      {JSON.stringify(user)}
+      <br />
+      <br />
+      {JSON.stringify(canEdit)}
+      {/* {isEditing ? (
         <ProfileEdit
           user={user}
           onSave={handleSave}
@@ -48,7 +53,7 @@ const Profile = ({ id }) => {
           isOwner={canEdit}
           onEdit={() => setIsEditing(true)}
         />
-      )}
+      )} */}
     </div>
   );
 };
