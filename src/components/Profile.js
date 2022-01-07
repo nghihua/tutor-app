@@ -13,20 +13,20 @@ const Profile = ({ id }) => {
   //   isTutor: true,
   //   subjects: ["Math", "C Programming"],
   // });
-  const requestInit = useConst({ credentials: "include" });
-  const options = { asEffect: true, throwError: false };
 
   const {
-    data: user,
+    data: [user, canEdit],
     error,
     isLoading,
-  } = useFetch(`http://localhost:5000/api/user/${id}`, requestInit, options);
-
-  const { data: canEdit } = useFetch(
-    `http://localhost:5000/api/user/${id}/edit_permission`,
-    requestInit,
-    options
+  } = useFetch(
+    [
+      `http://localhost:5000/api/user/${id}`,
+      `http://localhost:5000/api/user/${id}/edit_permission`,
+    ],
+    useConst({ credentials: "include" }),
+    { asEffect: true, throwError: false }
   );
+
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (newProfile) => {
