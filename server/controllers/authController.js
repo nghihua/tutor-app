@@ -76,6 +76,7 @@ const signup_post = async (req,res) => {
 const logout_get = (req, res) => {
     res.clearCookie("jwt");
     res.send({message: "Log out successfully!"});
+    console.log("log out succesffukt");
 }
 
 const login_status_get = (req, res) => {
