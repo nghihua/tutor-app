@@ -13,7 +13,7 @@ const ProtectedRoute = ({ component: Component }) => {
   const Logout = (event) => {
     event.preventDefault();
     fetch.doFetch()
-    .then(() => navigate("/login", { replace: true }));    
+      .then(() => navigate("/login", { replace: true }));
   }
   return (
     <div>
