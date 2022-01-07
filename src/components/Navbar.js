@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 const Navbar = ({ Logout }) => {
   return (
-    <nav expand="lg" className="fixed-top b-5">
+    <nav expand="lg" className="home fixed-top b-5">
       <Link to="/">
         <img 
           src="https://i.ibb.co/hDnvX38/logo-removebg-preview-removebg-preview.png"
