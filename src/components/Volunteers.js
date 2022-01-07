@@ -109,11 +109,11 @@ const Volunteers = () => {
               <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
             </div>
             <div class="modal-body">
-            <ProfileEdit
+            {/* <ProfileEdit
             profile={profile}
             onSave={handleSave}
             onCancel={cancel}
-            />
+            /> */}
             </div>
           </div>
         </div>
