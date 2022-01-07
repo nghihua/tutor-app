@@ -17,9 +17,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
 
           <Route path="/volunteer" element={<ProtectedRoute component={Volunteers} />} />
-          {/* <Route path="/profile" element={<ProtectedRoute component={Profile} />} /> */}
-          <Route path="/profile" element={<Profile id="6dfcc64a-5fc2-4ffb-a763-803ff00f2b00" />} />
-          {/* <Route path="/volunteer/:id" element={<ProtectedRoute component={VolunteerProfile} />} /> */}
+          <Route path="/profile/:id" element={<ProtectedRoute component={Profile} />} />
 
         </Routes>
         <Footer />
