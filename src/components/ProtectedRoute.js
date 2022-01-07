@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom'
 import { React } from 'react'
-import Menu from './Menu';
+import Navbar from './Navbar';
 // Một hàm fetch data từ server về đây?
 
 const ProtectedRoute = ({ component: Component }) => {
@@ -13,7 +13,7 @@ const ProtectedRoute = ({ component: Component }) => {
     console.log(isAuth);
     return (
       <div className="user">
-        <Menu />
+        <Navbar />
         <Component />
       </div>
     )
