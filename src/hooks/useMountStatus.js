@@ -4,11 +4,9 @@ import { useCallback, useEffect, useRef } from "react";
  * Returns an object containing the `isMounted` function that returns a boolean on call to check whether the component is in the mounted phase.
  */
 const useMountStatus = () => {
-  const ref = useRef(false);
+  const ref = useRef(true);
 
   useEffect(() => {
-    ref.current = true;
-
     return () => {
       ref.current = false;
     };
