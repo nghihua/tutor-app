@@ -85,7 +85,7 @@ const Volunteers = () => {
       </button>
 
       <div className="temp modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-dialog-scrollable">
+        <div class="popUp modal-dialog modal-dialog-scrollable">
           <div class="temp modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
