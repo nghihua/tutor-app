@@ -1,31 +1,32 @@
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { React } from 'react'
 import Menu from './Menu';
-import useFetch2 from './useFetch2'
-// Một hàm fetch data từ server về đây?
+import useFetch2 from './useFetch2';
 
 const ProtectedRoute = ({ component: Component }) => {
+  let navigate = useNavigate();
   let location = useLocation();
-  // const Logout =() =>{
-  //   setIsAuth(true);
-  // }
   const url = 'http://localhost:5000/api/auth/login_status';
-
-  const {data: auth, error} = useFetch2(url);
-  if (auth) {
-    console.log(auth);
-    return (
-      <div className="user">
-        <Menu />
-        <Component />
-      </div>
-    )
+  const { data: auth, pending, error } = useFetch2(url, true);
+  const url_logout = "http://localhost:5000/api/auth/logout";
+  const fetch = useFetch2(url_logout, false);
+  const Logout = (event) => {
+    event.preventDefault();
+    fetch.doFetch()
+    .then(() => navigate("/login", { replace: true }));    
   }
-  else {
-    console.log(auth);
-    alert("You must login to see the page")
-    return <Navigate to='/login' state={{ from: location }} />
-  }
+  return (
+    <div>
+      {!pending && auth &&
+        <div className='user'>
+          <Menu Logout={Logout} />
+          <Component />
+        </div>}
+      {!pending && !auth &&
+        <div className='user'>
+          <Navigate to='/login' state={{ from: location }} />
+        </div>}
+    </div>
+  )
 }
-
 export default ProtectedRoute;
