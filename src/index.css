@@ -23,13 +23,13 @@ code {
 }
 
 /*Navbar a.k.a Menu*/
-nav {
+.home {
   height: 70px;
   background: rgba(254, 245, 245, 1);
   border-bottom: 4px solid rgba(0, 0, 0, 0.1);
   padding: 0px 10px;
 }
-nav .logo {
+.home .logo {
   width: 70px;
   display: inline;
   position: relative;
@@ -304,9 +304,6 @@ input {
 .volunteer-list {
   text-align: center;
 }
-.popUp {
-  margin: 0 auto;
-}
 .volunteers button {
   width: 200px;
   height: 65px;
@@ -521,7 +518,6 @@ footer {
   height: 2.5rem;
 }
 
-/*Extra CSS*/
-.center-modal {
-  margin-left: 20px;
+.center-pagination {
+  margin-left: 530px;
 }
