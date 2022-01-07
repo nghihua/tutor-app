@@ -1,6 +1,7 @@
 import VolunteerList from "./VolunteerList";
 import ProfileEdit from './ProfileEdit';
 import { useState, useEffect } from "react";
+import Pagination from "./Pagination";
 
 const Volunteers = () => {
   const volunteers = [
@@ -75,27 +76,44 @@ const Volunteers = () => {
   useEffect(() => {
     var myModal = document.getElementById('button1');
     myModal.click();
-  })
+    setPosts(volunteers);
+  }, []);
+  
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(3);
+  
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  //Change page 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="volunteers">
-      <VolunteerList volunteers={volunteers} />
+      <VolunteerList volunteers={currentPosts} />
+      <Pagination postPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate} ></Pagination>
+
+      {/* Modal  */}
       <button type="button" id = "button1" className="btn btn-primary invisible" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Do you want to be a volunteer?
       </button>
 
-      <div className="temp modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
-        <div class="popUp modal-dialog modal-dialog-scrollable">
-          <div class="temp modal-content">
+      <div className="modal fade" id="exampleModal" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+          <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Do you want to be a volunteer?</h5>
             </div>
             <div class="modal-body">
-            <ProfileEdit
+            {/* <ProfileEdit
             profile={profile}
             onSave={handleSave}
             onCancel={cancel}
-            />
+            /> */}
             </div>
           </div>
         </div>
