@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const VolunteerList = ({ volunteers }) => {
   return (
-    <ul className="volunteer-list center">
+    <div className="volunteer-list center">
 
       {volunteers.map(({ email, fullName, major, intake }) => (
         <div className="volunteer-preview" key={email} >
@@ -34,7 +34,7 @@ const VolunteerList = ({ volunteers }) => {
         </div>
       ))}
 
-    </ul >
+    </div >
   );
 }
 
