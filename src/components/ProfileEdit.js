@@ -46,11 +46,8 @@ const ProfileEdit = ({
   };
 
   const isNotChanged = () => {
-    const isEmpty = (arr) =>
-      arr.length === 0 || (arr.length === 1 && arr[0] === null);
     const arrayEquals = (a, b) =>
-      (isEmpty(a) && isEmpty(b)) ||
-      (a.length === b.length && a.every((val, index) => val === b[index]));
+      a.length === b.length && a.every((val, index) => val === b[index]);
 
     return (
       currFullName === fullName &&
@@ -148,7 +145,7 @@ const ProfileEdit = ({
                 className="typo"
                 id="subjects-typeahead"
                 multiple
-                selected={subjects[0] === null ? [] : subjects}
+                selected={subjects}
                 onChange={setSubjects}
                 options={subjectList}
                 placeholder="Choose the subjects you can tutor..."
