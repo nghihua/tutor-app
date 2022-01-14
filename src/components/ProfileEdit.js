@@ -23,6 +23,7 @@ const ProfileEdit = ({
   },
   onSave,
   onCancel,
+  isSaving,
 }) => {
   // Profile states
   const [fullName, setFullName] = useState(currFullName);
@@ -162,7 +163,7 @@ const ProfileEdit = ({
       <div className="data-buttons">
         <button
           className="clickButton"
-          disabled={isNotChanged()}
+          disabled={isSaving || isNotChanged()}
           data-bs-dismiss="modal"
         >
           Save

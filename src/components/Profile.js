@@ -8,10 +8,11 @@ const includeCredentials = { credentials: "include" };
 
 const Profile = () => {
   const { id } = useParams();
+
   const {
     data: [user, canEdit],
     error: [errorUser],
-    isLoading: [isLoadingUser, isLoadingCanEdit],
+    isLoading,
     doFetch: loadProfile,
   } = useFetch(
     [
@@ -21,12 +22,18 @@ const Profile = () => {
     includeCredentials,
     { asEffect: true, throwError: false }
   );
-  const { doFetch } = useFetch();
+  user && (user.subjects ??= []); // set to empty array if null, for display convenience
+
+  const {
+    isLoading: isSaving,
+    doFetch: requestSave,
+    abortFetch: abortSave,
+  } = useFetch();
 
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (newProfile) => {
-    doFetch(`http://localhost:5000/api/user/${id}/edit`, {
+    requestSave(`http://localhost:5000/api/user/${id}/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -35,16 +42,22 @@ const Profile = () => {
       credentials: "include",
     })
       .then(() => {
+        const load = loadProfile();
         alert("Saved successfully!");
-        return loadProfile();
+        return load;
       })
       .then(() => setIsEditing(false))
-      .catch((err) => alert(err));
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          console.error(err);
+          alert("An error has occurred.");
+        }
+      });
   };
 
   return (
     <div className="profile">
-      {(isLoadingUser || isLoadingCanEdit) && <h3>Loading...</h3>}
+      {isLoading.some(Boolean) && <h3>Loading...</h3>}
       {errorUser ? (
         <h3>{errorUser.message}</h3>
       ) : (
@@ -53,7 +66,11 @@ const Profile = () => {
           <ProfileEdit
             user={user}
             onSave={handleSave}
-            onCancel={() => setIsEditing(false)}
+            onCancel={() => {
+              isSaving && abortSave();
+              setIsEditing(false);
+            }}
+            isSaving={isSaving}
           />
         ) : (
           <ProfileView
