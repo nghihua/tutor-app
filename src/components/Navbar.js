@@ -5,7 +5,7 @@ const Navbar = ({Logout}) => {
   return (
     <nav expand="lg" className="main-nav fixed-top b-5">
 
-    <div class="firstfloor">
+    <div className="firstfloor">
       <Link to="/">
         <img 
           src="favicon.png"
