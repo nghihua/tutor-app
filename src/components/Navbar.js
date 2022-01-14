@@ -8,8 +8,8 @@ const Navbar = ({Logout}) => {
     <div class="firstfloor">
       <Link to="/">
         <img 
-          src="https://i.ibb.co/hDnvX38/logo-removebg-preview-removebg-preview.png"
-          alt="Tutor logo"
+          src="favicon.png"
+          alt="Tutor"
           className="logo"
         />
         <div className="brand">Tutor</div>
@@ -20,10 +20,16 @@ const Navbar = ({Logout}) => {
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
       {/* replace the Nav.Link with Link router */}
     
-    <div class="secondfloor">
-      <Link to="/" className="redirect">Home</Link>
-      <Link to="/profile" className="redirect">My Profile</Link>
-      <Link to="/" className="redirect" onClick={(event) => Logout(event)}>Log Out</Link>
+    <div className="secondfloor">
+      <div className="section">
+        <Link to="/" className="redirect">Home</Link>
+      </div>
+      <div className="section">
+        <Link to="/profile" className="redirect">My Profile</Link>
+      </div>
+      <div className="section">
+        <Link to="/" className="redirect" onClick={(event) => Logout(event)}>Log Out</Link>
+      </div>
     </div>
 
     </nav>
