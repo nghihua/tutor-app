@@ -5,7 +5,7 @@ const Pagination = ({postPerPage, totalPosts, paginate }) => {
         pageNumbers.push(i);
     }
     return ( 
-        <div className="container">
+        <div className="acontainer">
             <nav>
                 <div className="pagination">
                     {/* <li class="page-item"><a class="page-link" href="#" onClick={() => prepaginate(i)}>Previous</a></li> */}
