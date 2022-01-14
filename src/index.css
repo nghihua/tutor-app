@@ -22,15 +22,25 @@ code {
   padding-bottom: 2.5rem;
 }
 
-/*Navbar a.k.a Menu*/
-.home {
-  height: 70px;
-  background: rgba(254, 245, 245, 1);
-  border-bottom: 4px solid rgba(0, 0, 0, 0.1);
-  padding: 0px 10px;
+/*Navbar "main-nav": 100px*/
+.main-nav {
+  height: 100px;
+  background: rgba(254, 248, 248, 1);
+  padding: 0px 0px;
 }
-.home .logo {
-  width: 70px;
+.main-nav .firstfloor {
+  height: 60px;
+}
+.main-nav .secondfloor {
+  height: 40px;
+  width: 100%;
+  background: #efab5a;
+  margin: 0;
+  text-align: center;
+  border-bottom: 4px solid rgba(210,120,120,0.4);
+}
+.main-nav .logo {
+  width: 60px;
   display: inline;
   position: relative;
   top: -10px;
@@ -40,8 +50,9 @@ code {
 nav .brand {
   font-family: Rubik;
   font-size: 45px;
+  color: black;
   display: inline;
-  line-height: 68px;
+  line-height: 60px;
 }
 nav a {
   font-family: Rubik;
@@ -51,17 +62,18 @@ nav a {
 }
 nav a:hover {
   text-decoration: none;
-  color: black;
 }
-nav .redirect {
-  line-height: 70px;
-  float: right;
+.secondfloor .redirect {
+  margin: 0 90px;
+  line-height: 40px;
+  color: white;
+  text-align: center;
 }
 nav .redirect:hover {
   font-weight: bold;
 }
 
-/*Login, Register*/
+/*Login*/
 .login {
   margin: 0 auto;
   height: 550px;
@@ -121,7 +133,8 @@ button:hover {
 
 /* Register */
 .register {
-  margin: 80px auto;
+  margin: 50px auto;
+  margin-bottom: 0;
 }
 .defaultavatar {
   display: block;
@@ -148,6 +161,14 @@ button:hover {
   color: white;
   font-family: Tauri;
   font-size: 17px;
+}
+.tologin {
+  width: 450px;
+  text-align: right;
+  margin: 25px auto;
+}
+.register a {
+  color: black;
 }
 
 /* Home */
@@ -298,7 +319,7 @@ input {
 
 /*Volunteer page*/
 .volunteers {
-  margin: 70px 30px 0 30px;
+  margin: 105px 30px 0 30px;
   padding-top: 30px;
 }
 .volunteer-list {
@@ -319,6 +340,11 @@ input {
 .volunteers button:disabled {
   opacity: 0.6;
 }
+.pagination {
+  width: 100px;
+  margin: 0 auto;
+}
+
 /*Option 1:
   .volunteer-preview {
     text-align: center;
@@ -518,6 +544,3 @@ footer {
   height: 2.5rem;
 }
 
-.center-pagination {
-  margin-left: 530px;
-}
