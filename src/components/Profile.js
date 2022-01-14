@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
-import { useFetch, useConst } from "../hooks/custom-hooks";
+import { useFetch } from "../hooks/custom-hooks";
 import { useParams } from "react-router-dom";
+
+const includeCredentials = { credentials: "include" };
 
 const Profile = () => {
   const { id } = useParams();
@@ -16,15 +18,15 @@ const Profile = () => {
       `http://localhost:5000/api/user/${id}`,
       `http://localhost:5000/api/user/${id}/edit_permission`,
     ],
-    useConst({ credentials: "include" }),
+    includeCredentials,
     { asEffect: true, throwError: false }
   );
-  const { doFetch: saveUser } = useFetch();
+  const { doFetch } = useFetch();
 
   const [isEditing, setIsEditing] = useState(false);
 
   const handleSave = (newProfile) => {
-    saveUser(`http://localhost:5000/api/user/${id}/edit`, {
+    doFetch(`http://localhost:5000/api/user/${id}/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
