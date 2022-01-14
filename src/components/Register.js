@@ -67,7 +67,7 @@ const Register = () => {
             <button type="submit">Submit</button>
             {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
             <div className="tologin">
-            <Link to="/" >Return to Login</Link>
+            <Link to="/login" >Return to Login</Link>
             </div>
           </div>
         </form>
