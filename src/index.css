@@ -1,5 +1,7 @@
 html {
   height: 100%;
+  padding: 0;
+  position: relative;
 }
 body {
   margin: 0;
@@ -17,6 +19,7 @@ code {
 .App {
   position: relative;
   min-height: 100vh;
+  margin: 0;
 }
 .content-wrap {
   padding-bottom: 2.5rem;
@@ -40,19 +43,23 @@ code {
   border-bottom: 4px solid rgba(210,120,120,0.4);
 }
 .main-nav .logo {
-  width: 60px;
+  width: 55px;
   display: inline;
   position: relative;
   top: -10px;
-  left: 10px;
-  margin: 10px;
+  margin-left: 30px;
+  margin-right: 10px;
 }
-nav .brand {
+.main-nav .brand {
   font-family: Rubik;
   font-size: 45px;
   color: black;
   display: inline;
   line-height: 60px;
+}
+.main-nav .section {
+  display: inline-block;
+  width: 33%;
 }
 nav a {
   font-family: Rubik;
@@ -76,6 +83,7 @@ nav .redirect:hover {
 /*Login*/
 .login {
   margin: 0 auto;
+  padding-top: 50px;
   height: 550px;
 }
 .loginpicture {
@@ -83,7 +91,7 @@ nav .redirect:hover {
   margin: auto 30px;
 }
 .login form {
-  margin: 120px auto;
+  margin: 0 auto;
   padding: 20px;
 }
 .login h2 {
@@ -133,8 +141,8 @@ button:hover {
 
 /* Register */
 .register {
-  margin: 50px auto;
-  margin-bottom: 0;
+  margin: 0px auto;
+  padding-top: 50px;
 }
 .defaultavatar {
   display: block;
@@ -172,8 +180,64 @@ button:hover {
 }
 
 /* Home */
-li {
-  list-style-type: none;
+.home {
+}
+header {
+  height: 200px;
+}
+header h1 {
+  font-family: Rubik;
+  font-size: 80px;
+}
+.home .Welcome {
+  height: 345px;
+  background: url("../public/homeimg1.png");
+  background-size: cover;
+  position: relative;
+}
+.Welcome button {
+  height: 80px;
+  width: 200px;
+  border-radius: 20px;
+  margin: 30px 50px;
+  background: rgba(255,255,255,0.4);
+  position: relative;
+  top: 100px;
+}
+.Welcome a{
+  color: black;
+  font-size: 28px;
+  font-family: Rosarivo;
+}
+.Welcome button:hover {
+  background: rgba(255,255,255,0.7);
+}
+.Welcome a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.home .About-us {
+  height: 300px;
+  background: #E8DBDB;
+}
+.home .Privilege {
+  height: 200px;
+  background: rgba(100,255,130,1);
+}
+.home .Subject {
+  min-height: 200px;
+  background: rgba(211,200,105,0.3);
+}
+.home .Quote {
+  min-height: 200px;
+  padding-bottom: 40px;
+  background: #FFD8A9;
+}
+.Quote img{
+  width: 100%;
+}
+.home .Quote h4 {
+  font-size: 20px;
 }
 
 /*Profile View*/
@@ -319,10 +383,8 @@ input {
 
 /*Volunteer page*/
 .volunteers {
-  margin: 105px 30px 0 30px;
-  padding-top: 30px;
-}
-.volunteer-list {
+  margin: 0 30px 0 30px;
+  padding-top: 125px;
   text-align: center;
 }
 .volunteers button {
@@ -344,7 +406,6 @@ input {
   width: 100px;
   margin: 0 auto;
 }
-
 /*Option 1:
   .volunteer-preview {
     text-align: center;
@@ -470,7 +531,7 @@ input {
   margin: 7px 30px 40px 30px;
 }
 .volunteer-block {
-  width: 210px;
+  width: 200px;
   height: 300px;
   position: relative;
   box-shadow: 5px 10px rgba(235, 225, 225);
@@ -497,7 +558,7 @@ input {
   font-weight: bold;
   line-height: 28px;
   color: black;
-  padding: 30px 10px 0 10px;
+  padding: 24px 10px 0 10px;
 }
 .volunteers p {
   font-family: Rubik;
@@ -541,6 +602,6 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 40px;
 }
 
