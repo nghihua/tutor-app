@@ -10,8 +10,6 @@ const Navbar = ({ Logout }) => {
     { asEffect: true, throwError: false }
   );
 
-  const myProfileLink = user ? `/profile/${user.user_id}` : "";
-
   return (
     <nav expand="lg" className="main-nav fixed-top b-5">
       <div className="firstfloor">
@@ -39,7 +37,7 @@ const Navbar = ({ Logout }) => {
         </div> */}
 
         <div className="section">
-          <Link to={myProfileLink} className="redirect">
+          <Link to={`/profile/${user?.user_id ?? ""}`} className="redirect">
             My Profile
           </Link>
         </div>
