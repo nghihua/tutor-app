@@ -22,7 +22,7 @@ const LoginForm = () => {
     postData(url, details)
     .then(result => {
       console.log(result)
-      navigate("/volunteer");
+      navigate("/volunteers");
     })
     .catch(error => console.log(error.response));
   };
