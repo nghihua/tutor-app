@@ -7,7 +7,7 @@ const Volunteers = () => {
   const volunteers = [
     {
       "email": "xxxx1@student.vgu.edu.vn",
-      "fullName": "Nguyen Van A",
+      "fullName": "Nguyen Van Ass",
       "major": "CSE",
       "intake": "2019",
       "subject": "Math, C Programming",
