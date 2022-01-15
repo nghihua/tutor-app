@@ -3,8 +3,7 @@ import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
 import { useFetch } from "../hooks/custom-hooks";
 import { useParams } from "react-router-dom";
-
-const includeCredentials = { credentials: "include" };
+import { includeCredentials } from "../utils";
 
 const Profile = () => {
   const { id } = useParams();
