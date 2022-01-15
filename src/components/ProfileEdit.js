@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
+import { useFetch } from "../hooks/custom-hooks";
 
 const subjectList = [
   "Math",
@@ -13,17 +14,21 @@ const subjectList = [
   "English",
 ];
 
+const arrayEquals = (a, b) =>
+  a.length === b.length && a.every((val, index) => val === b[index]);
+
 const ProfileEdit = ({
   user: {
+    user_id: id,
     full_name: currFullName,
     major: currMajor,
     intake: currIntake,
     is_volunteer: currIsTutor,
     subjects: currSubjects,
   },
-  onSave,
+  onSaveSuccess,
+  onSaveError,
   onCancel,
-  isSaving,
 }) => {
   // Profile states
   const [fullName, setFullName] = useState(currFullName);
@@ -31,6 +36,12 @@ const ProfileEdit = ({
   const [intake, setIntake] = useState(currIntake);
   const [isTutor, setIsTutor] = useState(currIsTutor);
   const [subjects, setSubjects] = useState(currSubjects);
+
+  const {
+    isLoading: isSaving,
+    doFetch: requestSave,
+    abortFetch: abortSave,
+  } = useFetch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,21 +53,30 @@ const ProfileEdit = ({
       is_volunteer: isTutor,
       subjects,
     };
-    onSave(newProfile);
+
+    requestSave(`http://localhost:5000/api/user/${id}/edit`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProfile),
+      credentials: "include",
+    })
+      .then(onSaveSuccess)
+      .catch(onSaveError);
   };
 
-  const isNotChanged = () => {
-    const arrayEquals = (a, b) =>
-      a.length === b.length && a.every((val, index) => val === b[index]);
-
-    return (
-      currFullName === fullName &&
-      currMajor === major &&
-      currIntake === intake &&
-      currIsTutor === isTutor &&
-      arrayEquals(currSubjects, subjects)
-    );
+  const handleCancel = () => {
+    isSaving && abortSave();
+    onCancel();
   };
+
+  const isNotChanged = () =>
+    currFullName === fullName &&
+    currMajor === major &&
+    currIntake === intake &&
+    currIsTutor === isTutor &&
+    arrayEquals(currSubjects, subjects);
 
   return (
     <form className="profileedit" onSubmit={handleSubmit}>
@@ -124,7 +144,7 @@ const ProfileEdit = ({
 
       <div className="section form-group row">
         <label htmlFor="is-tutor" className="title">
-          Is Tutor:
+          Is tutor:
         </label>
         <input
           id="is-tutor"
@@ -169,7 +189,7 @@ const ProfileEdit = ({
         <button
           type="button"
           className="clickButton"
-          onClick={onCancel}
+          onClick={handleCancel}
           data-bs-dismiss="modal"
         >
           Cancel

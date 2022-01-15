@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useCallback, useEffect } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
 import { useFetch } from "../hooks/custom-hooks";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { includeCredentials } from "../utils";
 
 const Profile = () => {
   const { id } = useParams();
 
+  // load user data
   const {
     data: [user, canEdit],
     error: [errorUser],
@@ -23,35 +24,35 @@ const Profile = () => {
   );
   user && (user.subjects ??= []); // set to empty array if null, for display convenience
 
-  const {
-    isLoading: isSaving,
-    doFetch: requestSave,
-    abortFetch: abortSave,
-  } = useFetch();
+  // isEditing state
+  const { isEditing } = (useLocation().state ??= { isEditing: false });
 
-  const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
+  const setIsEditing = useCallback(
+    (value) => {
+      if (isEditing === value) return;
+      navigate("", { replace: true, state: { isEditing: value } });
+    },
+    [isEditing, navigate]
+  );
 
-  const handleSave = (newProfile) => {
-    requestSave(`http://localhost:5000/api/user/${id}/edit`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProfile),
-      credentials: "include",
-    })
-      .then(() => {
-        const load = loadProfile();
-        alert("Saved successfully!");
-        return load;
-      })
-      .then(() => setIsEditing(false))
-      .catch((err) => {
-        if (err.name !== "AbortError") {
-          console.error(err);
-          alert("An error has occurred.");
-        }
-      });
+  useEffect(() => {
+    if (canEdit === false && isEditing) {
+      setIsEditing(false);
+    }
+  }, [canEdit, isEditing, setIsEditing]);
+
+  // save profile callbacks
+  const handleSaveSuccess = () => {
+    loadProfile().then(() => setIsEditing(false));
+    alert("Saved successfully!");
+  };
+
+  const handleSaveError = (err) => {
+    if (err.name !== "AbortError") {
+      console.error(err);
+      alert("An error has occurred.");
+    }
   };
 
   return (
@@ -64,12 +65,9 @@ const Profile = () => {
         (isEditing ? (
           <ProfileEdit
             user={user}
-            onSave={handleSave}
-            onCancel={() => {
-              isSaving && abortSave();
-              setIsEditing(false);
-            }}
-            isSaving={isSaving}
+            onSaveSuccess={handleSaveSuccess}
+            onSaveError={handleSaveError}
+            onCancel={() => setIsEditing(false)}
           />
         ) : (
           <ProfileView
