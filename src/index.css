@@ -182,12 +182,12 @@ button:hover {
 /* Home */
 .home {
 }
-header {
-  height: 200px;
+.home .buffer {
+  height: 100px;
 }
-header h1 {
+.home h3 {
   font-family: Rubik;
-  font-size: 80px;
+  font-size: 15px;
 }
 .home .Welcome {
   height: 345px;
@@ -195,9 +195,15 @@ header h1 {
   background-size: cover;
   position: relative;
 }
+.Welcome h2 {
+  color: white;
+}
+.Welcome p {
+  color: white;
+}
 .Welcome button {
-  height: 80px;
-  width: 200px;
+  height: 60px;
+  width: 150px;
   border-radius: 20px;
   margin: 30px 50px;
   background: rgba(255,255,255,0.4);
@@ -206,8 +212,9 @@ header h1 {
 }
 .Welcome a{
   color: black;
-  font-size: 28px;
+  font-size: 23px;
   font-family: Rosarivo;
+  padding-top: 100px;
 }
 .Welcome button:hover {
   background: rgba(255,255,255,0.7);
@@ -219,19 +226,45 @@ header h1 {
 .home .About-us {
   height: 300px;
   background: #E8DBDB;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+}
+.About-us .content {
+  height: 250px;
+}
+.About-us p {
+  padding: 20px 70px;
+}
+.About-us .seperator {
+  background: orange;
+  width: 500px;
+  height: 3px;
+  margin: 0 auto;
 }
 .home .Privilege {
   height: 200px;
   background: rgba(100,255,130,1);
+  text-align: center;
+}
+.Privilege .box {
+  display: inline-block;
+  margin: 40px 50px;
 }
 .home .Subject {
   min-height: 200px;
   background: rgba(211,200,105,0.3);
+  text-align: center;
+}
+.Subject .subject-display {
+  background: yellow;
+  margin: 20px auto;
 }
 .home .Quote {
   min-height: 200px;
   padding-bottom: 40px;
   background: #FFD8A9;
+  text-align: center;
 }
 .Quote img{
   width: 100%;
