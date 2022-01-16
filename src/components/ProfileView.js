@@ -48,6 +48,7 @@ const ProfileView = ({
           )
         }
       </div>
+
       {canEdit && (
         <button type="button" className="clickButton" onClick={onEdit}>
           Edit
