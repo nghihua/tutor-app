@@ -39,14 +39,16 @@ const Volunteers = () => {
     // myModal.click();
   }, []);
 
+  if (isLoading) {
+    return <h3>Loading...</h3>;
+  }
+  if (error) {
+    return <h3>{error.message}</h3>;
+  }
+
   return (
     <div className="volunteers">
-      {isLoading && <h3>Loading...</h3>}
-      {error ? (
-        <h3>{error.message}</h3>
-      ) : (
-        tutors && <VolunteerList volunteers={tutors} />
-      )}
+      {tutors && <VolunteerList volunteers={tutors} />}
 
       {/* Modal  */}
       {/* <button
