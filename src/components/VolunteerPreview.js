@@ -17,6 +17,7 @@ const VolunteerPreview = ({ user: { user_id, full_name, major, intake } }) => {
             />
           </Link>
         </span>
+
         <span className="volunteer-info">
           <div className="box2">
             <h2>{full_name}</h2>
@@ -24,6 +25,7 @@ const VolunteerPreview = ({ user: { user_id, full_name, major, intake } }) => {
               {major} {intake}
             </p>
           </div>
+
           <Link to={linkTo}>
             <div className="seemore">
               <div className="rotate">See more</div>
