@@ -7,6 +7,8 @@ import { includeCredentials } from "../utils";
 
 const Profile = () => {
   const { id } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // load user data
   const {
@@ -25,9 +27,7 @@ const Profile = () => {
   user && (user.subjects ??= []); // set to empty array if null, for display convenience
 
   // isEditing state
-  const { isEditing } = (useLocation().state ??= { isEditing: false });
-
-  const navigate = useNavigate();
+  const isEditing = location.state?.isEditing ?? false;
   const setIsEditing = useCallback(
     (value) => {
       if (isEditing === value) return;
