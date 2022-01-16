@@ -31,9 +31,9 @@ const Profile = () => {
   const setIsEditing = useCallback(
     (value) => {
       if (isEditing === value) return;
-      navigate("", { replace: true, state: { isEditing: value } });
+      navigate(location, { replace: true, state: { isEditing: value } });
     },
-    [isEditing, navigate]
+    [isEditing, navigate, location]
   );
 
   useEffect(() => {
