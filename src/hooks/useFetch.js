@@ -131,8 +131,8 @@ const validateInput = (resrc, init) => {
  *     headers: {
  *       "Content-Type": "application/json",
  *     },
- *     credentials: "include",
  *     body: JSON.stringify(data),
+ *     credentials: "include",
  *   };
  * }, [data]);
  *
@@ -204,7 +204,7 @@ const useFetch = (
 
   // main fetch function
   const doFetch = useCallback(
-    (resrc, init) => {
+    async (resrc, init) => {
       // validate input
       const [isResrcArray, isInitArray] = (() => {
         if (resrc === undefined && init === undefined) {
