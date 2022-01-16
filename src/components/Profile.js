@@ -55,30 +55,38 @@ const Profile = () => {
     }
   };
 
-  return (
-    <div className="profile">
-      {isLoading.some(Boolean) && <h3>Loading...</h3>}
-      {errorUser ? (
-        <h3>{errorUser.message}</h3>
-      ) : (
-        user &&
-        (isEditing ? (
+  // render
+  const renderProfile = () => {
+    if (isLoading.some(Boolean)) {
+      return <h3>Loading...</h3>;
+    }
+    if (errorUser) {
+      return <h3>{errorUser.message}</h3>;
+    }
+
+    if (user) {
+      if (isEditing) {
+        return (
           <ProfileEdit
             user={user}
             onSaveSuccess={handleSaveSuccess}
             onSaveError={handleSaveError}
             onCancel={() => setIsEditing(false)}
           />
-        ) : (
-          <ProfileView
-            user={user}
-            canEdit={canEdit}
-            onEdit={() => setIsEditing(true)}
-          />
-        ))
-      )}
-    </div>
-  );
+        );
+      }
+      return (
+        <ProfileView
+          user={user}
+          canEdit={canEdit}
+          onEdit={() => setIsEditing(true)}
+        />
+      );
+    }
+    return null;
+  };
+
+  return <div className="profile">{renderProfile()}</div>;
 };
 
 export default Profile;
