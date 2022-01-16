@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Pagination from "./Pagination";
 import VolunteerPreview from "./VolunteerPreview";
 
 const volunteersPerPage = 3;
 
 const VolunteerList = ({ volunteers }) => {
-  const [currentPage, setCurrentPage] = useState(1);
+  // Get current page from url search parameter
+  const [search] = useSearchParams();
+  const pageParam = parseInt(search.get("page")) || 1; // default to 1 if parsed to NaN
+  const currentPage = Math.max(pageParam, 1); // default to 1 if negative
 
   // Get current volunteers
   const lastIndex = currentPage * volunteersPerPage;
   const firstIndex = lastIndex - volunteersPerPage;
   const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
-
-  //Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="volunteer-list">
@@ -26,7 +26,6 @@ const VolunteerList = ({ volunteers }) => {
       <Pagination
         postPerPage={volunteersPerPage}
         totalPosts={volunteers.length}
-        paginate={paginate}
       />
     </div>
   );
