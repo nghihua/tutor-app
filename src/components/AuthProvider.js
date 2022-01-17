@@ -9,12 +9,46 @@ const AuthProvider = ({ children }) => {
     usingState: false,
   });
 
-  const logOut = (callback) => {
-    setAuth((prev) => ({ ...prev, isLoggedIn: false, user: null }));
-    callback();
+  const logIn = (logInInfo, onSuccess, onError) => {
+    doFetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(logInInfo),
+      credentials: "include",
+    })
+      .then(() => doFetch("http://localhost:5000/api/user/current"))
+      .then((user) => {
+        onSuccess?.();
+        setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
+      })
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          onError?.(err);
+        }
+      });
   };
 
-  const [auth, setAuth] = useState({ isLoggedIn: null, user: null, logOut });
+  const logOut = (onSuccess, onError) => {
+    doFetch("http://localhost:5000/api/auth/logout")
+      .then(() => {
+        onSuccess?.();
+        setAuth((prev) => ({ ...prev, isLoggedIn: false, user: null }));
+      })
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          onError?.(err);
+        }
+      });
+  };
+
+  const [auth, setAuth] = useState({
+    isLoggedIn: null,
+    user: null,
+    logIn,
+    logOut,
+  });
 
   useEffect(() => {
     const fetchAuth = async () => {
