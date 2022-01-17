@@ -9,6 +9,7 @@ import Home from "./Home";
 import NotFound from "./NotFound";
 import ProfileMe from "./ProfileMe";
 import AuthProvider from "./AuthProvider";
+import Navbar from "./Navbar";
 
 const App = () => {
   return (
@@ -16,22 +17,21 @@ const App = () => {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/login" element={<LoginForm />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route element={<Navbar />}>
+              <Route index element={<Home />} />
 
-            <Route
-              path="/volunteers"
-              element={<ProtectedRoute component={Volunteers} />}
-            />
-            <Route path="/profile">
-              <Route index element={<ProtectedRoute component={ProfileMe} />} />
-              <Route
-                path=":id"
-                element={<ProtectedRoute component={Profile} />}
-              />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/volunteers" element={<Volunteers />} />
+                <Route path="/profile">
+                  <Route index element={<ProfileMe />} />
+                  <Route path=":id" element={<Profile />} />
+                </Route>
+              </Route>
+
+              <Route path="*" element={<NotFound />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
           </Routes>
 
           <Footer />
