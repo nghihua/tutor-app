@@ -1,6 +1,6 @@
 import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { React } from 'react'
-import Menu from './Menu';
+import Navbar from './Navbar';
 import useFetch2 from './useFetch2';
 
 const ProtectedRoute = ({ component: Component }) => {
@@ -19,7 +19,7 @@ const ProtectedRoute = ({ component: Component }) => {
     <div>
       {!pending && auth &&
         <div className='user'>
-          <Menu Logout={Logout} />
+          <Navbar Logout={Logout} />
           <Component />
         </div>}
       {!pending && !auth &&
