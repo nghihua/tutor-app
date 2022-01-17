@@ -65,10 +65,10 @@ const Register = () => {
 
           <div className='center'>
             <button type="submit">Submit</button>
-          </div>
-          <div className='center'>
             {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
-            <Link to="/" >Return to Login</Link>
+            <div className="tologin">
+            <Link to="/login" >Return to Login</Link>
+            </div>
           </div>
         </form>
       </div>

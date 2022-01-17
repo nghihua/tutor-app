@@ -1,41 +1,34 @@
-import { Link } from 'react-router-dom'
+import { useSearchParams } from "react-router-dom";
+import Pagination from "./Pagination";
+import VolunteerPreview from "./VolunteerPreview";
+
+const volunteersPerPage = 3;
 
 const VolunteerList = ({ volunteers }) => {
+  // Get current page from url search parameter
+  const [search] = useSearchParams();
+  const pageParam = parseInt(search.get("page")) || 1; // default to 1 if parsed to NaN
+  const currentPage = Math.max(pageParam, 1); // default to 1 if negative
+
+  // Get current volunteers
+  const lastIndex = currentPage * volunteersPerPage;
+  const firstIndex = lastIndex - volunteersPerPage;
+  const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
+
   return (
-    <ul className="volunteer-list center">
+    <div className="volunteer-list">
+      <div className="center">
+        {currentVolunteers.map((user) => (
+          <VolunteerPreview user={user} key={user.user_id} />
+        ))}
+      </div>
 
-      {volunteers.map(({ email, fullName, major, intake }) => (
-        <div className="volunteer-preview" key={email} >
-          <div className="volunteer-block" background-color="white">
-            <span className="box1">
-              <Link to={"/volunteer/${email}"}>
-                <img
-                  src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
-                  alt="profile pic"
-                  width="90"
-                  height="90"
-                  className="image"
-                />
-              </Link>
-            </span>
-            <span className="volunteer-info">
-                <div className="box2">
-                  <h2>{fullName}</h2>
-                  <p>{major} {intake}</p>
-                </div>
-              <Link to={"/volunteer/${email}"}>
-                <div className="seemore">
-                <div className="rotate">See more</div>
-                </div>
-              </Link>
-            </span>
-
-          </div>
-        </div>
-      ))}
-
-    </ul >
+      <Pagination
+        postPerPage={volunteersPerPage}
+        totalPosts={volunteers.length}
+      />
+    </div>
   );
-}
+};
 
 export default VolunteerList;

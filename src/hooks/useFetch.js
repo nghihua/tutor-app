@@ -1,27 +1,126 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useCallback, useRef, useReducer } from "react";
 import { useMountStatus, useDependencyList } from "./custom-hooks";
+
+// init state functions
+const initFromLength = (len) => {
+  if (len === undefined) {
+    return {
+      data: null,
+      error: null,
+      isLoading: false,
+    };
+  }
+
+  return {
+    data: new Array(len).fill(null),
+    error: new Array(len).fill(null),
+    isLoading: new Array(len).fill(false),
+  };
+};
+
+const initFromResource = (resource) => {
+  const length = Array.isArray(resource) ? resource.length : undefined;
+  return initFromLength(length);
+};
+
+// reducer
+const fetchReducer = (state, action) => {
+  const { length, index } = action.payload;
+
+  const isInconsistent = state.isLoading?.length !== length;
+  if (isInconsistent) {
+    state = initFromLength(length);
+  }
+
+  const update =
+    index !== undefined
+      ? // update state as array
+        (value, prev) => {
+          const copy = [...prev];
+          copy[index] = value;
+          return copy;
+        }
+      : // update state as a single value
+        (value) => value;
+
+  switch (action.type) {
+    case "loading":
+      return {
+        ...state,
+        isLoading: update(true, state.isLoading),
+      };
+
+    case "done":
+      const isLoading = update(false, state.isLoading);
+
+      if (action.error) {
+        const err = action.payload.value;
+        if (err.name === "AbortError") {
+          return {
+            ...state,
+            isLoading,
+          };
+        }
+
+        return {
+          data: update(null, state.data),
+          error: update(err, state.error),
+          isLoading,
+        };
+      }
+
+      const data = action.payload.value;
+      return {
+        data: update(data, state.data),
+        error: update(null, state.error),
+        isLoading,
+      };
+
+    default:
+      throw new TypeError(`Unknown dispatch action type "${action.type}".`);
+  }
+};
+
+const validateInput = (resrc, init) => {
+  const isResrcArray = Array.isArray(resrc);
+  const isInitArray = Array.isArray(init);
+
+  if (isInitArray && !isResrcArray) {
+    throw new TypeError(
+      "If `init` is an array then `resource` must also be an array."
+    );
+  }
+  if (isResrcArray && isInitArray && resrc.length !== init.length) {
+    throw new TypeError(
+      "`resource` and `init` must be arrays of the same length."
+    );
+  }
+
+  return [isResrcArray, isInitArray];
+};
 
 /**
  * Returns an object containing the `data`, `error` and `isLoading` states of the fetch operation, along
  * with the `doFetch` and `abortFetch` functions to run and abort the fetch.
  *
- * `resource` and `requestInit` are the url for the fetch and the request init object respectively. They
+ * `resource` and `initObj` are the url for the fetch and the request init object respectively. They
  * can also be factory functions to create such objects and will be invoked upon fetch. They can also be
  * arrays containing such entries for multiple requests.
  *
- * An optional object can be passed to `useFetch` to specify settings for the operation. Defaults are
+ * Defaults of the optional parameter to specify settings for the operation are
  * ```
  * {
  *   asEffect = false,
+ *   throwError = true,
+ *   usingState = true,
  *   abortOnUnmount = true,
  *   abortBeforeRefetch = true,
- *   throwError = true,
  * }
  * ```
  *
- * Note: `doFetch` will change if `resource`, `requestInit`, `abortBeforeRefetch` or `throwError` is changed.
- * `doFetch` will be run as an effect if `asEffect` or `doFetch` is changed (or on the first render) and
- * `asEffect` is true.
+ * Note: `doFetch` will change if `resource`, `initObj`, `abortBeforeRefetch`, `throwError` or `usingState`
+ * is changed. `doFetch` will be run as an effect if `asEffect` is true and `asEffect` or `doFetch` was changed
+ * (or after the first render).
  *
  * Example usage:
  * ```
@@ -32,13 +131,15 @@ import { useMountStatus, useDependencyList } from "./custom-hooks";
  *     headers: {
  *       "Content-Type": "application/json",
  *     },
- *     credentials: "include",
  *     body: JSON.stringify(data),
+ *     credentials: "include",
  *   };
  * }, [data]);
  *
- * const { doFetch: postData } = useFetch(url, requestInit);
- * ...
+ * const { doFetch: postData } = useFetch(url, requestInit, {
+ *   usingState: false, // avoid setting states unnecessarily when they are not used
+ * });
+ * // ...
  * postData();
  *
  * ...
@@ -51,40 +152,37 @@ import { useMountStatus, useDependencyList } from "./custom-hooks";
  * ...
  *
  * // Use `doFetch` and pass in fetch info directly.
- * // (`data`, `error` and `isLoading` states will still be updated)
+ * // (`data`, `error` and `isLoading` states will still be updated if `usingState` is true)
  * const { data, error, isLoading, doFetch } = useFetch();
- * ...
+ * // ...
  * doFetch(url, { credentials: "include" }).then((data) => {...});
- * ...
+ * // ...
  * doFetch([url1, url2], [{ credentials: "include" }, {}]).then((results) => {...});
  * ```
  */
 const useFetch = (
   resource,
-  requestInit,
+  initObj,
   {
     asEffect = false,
+    throwError = true,
+    usingState = true,
     abortOnUnmount = true,
     abortBeforeRefetch = true,
-    throwError = true,
   } = {}
 ) => {
-  const isResrcArray = Array.isArray(resource);
-  const isInitArray = Array.isArray(requestInit);
+  const [isResourceArray, isInitObjArray] = validateInput(resource, initObj);
 
-  // stabilize reference to use in react's dependency arrays later in case inputs are arrays
-  resource = useDependencyList(resource, !isResrcArray).stableDeps;
-  requestInit = useDependencyList(requestInit, !isInitArray).stableDeps;
+  // stabilize reference to use in react's dependency arrays later, in case inputs are arrays
+  resource = useDependencyList(resource).stable;
+  initObj = useDependencyList(initObj).stable;
 
-  // fetch states
-  const initNull = () =>
-    isResrcArray ? new Array(resource.length).fill(null) : null;
-  const initFalse = () =>
-    isResrcArray ? new Array(resource.length).fill(false) : false;
-
-  const [data, setData] = useState(initNull);
-  const [error, setError] = useState(initNull);
-  const [isLoading, setIsLoading] = useState(initFalse);
+  // fetch state
+  const [{ data, error, isLoading }, dispatch] = useReducer(
+    fetchReducer,
+    resource,
+    initFromResource
+  );
 
   const abortCtrlRef = useRef(null);
   const { isMounted } = useMountStatus();
@@ -106,28 +204,28 @@ const useFetch = (
 
   // main fetch function
   const doFetch = useCallback(
-    (resrc = resource, init = requestInit) => {
-      const isResrcArray = Array.isArray(resrc);
-      const isInitArray = Array.isArray(init);
-
+    async (resrc, init) => {
       // validate input
-      if (isInitArray && !isResrcArray) {
-        throw new TypeError(
-          "If `init` is an array then `resource` must also be an array."
-        );
-      }
-      if (isResrcArray && isInitArray && resrc.length !== init.length) {
-        throw new TypeError(
-          "`resource` and `init` must be arrays of the same length."
-        );
-      }
+      const [isResrcArray, isInitArray] = (() => {
+        if (resrc === undefined && init === undefined) {
+          // if both default, use inputs from useFetch
+          resrc = resource;
+          init = initObj;
+          return [isResourceArray, isInitObjArray];
+        }
+
+        // only need to validate if at least one non-default input is used
+        resrc ??= resource;
+        init ??= initObj;
+        return validateInput(resrc, init);
+      })();
 
       // abort logic
       abortBeforeRefetch && abortFetch();
       abortCtrlRef.current ??= new AbortController();
 
       // function to create a request init object, to be used later
-      const getRequestInit = (init) => {
+      const getInit = (init) => {
         if (typeof init === "function") {
           init = init();
         }
@@ -139,26 +237,27 @@ const useFetch = (
 
       // function to fetch a single request
       const fetchElement = async (
-        _resrc,
-        _init,
-        _setData,
-        _setError,
-        _setIsLoading,
+        resrc,
+        init,
+        length,
+        index,
         initPrecomputed = false
       ) => {
-        if (typeof _resrc === "function") {
-          _resrc = _resrc();
+        if (typeof resrc === "function") {
+          resrc = resrc();
         }
         if (!initPrecomputed) {
-          _init = getRequestInit(_init);
+          init = getInit(init);
         }
 
         // start loading
-        isMounted() && _setIsLoading(true);
+        if (usingState && isMounted()) {
+          dispatch({ type: "loading", payload: { length, index } });
+        }
 
         try {
           // make request
-          const response = await fetch(_resrc, _init);
+          const response = await fetch(resrc, init);
 
           // get data from response
           const isJson = response.headers
@@ -176,81 +275,54 @@ const useFetch = (
             throw new Error(`[HTTP ${response.status}]` + message);
           }
 
-          if (isMounted()) {
-            // set the states if succeed
-            _setData(data);
-            _setError(null);
+          // set data state if succeed
+          if (usingState && isMounted()) {
+            dispatch({ type: "done", payload: { length, index, value: data } });
           }
 
-          return data;
+          return data; // to be used as result of promise
         } catch (err) {
-          if (err.name !== "AbortError" && isMounted()) {
-            // set error except when fetch is aborted
-            _setData(null);
-            _setError(err);
+          // set error state
+          if (usingState && isMounted()) {
+            dispatch({
+              type: "done",
+              error: true,
+              payload: { length, index, value: err },
+            });
           }
 
           if (throwError) {
             throw err;
           }
-        } finally {
-          // finish loading
-          isMounted() && _setIsLoading(false);
         }
       };
 
       if (isResrcArray) {
-        // set up the appropriate state setters for each element of the input array
-        const arraySetter = (setter, index) => {
-          return (value) => {
-            setter((arr) => [
-              ...arr.slice(0, index),
-              value,
-              ...arr.slice(index + 1),
-            ]);
-          };
-        };
-        const dataSetter = (index) => arraySetter(setData, index);
-        const errorSetter = (index) => arraySetter(setError, index);
-        const isLoadingSetter = (index) => arraySetter(setIsLoading, index);
+        const length = resrc.length;
 
-        // create a single common init object for all requests if the `init` input is not an array
-        const precomputedInit = isInitArray ? null : getRequestInit(init);
-        // different callbacks for whether the init object is precomputed or not
-        const mapCallback = precomputedInit
-          ? (res, index) =>
-              fetchElement(
-                res,
-                precomputedInit,
-                dataSetter(index),
-                errorSetter(index),
-                isLoadingSetter(index),
-                true
-              )
-          : (res, index) =>
-              fetchElement(
-                res,
-                init[index],
-                dataSetter(index),
-                errorSetter(index),
-                isLoadingSetter(index)
-              );
+        // if the `init` input is not an array, we create one common init object for all requests
+        const commonInit = isInitArray ? null : getInit(init);
+        const toFetchPromise = commonInit
+          ? (res, index) => fetchElement(res, commonInit, length, index, true)
+          : (res, index) => fetchElement(res, init[index], length, index);
 
-        // return a promise that resolves to an array of objects that each describes the outcome of each
-        // fetch
-        return Promise.allSettled(resrc.map(mapCallback));
+        // resolves to an array of objects describing the outcome of each fetch
+        return Promise.allSettled(resrc.map(toFetchPromise));
       }
 
-      // return fetch promise for when input is a single fetch request
-      return fetchElement(resrc, init, setData, setError, setIsLoading);
+      // when input is a single fetch request
+      return fetchElement(resrc, init);
     },
     [
       resource,
-      requestInit,
+      initObj,
+      isResourceArray,
+      isInitObjArray,
       abortBeforeRefetch,
-      abortFetch,
-      isMounted,
       throwError,
+      usingState,
+      isMounted,
+      abortFetch,
     ]
   );
 
