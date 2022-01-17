@@ -30,24 +30,25 @@ const ProfileView = ({
           // Display tutor's information
           is_volunteer && (
             <div className="tutor-detail">
-              <h2>Tutor:</h2>
+              <h2>Tutor's info</h2>
               <div className="row d-flex justify-content-center">
                 <p className="title">Subjects</p>
                 <div className="subject-box">
-                  <p className="info">
+                  <div className="info">
                     {subjects.map((s) => (
-                      <div>
+                      <div key={s}>
                         {s}
                         <br />
                       </div>
                     ))}
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>
           )
         }
       </div>
+
       {canEdit && (
         <button type="button" className="clickButton" onClick={onEdit}>
           Edit
