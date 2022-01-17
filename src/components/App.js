@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./Footer";
-import LoginForm from "./LoginForm";
+import Login from "./Login";
 import Register from "./Register";
 import Volunteers from "./Volunteers";
 import Profile from "./Profile";
@@ -18,7 +18,7 @@ const App = () => {
         <Router>
           <Routes>
             <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<LoginForm />} />
+            <Route path="/login" element={<Login />} />
             <Route element={<Navbar />}>
               <Route index element={<Home />} />
 
