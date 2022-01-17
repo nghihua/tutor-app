@@ -1,25 +1,53 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom'
-import useFetch2 from "./useFetch2";
-const Navbar = ({Logout}) => {  
+import { Link } from "react-router-dom";
+import { useFetch } from "../hooks/custom-hooks";
+import { includeCredentials } from "../utils";
+
+const Navbar = ({ Logout }) => {
+  const { data: user } = useFetch(
+    "http://localhost:5000/api/user/current",
+    includeCredentials,
+    { asEffect: true, throwError: false }
+  );
+
   return (
-    <nav expand="lg" className="home fixed-top b-5">
-      <Link to="/">
-        <img 
-          src="https://i.ibb.co/hDnvX38/logo-removebg-preview-removebg-preview.png"
-          alt="Tutor logo"
-          className="logo"
-        />
-        <div className="brand">Tutor</div>
-      </Link>
+    <nav expand="lg" className="main-nav fixed-top b-5">
+      <div className="firstfloor">
+        <Link to="/">
+          <img src="favicon.png" alt="Tutor" className="logo" />
+          <div className="brand">Tutor</div>
+        </Link>
+      </div>
       {/* try to figure how to connect Bootstrap and react router */}
       {/* <Nav.Link href="/Home">Home</Nav.Link>
                     <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
       {/* replace the Nav.Link with Link router */}
 
-      <Link to="/profile" className="redirect">My Profile</Link>
-      <Link to="/" className="redirect">Home</Link>
-      <button onClick={(event) => Logout(event)}>Log Out</button>
+      <div className="secondfloor">
+        <div className="section">
+          <Link to="/" className="redirect">
+            Home
+          </Link>
+        </div>
+
+        {/* <div className="section">
+          <Link to="/volunteers" className="redirect">
+            Volunteers
+          </Link>
+        </div> */}
+
+        <div className="section">
+          <Link to={`/profile/${user?.user_id ?? ""}`} className="redirect">
+            My Profile
+          </Link>
+        </div>
+
+        <div className="section">
+          <Link to="/" className="redirect" onClick={(event) => Logout(event)}>
+            Log Out
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 };

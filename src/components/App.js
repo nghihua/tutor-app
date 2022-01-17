@@ -7,6 +7,7 @@ import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import Home from './Home';
 import NotFound from './NotFound';
+import ProfileMe from "./ProfileMe";
 
 const App = () => {
   return (
@@ -17,14 +18,23 @@ const App = () => {
           <Route exact path="/login" element={<LoginForm />} />
           <Route path="/register" element={<Register />} />
 
-          <Route path="/volunteers" element={<ProtectedRoute component={Volunteers} />} />
-          <Route path="/profile/:id" element={<ProtectedRoute component={Profile} />} />
+          <Route
+            path="/volunteers"
+            element={<ProtectedRoute component={Volunteers} />}
+          />
+          <Route path="/profile">
+            <Route index element={<ProtectedRoute component={ProfileMe} />} />
+            <Route
+              path=":id"
+              element={<ProtectedRoute component={Profile} />}
+            />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
     </Router>
   );
-}
+};
 
 export default App;
