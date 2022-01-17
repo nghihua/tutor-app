@@ -3,7 +3,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/custom-hooks";
 import { getFetchErrMsg } from "../utils";
 
-const LoginForm = () => {
+const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const auth = useAuth();
@@ -79,4 +79,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Login;
