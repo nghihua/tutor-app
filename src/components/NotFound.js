@@ -1,11 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from "react-router-dom";
+
 const NotFound = () => {
-  return ( 
-    <div className="notfound">
-      <h2>Not found the page 404</h2>
-      <Link to="/">Please go back to the homepage</Link>
+  return (
+    <div className="not-found">
+      <h1>404</h1>
+      <h2>Page Not Found :/</h2>
+      <Link to="/">Back to home page</Link>
     </div>
-   );
-}
- 
+  );
+};
+
 export default NotFound;
