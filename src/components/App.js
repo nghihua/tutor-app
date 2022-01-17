@@ -6,6 +6,7 @@ import Volunteers from './Volunteers';
 import Profile from './Profile';
 import ProtectedRoute from './ProtectedRoute';
 import Home from './Home';
+import NotFound from './NotFound';
 
 const App = () => {
   return (
@@ -18,7 +19,7 @@ const App = () => {
 
           <Route path="/volunteers" element={<ProtectedRoute component={Volunteers} />} />
           <Route path="/profile/:id" element={<ProtectedRoute component={Profile} />} />
-
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
