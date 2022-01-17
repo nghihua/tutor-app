@@ -18,10 +18,6 @@ const Navbar = ({ Logout }) => {
           <div className="brand">Tutor</div>
         </Link>
       </div>
-      {/* try to figure how to connect Bootstrap and react router */}
-      {/* <Nav.Link href="/Home">Home</Nav.Link>
-                    <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
-      {/* replace the Nav.Link with Link router */}
 
       <div className="secondfloor">
         <div className="section">
@@ -30,11 +26,11 @@ const Navbar = ({ Logout }) => {
           </Link>
         </div>
 
-        {/* <div className="section">
+        <div className="section">
           <Link to="/volunteers" className="redirect">
             Volunteers
           </Link>
-        </div> */}
+        </div>
 
         <div className="section">
           <Link to={`/profile/${user?.user_id ?? ""}`} className="redirect">
