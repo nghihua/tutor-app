@@ -1,32 +1,20 @@
-import { Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { React } from 'react'
-import Navbar from './Navbar';
-import useFetch2 from './useFetch2';
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { React } from "react";
+import { useAuth } from "../hooks/custom-hooks";
 
-const ProtectedRoute = ({ component: Component }) => {
-  let navigate = useNavigate();
-  let location = useLocation();
-  const url = 'http://localhost:5000/api/auth/login_status';
-  const { data: auth, pending, error } = useFetch2(url, true);
-  const url_logout = "http://localhost:5000/api/auth/logout";
-  const fetch = useFetch2(url_logout, false);
-  const Logout = (event) => {
-    event.preventDefault();
-    fetch.doFetch()
-      .then(() => navigate("/", { replace: true }));
+const ProtectedRoute = () => {
+  const auth = useAuth();
+  const location = useLocation();
+
+  if (auth.isLoggedIn === null) {
+    return <h3>Loading...</h3>;
   }
-  return (
-    <div>
-      {!pending && auth &&
-        <div className='user'>
-          <Navbar Logout={Logout} />
-          <Component />
-        </div>}
-      {!pending && !auth &&
-        <div className='user'>
-          <Navigate to='/login' state={{ from: location }} />
-        </div>}
-    </div>
-  )
-}
+
+  if (!auth.isLoggedIn) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return <Outlet />;
+};
+
 export default ProtectedRoute;
