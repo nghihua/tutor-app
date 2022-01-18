@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useAuth } from "../hooks/custom-hooks";
 import ProfileEdit from "./ProfileEdit";
 
-const PostSignupModal = () => {
+const PostSignUpModal = () => {
   const auth = useAuth();
   const btnRef = useRef();
 
@@ -45,4 +45,4 @@ const PostSignupModal = () => {
   );
 };
 
-export default PostSignupModal;
+export default PostSignUpModal;
