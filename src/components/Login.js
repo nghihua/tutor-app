@@ -23,7 +23,7 @@ const Login = () => {
     auth.logIn(
       { email, password },
       () => {
-        navigate(from, { replace: true });
+        navigate(from, { replace: true, state: from?.state });
       },
       (err) => {
         setError(getFetchErrMsg(err.message));
@@ -37,7 +37,7 @@ const Login = () => {
   }
 
   if (auth.isLoggedIn) {
-    return <Navigate to={from} replace />;
+    return <Navigate to={from} state={from?.state} replace />;
   }
 
   return (

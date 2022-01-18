@@ -49,10 +49,8 @@ const Profile = () => {
   };
 
   const handleSaveError = (err) => {
-    if (err.name !== "AbortError") {
-      console.error(err);
-      alert("An error has occurred.");
-    }
+    console.error(err);
+    alert("Unable to save. An error has occurred.");
   };
 
   return (
