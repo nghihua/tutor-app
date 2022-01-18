@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-import { useFetch } from "../hooks/custom-hooks";
+import { useFetch, useAuth } from "../hooks/custom-hooks";
 
 const subjectList = [
   "Math",
@@ -29,13 +29,16 @@ const ProfileEdit = ({
   onSaveSuccess,
   onSaveError,
   onCancel,
+  checkIsTutor = false,
 }) => {
   // Profile states
   const [fullName, setFullName] = useState(currFullName);
   const [major, setMajor] = useState(currMajor);
   const [intake, setIntake] = useState(currIntake);
-  const [isTutor, setIsTutor] = useState(currIsTutor);
+  const [isTutor, setIsTutor] = useState(checkIsTutor || currIsTutor);
   const [subjects, setSubjects] = useState(currSubjects);
+
+  const auth = useAuth();
 
   const {
     isLoading: isSaving,
@@ -61,14 +64,22 @@ const ProfileEdit = ({
       },
       body: JSON.stringify(newProfile),
       credentials: "include",
-    })
-      .then(onSaveSuccess)
-      .catch(onSaveError);
+    }).then(
+      (res) => {
+        auth.refetchUser();
+        onSaveSuccess?.(res);
+      },
+      (err) => {
+        if (err.name !== "AbortError") {
+          onSaveError?.(err);
+        }
+      }
+    );
   };
 
   const handleCancel = () => {
     isSaving && abortSave();
-    onCancel();
+    onCancel?.();
   };
 
   const isNotChanged = () =>
@@ -178,20 +189,11 @@ const ProfileEdit = ({
       }
 
       <div className="data-buttons">
-        <button
-          className="clickButton"
-          disabled={isSaving || isNotChanged()}
-          data-bs-dismiss="modal"
-        >
+        <button className="clickButton" disabled={isSaving || isNotChanged()}>
           Save
         </button>
 
-        <button
-          type="button"
-          className="clickButton"
-          onClick={handleCancel}
-          data-bs-dismiss="modal"
-        >
+        <button type="button" className="clickButton" onClick={handleCancel}>
           Cancel
         </button>
       </div>
