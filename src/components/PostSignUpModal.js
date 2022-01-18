@@ -1,47 +1,57 @@
+import { Modal } from "bootstrap";
 import { useEffect, useRef } from "react";
 import { useAuth } from "../hooks/custom-hooks";
 import ProfileEdit from "./ProfileEdit";
 
-const PostSignUpModal = () => {
+const PostSignUpModal = ({ onClose }) => {
   const auth = useAuth();
-  const btnRef = useRef();
+  const modalRef = useRef();
+  const onCloseRef = useRef(onClose);
 
   useEffect(() => {
-    btnRef.current.click();
+    onCloseRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    modalRef.current.addEventListener("hidden.bs.modal", () => {
+      onCloseRef.current?.();
+    });
+
+    const modal = new Modal(modalRef.current);
+    modal.show();
   }, []);
 
-  return (
-    <>
-      <button
-        type="button"
-        ref={btnRef}
-        className="btn btn-primary invisible"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Do you want to be a volunteer?
-      </button>
+  const closeModal = () => {
+    Modal.getInstance(modalRef.current).hide();
+  };
 
-      <div
-        className="modal fade"
-        id="exampleModal"
-        data-keyboard="false"
-        data-backdrop="static"
-      >
-        <div className="modal-dialog modal-lg modal-dialog-scrollable">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Do you want to be a volunteer?
-              </h5>
-            </div>
-            <div className="modal-body">
-              <ProfileEdit user={auth.user} onCancel={() => {}} />
-            </div>
+  const handleSaveError = (err) => {
+    console.error(err);
+    alert("Unable to save. An error has occurred.");
+  };
+
+  return (
+    <div className="modal fade" id="postSignUpModal" ref={modalRef}>
+      <div className="modal-dialog modal-lg modal-dialog-scrollable">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="postSignUpModalLabel">
+              Do you want to be a volunteer?
+            </h5>
+          </div>
+
+          <div className="modal-body">
+            <ProfileEdit
+              user={auth.user}
+              checkIsTutor
+              onSaveSuccess={closeModal}
+              onSaveError={handleSaveError}
+              onCancel={closeModal}
+            />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
