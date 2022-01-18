@@ -46,11 +46,24 @@ const AuthProvider = ({ children }) => {
     );
   };
 
+  const refetchUser = () => {
+    doFetch("http://localhost:5000/api/user/current")
+      .then((user) => {
+        setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
+      })
+      .catch((err) => {
+        if (err.name !== "AbortError") {
+          console.error(err);
+        }
+      });
+  };
+
   const [auth, setAuth] = useState({
     isLoggedIn: null,
     user: null,
     logIn,
     logOut,
+    refetchUser,
   });
 
   useEffect(() => {
