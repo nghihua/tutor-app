@@ -50,7 +50,7 @@ const Profile = () => {
 
   const handleSaveError = (err) => {
     console.error(err);
-    alert("An error has occurred.");
+    alert("Unable to save. An error has occurred.");
   };
 
   return (
