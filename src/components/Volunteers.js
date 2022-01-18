@@ -1,6 +1,6 @@
 import { useFetch } from "../hooks/custom-hooks";
 import { includeCredentials } from "../utils";
-import PostSignupModal from "./PostSignupModal";
+import PostSignUpModal from "./PostSignUpModal";
 import VolunteerList from "./VolunteerList";
 
 const Volunteers = () => {
@@ -26,7 +26,7 @@ const Volunteers = () => {
       {tutors && <VolunteerList volunteers={tutors} />}
 
       {/* Modal  */}
-      <PostSignupModal />
+      <PostSignUpModal />
     </div>
   );
 };
