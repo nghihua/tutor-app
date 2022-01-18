@@ -6,14 +6,17 @@ const Home = () => {
       <div className="buffer"></div>
 
       <div className="Welcome">
-        <h2>Welcome to TUTOR</h2>
-        <p>We are the answers to all your questions</p>
-        <Link to="/login">
-          <button>Sign in</button>
-        </Link>
-        <Link to="/register">
-          <button>Sign up</button>
-        </Link>
+        <div className="content">
+          <h2>WELCOME TO TUTOR</h2>
+          <p>We are the answers to all your questions</p>
+        
+          <Link to="/login">
+            <button>Sign in</button>
+          </Link>
+          <Link to="/register">
+            <button>Sign up</button>
+          </Link>
+        </div>
       </div>
 
       <div className="About-us">
@@ -34,13 +37,19 @@ const Home = () => {
 
       <div className="Privilege">
         <div className="box">
+          <img src="https://i.ibb.co/QMJbLtj/chat-symbol.png" alt="Consulting"/>
           <h4>Online Consulting</h4>
+          <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet.</p>
         </div>
         <div className="box">
+          <img src="https://i.ibb.co/hsCYbdb/people-symbol.png" alt="Choice"/>
           <h4>Choice Making</h4>
+          <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet.</p>
         </div>
         <div className="box">
+          <img src="https://i.ibb.co/cNKTPZN/progress-symbol.png" alt="Progress"/>
           <h4>Progress Boosting</h4>
+          <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet.</p>
         </div>
       </div>
 

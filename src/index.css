@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Be+Vietnam+Pro:wght@300&family=Lato:ital,wght@1,300&family=Roboto:wght@100;400;700;900&family=Rosarivo&family=Rubik:wght@300;400;500&family=Taprom&family=Tauri&display=swap');
 html {
   height: 100%;
   padding: 0;
@@ -47,6 +48,7 @@ body {
 .main-nav .brand {
   font-family: Rubik;
   font-size: 45px;
+  font-weight: 300;
   color: black;
   display: inline;
   line-height: 60px;
@@ -54,9 +56,10 @@ body {
 .main-nav .section {
   display: inline-block;
   width: 20%;
+  border-radius: 7px;
 }
-.main-nav .section: hover {
-  background: rgba(255,255,255,0.8);
+.main-nav .section:hover {
+  background: rgba(255,255,255,0.25);
 }
 .main-nav a {
   font-family: Rubik;
@@ -177,6 +180,8 @@ button:hover {
 
 /* Home */
 .home {
+  background: rgba(250, 240, 243, 1);
+  font-family: Rubik;
 }
 .home .buffer {
   height: 100px;
@@ -188,51 +193,59 @@ button:hover {
 .home .Welcome {
   height: 345px;
   background: url("../public/homeimg1.png");
+  background-color: rgba(220,210,220);
+  background-blend-mode: multiply;
   background-size: cover;
   position: relative;
 }
+.Welcome .content {
+  margin: 0 auto;
+  max-width: 700px;
+  padding-top: 80px;
+}
 .Welcome h2 {
   color: white;
+  font-family: Rubik;
+  font-size: 55px;
 }
 .Welcome p {
   color: white;
+  font-family: Rubik;
+  font-size: 20px;
 }
 .Welcome button {
   height: 60px;
   width: 150px;
+  font-family: Rubik;
+  font-size: 20px;
   border-radius: 20px;
-  margin: 30px 50px;
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.6);
   position: relative;
-  top: 100px;
 }
 .Welcome a{
   color: black;
-  font-size: 23px;
   font-family: Rosarivo;
-  padding-top: 100px;
+  margin: 0 30px;
 }
 .Welcome button:hover {
-  background: rgba(255,255,255,0.7);
-}
-.Welcome a:hover {
-  text-decoration: none;
+  background: rgba(255,255,255,0.9);
+  font-weight: bold;
   cursor: pointer;
 }
 .home .About-us {
   height: 300px;
-  background: #E8DBDB;
   text-align: center;
   position: relative;
   padding: 20px;
 }
 .About-us .content {
   height: 250px;
-  max-width: 750px;
+  max-width: 730px;
   margin: 0 auto;
 }
 .About-us p {
-  padding: 20px 70px;
+  
+  font-weight: 300;
 }
 .About-us .seperator {
   background: orange;
@@ -242,22 +255,29 @@ button:hover {
 }
 .home .Privilege {
   min-height: 200px;
-  background: rgba(100,255,130,1);
   text-align: center;
 }
 .Privilege .box {
   display: inline-block;
   margin: 40px 20px;
-  width: 220px;
-  height: 130px;
+  width: 240px;
+  height: 150px;
   background: white;
   border-radius: 8px;
-  box-shadow: 5px 5px grey;
+  box-shadow: 5px 5px rgba(0,0,0,0.25);
+  font-size: 12px;
+  padding: 10px;
+}
+.Privilege h4 {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 4px;
 }
 .home .Subject {
-  min-height: 200px;
+  min-height: 250px;
   background: rgba(211,200,105,0.3);
   text-align: center;
+  padding-top: 20px;
 }
 .Subject .subject-display {
   background: yellow;
@@ -294,7 +314,7 @@ button:hover {
 }
 .profile h4 {
   text-align: center;
-  font-family: Rosarivo;
+  font-family: Be Vietnam Pro;
   font-size: 30px;
   font-weight: bold;
   line-height: 38px;
@@ -570,7 +590,7 @@ input {
   width: 200px;
   height: 300px;
   position: relative;
-  box-shadow: 5px 10px rgba(235, 225, 225);
+  box-shadow: 20px 10px rgba(235, 225, 225);
 }
 .volunteers .image {
   width: 210px;
@@ -589,7 +609,7 @@ input {
   text-align: left;
 }
 .volunteers h2 {
-  font-family: Rubik;
+  font-family: Be Vietnam Pro;
   font-size: 20px;
   font-weight: bold;
   line-height: 28px;
@@ -621,11 +641,6 @@ input {
 .volunteers button {
   display: block;
   margin: 50px auto;
-}
-.temp {
-  width: 750px;
-  padding: 0;
-  margin: 0 auto;
 }
 
 /*footer*/
