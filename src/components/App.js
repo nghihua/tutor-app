@@ -46,6 +46,8 @@ const App = () => {
                 replace: true,
                 state: { ...location.state, postSignUpModal: false },
               });
+              alert("Your profile can always be edited later at /profile.");
+              // tạm alert. sẽ đổi thành toast notification sau
             }}
           />
         )}
