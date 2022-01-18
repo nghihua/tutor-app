@@ -12,6 +12,7 @@ const PostSignUpModal = ({ onClose }) => {
     onCloseRef.current = onClose;
   }, [onClose]);
 
+  // setup and show modal
   useEffect(() => {
     modalRef.current.addEventListener("hidden.bs.modal", () => {
       onCloseRef.current?.();
@@ -21,6 +22,7 @@ const PostSignUpModal = ({ onClose }) => {
     modal.show();
   }, []);
 
+  // profile edit callbacks
   const closeModal = () => {
     Modal.getInstance(modalRef.current).hide();
   };
