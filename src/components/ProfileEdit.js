@@ -29,12 +29,13 @@ const ProfileEdit = ({
   onSaveSuccess,
   onSaveError,
   onCancel,
+  checkIsTutor = false,
 }) => {
   // Profile states
   const [fullName, setFullName] = useState(currFullName);
   const [major, setMajor] = useState(currMajor);
   const [intake, setIntake] = useState(currIntake);
-  const [isTutor, setIsTutor] = useState(currIsTutor);
+  const [isTutor, setIsTutor] = useState(checkIsTutor || currIsTutor);
   const [subjects, setSubjects] = useState(currSubjects);
 
   const {
@@ -185,20 +186,11 @@ const ProfileEdit = ({
       }
 
       <div className="data-buttons">
-        <button
-          className="clickButton"
-          disabled={isSaving || isNotChanged()}
-          data-bs-dismiss="modal"
-        >
+        <button className="clickButton" disabled={isSaving || isNotChanged()}>
           Save
         </button>
 
-        <button
-          type="button"
-          className="clickButton"
-          onClick={handleCancel}
-          data-bs-dismiss="modal"
-        >
+        <button type="button" className="clickButton" onClick={handleCancel}>
           Cancel
         </button>
       </div>
