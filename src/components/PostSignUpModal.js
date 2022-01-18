@@ -1,11 +1,12 @@
 import { Modal } from "bootstrap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../hooks/custom-hooks";
 import ProfileEdit from "./ProfileEdit";
 
 const PostSignUpModal = ({ onClose }) => {
   const auth = useAuth();
   const modalRef = useRef();
+  const [isEditing, setIsEditing] = useState(false);
   const onCloseRef = useRef(onClose);
 
   useEffect(() => {
@@ -38,18 +39,42 @@ const PostSignUpModal = ({ onClose }) => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="postSignUpModalLabel">
-              Do you want to be a volunteer?
+              {isEditing
+                ? "Please fill in your tutor information"
+                : "Do you want to be a volunteer?"}
             </h5>
+
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              {/* Cái button này ở trên góc phải cũng để close.
+              Có gì Phú hoặc ai chỉnh css lại giùm t thành dấu 'x' này nọ nha.
+              Thanks */}
+            </button>
           </div>
 
           <div className="modal-body">
-            <ProfileEdit
-              user={auth.user}
-              checkIsTutor
-              onSaveSuccess={closeModal}
-              onSaveError={handleSaveError}
-              onCancel={closeModal}
-            />
+            {isEditing ? (
+              <ProfileEdit
+                user={auth.user}
+                checkIsTutor
+                onSaveSuccess={closeModal}
+                onSaveError={handleSaveError}
+                onCancel={closeModal}
+              />
+            ) : (
+              <>
+                <button type="button" onClick={() => setIsEditing(true)}>
+                  Yes
+                </button>
+                <button type="button" data-bs-dismiss="modal">
+                  No
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
