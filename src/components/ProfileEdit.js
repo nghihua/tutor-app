@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
-import { useFetch } from "../hooks/custom-hooks";
+import { useFetch, useAuth } from "../hooks/custom-hooks";
 
 const subjectList = [
   "Math",
@@ -38,6 +38,8 @@ const ProfileEdit = ({
   const [isTutor, setIsTutor] = useState(checkIsTutor || currIsTutor);
   const [subjects, setSubjects] = useState(currSubjects);
 
+  const auth = useAuth();
+
   const {
     isLoading: isSaving,
     doFetch: requestSave,
@@ -64,6 +66,7 @@ const ProfileEdit = ({
       credentials: "include",
     }).then(
       (res) => {
+        auth.refetchUser();
         onSaveSuccess?.(res);
       },
       (err) => {
