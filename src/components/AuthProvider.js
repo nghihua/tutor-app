@@ -19,28 +19,31 @@ const AuthProvider = ({ children }) => {
       credentials: "include",
     })
       .then(() => doFetch("http://localhost:5000/api/user/current"))
-      .then((user) => {
-        onSuccess?.();
-        setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
-      })
-      .catch((err) => {
-        if (err.name !== "AbortError") {
-          onError?.(err);
+      .then(
+        (user) => {
+          onSuccess?.(user);
+          setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
+        },
+        (err) => {
+          if (err.name !== "AbortError") {
+            onError?.(err);
+          }
         }
-      });
+      );
   };
 
   const logOut = (onSuccess, onError) => {
-    doFetch("http://localhost:5000/api/auth/logout")
-      .then(() => {
-        onSuccess?.();
+    doFetch("http://localhost:5000/api/auth/logout").then(
+      (res) => {
+        onSuccess?.(res);
         setAuth((prev) => ({ ...prev, isLoggedIn: false, user: null }));
-      })
-      .catch((err) => {
+      },
+      (err) => {
         if (err.name !== "AbortError") {
           onError?.(err);
         }
-      });
+      }
+    );
   };
 
   const [auth, setAuth] = useState({
