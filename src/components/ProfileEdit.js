@@ -61,14 +61,21 @@ const ProfileEdit = ({
       },
       body: JSON.stringify(newProfile),
       credentials: "include",
-    })
-      .then(onSaveSuccess)
-      .catch(onSaveError);
+    }).then(
+      (res) => {
+        onSaveSuccess?.(res);
+      },
+      (err) => {
+        if (err.name !== "AbortError") {
+          onSaveError?.(err);
+        }
+      }
+    );
   };
 
   const handleCancel = () => {
     isSaving && abortSave();
-    onCancel();
+    onCancel?.();
   };
 
   const isNotChanged = () =>
