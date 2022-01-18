@@ -25,55 +25,56 @@ const Navbar = () => {
 
   return (
     <>
-      <nav expand="lg" className="main-nav fixed-top b-5">
-        <div className="firstfloor">
-          <Link to="/">
-            <img src="favicon.png" alt="Tutor" className="logo" />
-            <div className="brand">Tutor</div>
-          </Link>
+<nav expand="lg" className="main-nav fixed-top b-5">
+  <div className="firstfloor">
+    <Link to="/">
+      <img src="favicon.png" alt="Tutor" className="logo" />
+      <div className="brand">Tutor</div>
+    </Link>
+  </div>
+
+  <div className="secondfloor">
+    <Link to="/" className="redirect">
+      <div className="section">
+        Home
+      </div>
+    </Link>
+
+    <Link to="/volunteers" className="redirect">
+      <div className="section">
+        Volunteers
+      </div>
+    </Link>
+
+    {auth.isLoggedIn === false ? (
+      <Link to="/login" className="redirect" state={{ from: location }}>
+        <div className="section">
+          Log In
         </div>
+      </Link>
+    ) : (
+      <>
 
-        <div className="secondfloor">
+        <Link
+            to={`/profile/${auth.user?.user_id ?? ""}`}
+            className="redirect"
+          >
           <div className="section">
-            <Link to="/" className="redirect">
-              Home
-            </Link>
+            My Profile
           </div>
+        </Link>
 
+        <Link to="/" className="redirect" onClick={handleLogOut}>
           <div className="section">
-            <Link to="/volunteers" className="redirect">
-              Volunteers
-            </Link>
+            Log Out
           </div>
+        </Link>
+      </>
+    )}
+  </div>
+</nav>
 
-          {auth.isLoggedIn === false ? (
-            <div className="section">
-              <Link to="/login" className="redirect" state={{ from: location }}>
-                Log In
-              </Link>
-            </div>
-          ) : (
-            <>
-              <div className="section">
-                <Link
-                  to={`/profile/${auth.user?.user_id ?? ""}`}
-                  className="redirect"
-                >
-                  My Profile
-                </Link>
-              </div>
-
-              <div className="section">
-                <Link to="/" className="redirect" onClick={handleLogOut}>
-                  Log Out
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
-      </nav>
-
-      <Outlet />
+<Outlet />
     </>
   );
 };
