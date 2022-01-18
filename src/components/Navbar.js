@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/custom-hooks";
+import TestModalBtn from "./TestModalBtn";
 
 const Navbar = () => {
   const auth = useAuth();
@@ -31,6 +32,8 @@ const Navbar = () => {
             <img src="favicon.png" alt="Tutor" className="logo" />
             <div className="brand">Tutor</div>
           </Link>
+
+          <TestModalBtn />
         </div>
 
         <div className="secondfloor">
