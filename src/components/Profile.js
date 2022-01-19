@@ -1,29 +1,35 @@
 import { useCallback, useEffect } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
-import { useFetch } from "../hooks/custom-hooks";
+import { useFetch, useAuth } from "../hooks/custom-hooks";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { includeCredentials } from "../utils";
 
 const Profile = () => {
   const { id } = useParams();
+  const auth = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
   // load user data
   const {
-    data: [user, canEdit],
-    error: [errorUser],
+    data,
+    error,
     isLoading,
     doFetch: loadProfile,
-  } = useFetch(
-    [
-      `http://localhost:5000/api/user/${id}`,
-      `http://localhost:5000/api/user/${id}/edit_permission`,
-    ],
-    includeCredentials,
-    { asEffect: true, throwError: false }
-  );
+  } = useFetch(`http://localhost:5000/api/user/${id}`, includeCredentials, {
+    throwError: false,
+  });
+
+  const isOwner = id === auth.user.user_id;
+
+  useEffect(() => {
+    if (!isOwner) {
+      loadProfile();
+    }
+  }, [isOwner, loadProfile]);
+
+  const user = isOwner ? auth.user : data;
   user && (user.subjects ??= []); // set to empty array if null, for display convenience
 
   // isEditing state
@@ -37,10 +43,10 @@ const Profile = () => {
   );
 
   useEffect(() => {
-    if (canEdit === false && isEditing) {
+    if (isOwner === false && isEditing) {
       setIsEditing(false);
     }
-  }, [canEdit, isEditing, setIsEditing]);
+  }, [isOwner, isEditing, setIsEditing]);
 
   // save profile callbacks
   const handleSaveSuccess = () => {
@@ -55,11 +61,11 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      {isLoading.some(Boolean) && <h3>Loading...</h3>}
-      {errorUser && (
+      {isLoading && <h3>Loading...</h3>}
+      {error && (
         <>
           <h4>An error has occurred</h4>
-          <p>{errorUser.message}</p>
+          <p>{error.message}</p>
         </>
       )}
 
@@ -74,7 +80,7 @@ const Profile = () => {
         ) : (
           <ProfileView
             user={user}
-            canEdit={canEdit}
+            canEdit={isOwner}
             onEdit={() => setIsEditing(true)}
           />
         ))}
