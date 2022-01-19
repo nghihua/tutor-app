@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../hooks/custom-hooks";
 import ProfileEdit from "./ProfileEdit";
 
-const PostSignUpModal = ({ onClose }) => {
+const VolunteerPromptModal = ({ onClose }) => {
   const auth = useAuth();
   const modalRef = useRef();
   const [isEditing, setIsEditing] = useState(false);
@@ -34,11 +34,11 @@ const PostSignUpModal = ({ onClose }) => {
   };
 
   return (
-    <div className="modal fade" id="postSignUpModal" ref={modalRef}>
+    <div className="modal fade" id="volunteerPromptModal" ref={modalRef}>
       <div className="modal-dialog modal-lg modal-dialog-scrollable">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="postSignUpModalLabel">
+            <h5 className="modal-title" id="volunteerPromptModalLabel">
               {isEditing
                 ? "Please fill in your tutor information"
                 : "Do you want to be a volunteer?"}
@@ -82,4 +82,4 @@ const PostSignUpModal = ({ onClose }) => {
   );
 };
 
-export default PostSignUpModal;
+export default VolunteerPromptModal;
