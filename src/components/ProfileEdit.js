@@ -66,8 +66,8 @@ const ProfileEdit = ({
       credentials: "include",
     }).then(
       (res) => {
-        auth.refetchUser();
-        onSaveSuccess?.(res);
+        const refetchPromise = auth.refetchUser();
+        onSaveSuccess?.(refetchPromise, res);
       },
       (err) => {
         if (err.name !== "AbortError") {
