@@ -4,6 +4,8 @@ import ProfileView from "./ProfileView";
 import { useFetch, useAuth, useMountStatus } from "../hooks/custom-hooks";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { includeCredentials } from "../utils";
+import LoadingScreen from "./LoadingScreen";
+import ErrorMessage from "./ErrorMessage";
 
 const Profile = () => {
   const { id } = useParams();
@@ -66,14 +68,8 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      {isLoading && <h3>Loading...</h3>}
-      {error && (
-        <>
-          <h4>An error has occurred</h4>
-          <p>{error.message}</p>
-        </>
-      )}
-
+      {isLoading && <LoadingScreen />}
+      {error && <ErrorMessage error={error} />}
       {user &&
         (isEditing ? (
           <ProfileEdit
