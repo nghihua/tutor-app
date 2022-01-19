@@ -1,14 +1,63 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { useFetch } from "../hooks/custom-hooks";
 import { includeCredentials } from "../utils";
 
 const AuthContext = createContext(null);
 
+// action types
+const LOADING = "LOADING";
+const UNAUTH = "UNAUTH";
+const AUTH = "AUTH";
+const ERROR = "ERROR";
+
+const authReducer = (state, action) => {
+  switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+
+    case UNAUTH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        isLoggedIn: false,
+        user: null,
+      };
+
+    case AUTH:
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        isLoggedIn: true,
+        user: action.payload,
+      };
+
+    case ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+        isLoggedIn: null,
+        user: null,
+      };
+
+    default:
+      throw new TypeError(`Unknown action type "${action.type}".`);
+  }
+};
+
+// Auth context provider
 const AuthProvider = ({ children }) => {
   const { doFetch } = useFetch(undefined, includeCredentials, {
     usingState: false,
+    abortBeforeRefetch: false,
   });
 
+  // auth functions
   const logIn = async (logInInfo, onSuccess, onError) => {
     return doFetch("http://localhost:5000/api/auth/login", {
       method: "POST",
@@ -22,7 +71,7 @@ const AuthProvider = ({ children }) => {
       .then(
         (user) => {
           onSuccess?.(user);
-          setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
+          dispatch({ type: AUTH, payload: user });
         },
         (err) => {
           if (err.name !== "AbortError") {
@@ -36,7 +85,7 @@ const AuthProvider = ({ children }) => {
     return doFetch("http://localhost:5000/api/auth/logout").then(
       (res) => {
         onSuccess?.(res);
-        setAuth((prev) => ({ ...prev, isLoggedIn: false, user: null }));
+        dispatch({ type: UNAUTH });
       },
       (err) => {
         if (err.name !== "AbortError") {
@@ -47,20 +96,32 @@ const AuthProvider = ({ children }) => {
   };
 
   const refetchUser = async () => {
+    dispatch({ type: LOADING });
+
     return doFetch("http://localhost:5000/api/user/current")
       .then((user) => {
-        setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
+        dispatch({ type: AUTH, payload: user });
       })
       .catch((err) => {
-        if (err.name !== "AbortError") {
+        if (err.name === "AbortError") {
+          return;
+        }
+
+        if (err.message.startsWith("[HTTP 401]")) {
+          dispatch({ type: UNAUTH });
+        } else {
+          dispatch({ type: ERROR, payload: err });
           console.error(err);
         }
       });
   };
 
-  const [auth, setAuth] = useState({
+  // auth state
+  const [auth, dispatch] = useReducer(authReducer, {
     isLoggedIn: null,
     user: null,
+    error: null,
+    isLoading: false,
     logIn,
     logOut,
     refetchUser,
@@ -70,16 +131,21 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchAuth = async () => {
       try {
+        dispatch({ type: LOADING });
+
         const isLoggedIn = await doFetch(
           "http://localhost:5000/api/auth/login_status"
         );
-        const user = isLoggedIn
-          ? await doFetch("http://localhost:5000/api/user/current")
-          : null;
 
-        setAuth((prev) => ({ ...prev, isLoggedIn, user }));
+        if (isLoggedIn) {
+          const user = await doFetch("http://localhost:5000/api/user/current");
+          dispatch({ type: AUTH, payload: user });
+        } else {
+          dispatch({ type: UNAUTH });
+        }
       } catch (err) {
         if (err.name !== "AbortError") {
+          dispatch({ type: ERROR, payload: err });
           console.error(err);
         }
       }
