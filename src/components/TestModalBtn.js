@@ -1,6 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const TestModalBtn = () => {
+  const auth = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -15,9 +17,11 @@ const TestModalBtn = () => {
   };
 
   return (
-    <button type="button" className="ml-5" onClick={testModal}>
-      Test Modal (tạm để test, del sau)
-    </button>
+    auth.isLoggedIn && (
+      <button type="button" className="ml-5" onClick={testModal}>
+        Test Modal (tạm để test, del sau)
+      </button>
+    )
   );
 };
 
