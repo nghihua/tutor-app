@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
 
 require('dotenv').config();
 
@@ -11,6 +12,18 @@ const createToken = (data) => {
         algorithm: 'HS256'
     });
 }
+
+const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        type: 'OAuth2',
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD,
+        clientId: process.env.OAUTH_CLIENTID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN
+      }
+    });
 
 const login_post = (req,res) => {
     const { email, password } = req.body;
@@ -66,6 +79,22 @@ const signup_post = async (req,res) => {
             }
         }
         else {
+            //send email
+            var mailOptions = {
+              from: 'nghitest191@gmail.com',
+              to: email,
+              subject: 'Welcome to VGU Tutor App!',
+              text: 'Happy to see you here!'
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+              if (error) {
+                console.log(error);
+              } else {
+                console.log('Email sent: ' + info.response);
+              }
+            });
+
             const token = createToken(results.rows[0].user_id);
             res.cookie("jwt", token, {httpOnly:true, maxAge: maxAge*1000});
             res.send({message: "Create new user successfully!"});
