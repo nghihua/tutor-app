@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/custom-hooks";
-import TestModalBtn from "./TestModalBtn";
+// import TestModalBtn from "./TestModalBtn";
 
 const Navbar = () => {
   const auth = useAuth();
@@ -33,7 +33,7 @@ const Navbar = () => {
             <div className="brand">Tutor</div>
           </Link>
 
-          <TestModalBtn />
+          {/* <TestModalBtn /> */}
         </div>
 
         <div className="secondfloor">
