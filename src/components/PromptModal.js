@@ -12,7 +12,7 @@ const PromptModal = ({ onClose }) => {
   const modalRef = useRef();
 
   const [content, setContent] = useState(PROMPT);
-  const switchContentRef = useRef(false);
+  const switchingContentRef = useRef(false);
 
   const onCloseRef = useRef(onClose);
   useEffect(() => {
@@ -24,13 +24,13 @@ const PromptModal = ({ onClose }) => {
     const modal = new Modal(modalRef.current);
 
     modalRef.current.addEventListener("hidden.bs.modal", () => {
-      if (!switchContentRef.current) {
+      if (!switchingContentRef.current) {
         onCloseRef.current?.(); // raise close event
       } else {
         // switch content
         setContent(EDIT);
         modal.show();
-        switchContentRef.current = false; // disable switching content
+        switchingContentRef.current = false; // disable switching content
       }
     });
 
@@ -39,7 +39,7 @@ const PromptModal = ({ onClose }) => {
 
   // handle prompt agree
   const switchContent = () => {
-    switchContentRef.current = true; // enable switching content
+    switchingContentRef.current = true; // enable switching content
     closeModal(); // the remaining actions are in the hidden.bs.modal event handler
   };
 
