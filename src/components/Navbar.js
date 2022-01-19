@@ -1,26 +1,81 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom'
-import useFetch2 from "./useFetch2";
-const Navbar = ({Logout}) => {  
-  return (
-    <nav expand="lg" className="home fixed-top b-5">
-      <Link to="/">
-        <img 
-          src="https://i.ibb.co/hDnvX38/logo-removebg-preview-removebg-preview.png"
-          alt="Tutor logo"
-          className="logo"
-        />
-        <div className="brand">Tutor</div>
-      </Link>
-      {/* try to figure how to connect Bootstrap and react router */}
-      {/* <Nav.Link href="/Home">Home</Nav.Link>
-                    <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
-      {/* replace the Nav.Link with Link router */}
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/custom-hooks";
 
-      <Link to="/profile" className="redirect">My Profile</Link>
-      <Link to="/" className="redirect">Home</Link>
-      <button onClick={(event) => Logout(event)}>Log Out</button>
-    </nav>
+const Navbar = () => {
+  const auth = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogOut = (event) => {
+    event.preventDefault();
+
+    if (auth.isLoggedIn) {
+      auth.logOut(
+        () => {
+          navigate("/");
+        },
+        (err) => {
+          console.error(err);
+          alert("An error has occurred.");
+        }
+      );
+    }
+  };
+
+  return (
+    <>
+<nav expand="lg" className="main-nav fixed-top b-5">
+  <div className="firstfloor">
+    <Link to="/">
+      <img src="favicon.png" alt="Tutor" className="logo" />
+      <div className="brand">Tutor</div>
+    </Link>
+  </div>
+
+  <div className="secondfloor">
+    <Link to="/" className="redirect">
+      <div className="section">
+        Home
+      </div>
+    </Link>
+
+    <Link to="/volunteers" className="redirect">
+      <div className="section">
+        Volunteers
+      </div>
+    </Link>
+
+    {auth.isLoggedIn === false ? (
+      <Link to="/login" className="redirect" state={{ from: location }}>
+        <div className="section">
+          Log In
+        </div>
+      </Link>
+    ) : (
+      <>
+
+        <Link
+            to={`/profile/${auth.user?.user_id ?? ""}`}
+            className="redirect"
+          >
+          <div className="section">
+            My Profile
+          </div>
+        </Link>
+
+        <Link to="/" className="redirect" onClick={handleLogOut}>
+          <div className="section">
+            Log Out
+          </div>
+        </Link>
+      </>
+    )}
+  </div>
+</nav>
+
+<Outlet />
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
+import { useFetch, useAuth } from "../hooks/custom-hooks";
 
 const subjectList = [
   "Math",
@@ -13,23 +14,37 @@ const subjectList = [
   "English",
 ];
 
+const arrayEquals = (a, b) =>
+  a.length === b.length && a.every((val, index) => val === b[index]);
+
 const ProfileEdit = ({
   user: {
+    user_id: id,
     full_name: currFullName,
     major: currMajor,
     intake: currIntake,
     is_volunteer: currIsTutor,
     subjects: currSubjects,
   },
-  onSave,
+  onSaveSuccess,
+  onSaveError,
   onCancel,
+  checkIsTutor = false,
 }) => {
   // Profile states
   const [fullName, setFullName] = useState(currFullName);
   const [major, setMajor] = useState(currMajor);
   const [intake, setIntake] = useState(currIntake);
-  const [isTutor, setIsTutor] = useState(currIsTutor);
+  const [isTutor, setIsTutor] = useState(checkIsTutor || currIsTutor);
   const [subjects, setSubjects] = useState(currSubjects);
+
+  const auth = useAuth();
+
+  const {
+    isLoading: isSaving,
+    doFetch: requestSave,
+    abortFetch: abortSave,
+  } = useFetch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,24 +56,38 @@ const ProfileEdit = ({
       is_volunteer: isTutor,
       subjects,
     };
-    onSave(newProfile);
-  };
 
-  const isNotChanged = () => {
-    const isEmpty = (arr) =>
-      arr.length === 0 || (arr.length === 1 && arr[0] === null);
-    const arrayEquals = (a, b) =>
-      (isEmpty(a) && isEmpty(b)) ||
-      (a.length === b.length && a.every((val, index) => val === b[index]));
-
-    return (
-      currFullName === fullName &&
-      currMajor === major &&
-      currIntake === intake &&
-      currIsTutor === isTutor &&
-      arrayEquals(currSubjects, subjects)
+    requestSave(`http://localhost:5000/api/user/${id}/edit`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProfile),
+      credentials: "include",
+    }).then(
+      (res) => {
+        auth.refetchUser();
+        onSaveSuccess?.(res);
+      },
+      (err) => {
+        if (err.name !== "AbortError") {
+          onSaveError?.(err);
+        }
+      }
     );
   };
+
+  const handleCancel = () => {
+    isSaving && abortSave();
+    onCancel?.();
+  };
+
+  const isNotChanged = () =>
+    currFullName === fullName &&
+    currMajor === major &&
+    currIntake === intake &&
+    currIsTutor === isTutor &&
+    arrayEquals(currSubjects, subjects);
 
   return (
     <form className="profileedit" onSubmit={handleSubmit}>
@@ -126,7 +155,7 @@ const ProfileEdit = ({
 
       <div className="section form-group row">
         <label htmlFor="is-tutor" className="title">
-          Is Tutor:
+          Is tutor:
         </label>
         <input
           id="is-tutor"
@@ -147,7 +176,7 @@ const ProfileEdit = ({
                 className="typo"
                 id="subjects-typeahead"
                 multiple
-                selected={subjects[0] === null ? [] : subjects}
+                selected={subjects}
                 onChange={setSubjects}
                 options={subjectList}
                 placeholder="Choose the subjects you can tutor..."
@@ -160,20 +189,11 @@ const ProfileEdit = ({
       }
 
       <div className="data-buttons">
-        <button
-          className="clickButton"
-          disabled={isNotChanged()}
-          data-bs-dismiss="modal"
-        >
+        <button className="clickButton" disabled={isSaving || isNotChanged()}>
           Save
         </button>
 
-        <button
-          type="button"
-          className="clickButton"
-          onClick={onCancel}
-          data-bs-dismiss="modal"
-        >
+        <button type="button" className="clickButton" onClick={handleCancel}>
           Cancel
         </button>
       </div>
