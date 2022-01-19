@@ -7,7 +7,7 @@ import ProfileEdit from "./ProfileEdit";
 const PROMPT = "PROMPT";
 const EDIT = "EDIT";
 
-const VolunteerPromptModal = ({ onClose }) => {
+const PromptModal = ({ onClose }) => {
   const auth = useAuth();
   const modalRef = useRef();
 
@@ -89,11 +89,11 @@ const VolunteerPromptModal = ({ onClose }) => {
   }[content];
 
   return (
-    <div className="modal fade" id="volunteerPromptModal" ref={modalRef}>
+    <div className="modal fade" id="promptModal" ref={modalRef}>
       <div className="modal-dialog modal-lg modal-dialog-scrollable">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="volunteerPromptModalLabel">
+            <h5 className="modal-title" id="promptModalLabel">
               {title}
             </h5>
 
@@ -112,4 +112,4 @@ const VolunteerPromptModal = ({ onClose }) => {
   );
 };
 
-export default VolunteerPromptModal;
+export default PromptModal;

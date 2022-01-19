@@ -10,7 +10,7 @@ import NotFound from "./NotFound";
 import ProfileMe from "./ProfileMe";
 import AuthProvider from "./AuthProvider";
 import Navbar from "./Navbar";
-import VolunteerPromptModal from "./VolunteerPromptModal";
+import PromptModal from "./PromptModal";
 
 const App = () => {
   const location = useLocation();
@@ -39,12 +39,12 @@ const App = () => {
 
         <Footer />
 
-        {location.state?.postSignUpModal && (
-          <VolunteerPromptModal
+        {location.state?.showPromptModal && (
+          <PromptModal
             onClose={() => {
               navigate(location, {
                 replace: true,
-                state: { ...location.state, postSignUpModal: false },
+                state: { ...location.state, showPromptModal: false },
               });
               alert("Your profile can always be edited later at /profile.");
               // tạm alert. sẽ đổi thành toast notification sau
