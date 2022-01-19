@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import ProfileEdit from "./ProfileEdit";
 import ProfileView from "./ProfileView";
-import { useFetch, useAuth } from "../hooks/custom-hooks";
+import { useFetch, useAuth, useMountStatus } from "../hooks/custom-hooks";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { includeCredentials } from "../utils";
 
@@ -10,6 +10,7 @@ const Profile = () => {
   const auth = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const { isMounted } = useMountStatus();
 
   // load user data
   const {
@@ -49,8 +50,12 @@ const Profile = () => {
   }, [isOwner, isEditing, setIsEditing]);
 
   // save profile callbacks
-  const handleSaveSuccess = () => {
-    loadProfile().then(() => setIsEditing(false));
+  const handleSaveSuccess = (refetchPromise) => {
+    refetchPromise.then(() => {
+      if (isMounted()) {
+        setIsEditing(false);
+      }
+    });
     alert("Saved successfully!");
   };
 
