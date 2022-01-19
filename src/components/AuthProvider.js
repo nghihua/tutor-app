@@ -65,6 +65,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     refetchUser,
   });
+  auth.user && (auth.user.subjects ??= []); // set to empty array if null, for display convenience
 
   useEffect(() => {
     const fetchAuth = async () => {
