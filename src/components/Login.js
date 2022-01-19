@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/custom-hooks";
 import { getFetchErrMsg } from "../utils";
+import ErrorMessage from "./ErrorMessage";
+import LoadingScreen from "./LoadingScreen";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,8 +34,12 @@ const Login = () => {
     );
   };
 
+  if (auth.error) {
+    return <ErrorMessage error={auth.error} />;
+  }
+
   if (auth.isLoggedIn === null) {
-    return <h3>Loading...</h3>;
+    return <LoadingScreen />;
   }
 
   if (auth.isLoggedIn) {
