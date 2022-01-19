@@ -9,8 +9,8 @@ const AuthProvider = ({ children }) => {
     usingState: false,
   });
 
-  const logIn = (logInInfo, onSuccess, onError) => {
-    doFetch("http://localhost:5000/api/auth/login", {
+  const logIn = async (logInInfo, onSuccess, onError) => {
+    return doFetch("http://localhost:5000/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,8 +32,8 @@ const AuthProvider = ({ children }) => {
       );
   };
 
-  const logOut = (onSuccess, onError) => {
-    doFetch("http://localhost:5000/api/auth/logout").then(
+  const logOut = async (onSuccess, onError) => {
+    return doFetch("http://localhost:5000/api/auth/logout").then(
       (res) => {
         onSuccess?.(res);
         setAuth((prev) => ({ ...prev, isLoggedIn: false, user: null }));
@@ -46,8 +46,8 @@ const AuthProvider = ({ children }) => {
     );
   };
 
-  const refetchUser = () => {
-    doFetch("http://localhost:5000/api/user/current")
+  const refetchUser = async () => {
+    return doFetch("http://localhost:5000/api/user/current")
       .then((user) => {
         setAuth((prev) => ({ ...prev, isLoggedIn: true, user }));
       })
