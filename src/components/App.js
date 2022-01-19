@@ -10,7 +10,7 @@ import NotFound from "./NotFound";
 import ProfileMe from "./ProfileMe";
 import AuthProvider from "./AuthProvider";
 import Navbar from "./Navbar";
-import PostSignUpModal from "./PostSignUpModal";
+import VolunteerPromptModal from "./VolunteerPromptModal";
 
 const App = () => {
   const location = useLocation();
@@ -40,7 +40,7 @@ const App = () => {
         <Footer />
 
         {location.state?.postSignUpModal && (
-          <PostSignUpModal
+          <VolunteerPromptModal
             onClose={() => {
               navigate(location, {
                 replace: true,
