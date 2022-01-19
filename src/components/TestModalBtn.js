@@ -9,11 +9,11 @@ const TestModalBtn = () => {
   const testModal = () => {
     navigate(location, {
       replace: true,
-      state: { ...location.state, postSignUpModal: true },
+      state: { ...location.state, showPromptModal: true },
     });
 
     // Code để cho vô Register.js, chạy khi sign up thành công:
-    // navigate("/", { replace: true, state: { postSignUpModal: true } });
+    // navigate("/", { replace: true, state: { showPromptModal: true } });
   };
 
   return (
