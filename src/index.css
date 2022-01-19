@@ -191,7 +191,7 @@ button:hover {
   font-size: 15px;
 }
 .home .Welcome {
-  height: 345px;
+  height: 365px;
   background: url("../public/homeimg1.png");
   background-color: rgba(220,210,220);
   background-blend-mode: multiply;
@@ -233,13 +233,13 @@ button:hover {
   cursor: pointer;
 }
 .home .About-us {
-  height: 300px;
+  min-height: 250px;
   text-align: center;
   position: relative;
-  padding: 20px;
+  padding-top: 50px;
 }
 .About-us .content {
-  height: 250px;
+  min-height: 200px;
   max-width: 730px;
   margin: 0 auto;
 }
@@ -251,7 +251,7 @@ button:hover {
   background: orange;
   width: 500px;
   height: 3px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .home .Privilege {
   min-height: 200px;
@@ -259,7 +259,7 @@ button:hover {
 }
 .Privilege .box {
   display: inline-block;
-  margin: 40px 20px;
+  margin: 30px 20px;
   width: 240px;
   height: 150px;
   background: white;
@@ -275,13 +275,18 @@ button:hover {
 }
 .home .Subject {
   min-height: 250px;
-  background: rgba(211,200,105,0.3);
   text-align: center;
   padding-top: 20px;
 }
 .Subject .subject-display {
-  background: yellow;
   margin: 20px auto;
+  width: 250px;
+  text-align: left;
+  background: rgba(200,200,200);
+}
+.Subject img {
+  width: 90px;
+  margin-right: 20px;
 }
 .home .Quote {
   min-height: 200px;
@@ -409,15 +414,10 @@ button:hover {
   border: 2px solid black;
 }
 .profileedit button {
-  margin: 0;
 }
 .typo {
   font-size: 30px;
   line-height: 40px;
-}
-input {
-  line-height: 40px;
-  color: red;
 }
 .profileedit .section {
   height: 50px;
