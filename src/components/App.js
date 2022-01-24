@@ -20,9 +20,12 @@ const App = () => {
     <div className="App">
       <AuthProvider>
         <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route element={<Navbar />}>
+          <Route element={<Navbar onlyBanner={true} />}>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
+
+          <Route element={<Navbar onlyBanner={false} />}>
             <Route index element={<Home />} />
 
             <Route element={<ProtectedRoute />}>
