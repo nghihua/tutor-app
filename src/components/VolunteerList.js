@@ -39,7 +39,7 @@ const VolunteerList = ({ volunteers }) => {
         ))}
       </div>
 
-<ReactPaginate
+    <ReactPaginate
         previousLabel={'previous'}
         nextLabel={'next'}
         breakLabel={'...'}
