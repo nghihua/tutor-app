@@ -8,36 +8,33 @@ import ProtectedRoute from "./ProtectedRoute";
 import Home from "./Home";
 import NotFound from "./NotFound";
 import ProfileMe from "./ProfileMe";
-import AuthProvider from "./AuthProvider";
 import Navbar from "./Navbar";
 import { ModalManager } from "components";
 
 const App = () => {
   return (
     <div className="App">
-      <AuthProvider>
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route element={<Navbar />}>
-            <Route index element={<Home />} />
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<Navbar />}>
+          <Route index element={<Home />} />
 
-            <Route element={<ProtectedRoute />}>
-              <Route path="/volunteers" element={<Volunteers />} />
-              <Route path="/profile">
-                <Route index element={<ProfileMe />} />
-                <Route path=":id" element={<Profile />} />
-              </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/volunteers" element={<Volunteers />} />
+            <Route path="/profile">
+              <Route index element={<ProfileMe />} />
+              <Route path=":id" element={<Profile />} />
             </Route>
-
-            <Route path="*" element={<NotFound />} />
           </Route>
-        </Routes>
 
-        <Footer />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
 
-        <ModalManager />
-      </AuthProvider>
+      <Footer />
+
+      <ModalManager />
     </div>
   );
 };
