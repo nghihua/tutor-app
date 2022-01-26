@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const TestModalBtn = () => {
   const auth = useAuth();
@@ -25,4 +25,4 @@ const TestModalBtn = () => {
   );
 };
 
-export default TestModalBtn;
+export { TestModalBtn };
