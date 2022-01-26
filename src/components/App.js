@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Footer from "./Footer";
 import Login from "./Login";
 import Register from "./Register";
@@ -10,12 +10,9 @@ import NotFound from "./NotFound";
 import ProfileMe from "./ProfileMe";
 import AuthProvider from "./AuthProvider";
 import Navbar from "./Navbar";
-import PromptModal from "./PromptModal";
+import { ModalManager } from "components";
 
 const App = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-
   return (
     <div className="App">
       <AuthProvider>
@@ -39,18 +36,7 @@ const App = () => {
 
         <Footer />
 
-        {location.state?.showPromptModal && (
-          <PromptModal
-            onClose={() => {
-              navigate(location, {
-                replace: true,
-                state: { ...location.state, showPromptModal: false },
-              });
-              alert("Your profile can always be edited later at /profile.");
-              // tạm alert. sẽ đổi thành toast notification sau
-            }}
-          />
-        )}
+        <ModalManager />
       </AuthProvider>
     </div>
   );
