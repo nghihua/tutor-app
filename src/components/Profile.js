@@ -52,18 +52,14 @@ const Profile = () => {
   }, [isOwner, isEditing, setIsEditing]);
 
   // save profile callbacks
-  const handleSaveSuccess = (refetchPromise) => {
-    refetchPromise.then(() => {
-      if (isMounted()) {
-        setIsEditing(false);
-      }
+  const handleSaveSuccess = (refetch) => {
+    refetch.then(() => {
+      isMounted() && setIsEditing(false);
     });
-    alert("Saved successfully!");
   };
 
   const handleSaveError = (err) => {
     console.error(err);
-    alert("Unable to save. An error has occurred.");
   };
 
   return (
