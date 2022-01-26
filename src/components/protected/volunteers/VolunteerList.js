@@ -1,14 +1,11 @@
-import VolunteerPreview from "./VolunteerPreview";
+import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
-import { useEffect } from "react";
+import { VolunteerPreview } from "components";
 
 const volunteersPerPage = 3;
 
 const VolunteerList = ({ volunteers }) => {
-
   const [cvolunteers, setCvolunteers] = useState([]);
-
 
   const fetchVolunteers = (currentPage) => {
     // Get current volunteers
@@ -16,20 +13,19 @@ const VolunteerList = ({ volunteers }) => {
     const firstIndex = lastIndex - volunteersPerPage;
     const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
     return currentVolunteers;
-  }
+  };
 
   useEffect(() => {
-    const volunteersFormServer =  fetchVolunteers(1);
+    const volunteersFormServer = fetchVolunteers(1);
     setCvolunteers(volunteersFormServer);
   }, []);
-
 
   const handlePageClick = (data) => {
     let currentPage = data.selected + 1;
 
-    const volunteersFormServer =  fetchVolunteers(currentPage);
+    const volunteersFormServer = fetchVolunteers(currentPage);
     setCvolunteers(volunteersFormServer);
-  }
+  };
 
   return (
     <div className="volunteer-list">
@@ -39,10 +35,10 @@ const VolunteerList = ({ volunteers }) => {
         ))}
       </div>
 
-    <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
+      <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
         pageCount={4}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
@@ -57,13 +53,11 @@ const VolunteerList = ({ volunteers }) => {
         breakClassName="page-item"
         breakLinkClassName="page-link"
         activeClassName="active"
-        />
+      />
     </div>
   );
 };
 
-
 // Youtube: https://youtu.be/kMuRr53RjcE
 
-
-export default VolunteerList;
+export { VolunteerList };
