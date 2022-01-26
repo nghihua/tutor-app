@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../hooks/custom-hooks";
-import { getFetchErrMsg } from "../utils";
-import ErrorMessage from "./ErrorMessage";
-import LoadingScreen from "./LoadingScreen";
+import { useAuth } from "hooks";
+import { getFetchErrMsg } from "util";
+import { LoadingScreen, ErrorMessage } from "components";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -85,4 +84,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export { Login };

@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useRef, useReducer } from "react";
-import { useMountStatus, useDependencyList } from "./custom-hooks";
+import { useMountStatus, useDependencyList } from "hooks";
 
 // init state functions
 const initFromLength = (len) => {
@@ -336,4 +336,4 @@ const useFetch = (
   return { data, error, isLoading, doFetch, abortFetch };
 };
 
-export default useFetch;
+export { useFetch };

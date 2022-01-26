@@ -1,7 +1,6 @@
-import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "../hooks/custom-hooks";
+import { useAuth } from "hooks";
 // import { TestModalBtn } from "components";
 
 const Navbar = () => {
@@ -72,4 +71,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export { Navbar };

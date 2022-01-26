@@ -1,8 +1,6 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { React } from "react";
-import { useAuth } from "../hooks/custom-hooks";
-import LoadingScreen from "./LoadingScreen";
-import ErrorMessage from "./ErrorMessage";
+import { useAuth } from "hooks";
+import { LoadingScreen, ErrorMessage } from "components";
 
 const ProtectedRoute = () => {
   const auth = useAuth();
@@ -23,4 +21,4 @@ const ProtectedRoute = () => {
   return <Outlet />;
 };
 
-export default ProtectedRoute;
+export { ProtectedRoute };
