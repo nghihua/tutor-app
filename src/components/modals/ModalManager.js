@@ -1,5 +1,6 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PromptModal } from "components";
+import { toast } from "react-toastify";
 
 const ModalManager = () => {
   const navigate = useNavigate();
@@ -10,8 +11,17 @@ const ModalManager = () => {
       replace: true,
       state: { ...location.state, showPromptModal: false },
     });
-    alert("Your profile can always be edited later at /profile.");
-    // tạm alert. sẽ đổi thành toast notification sau
+
+    toast.info(
+      <>
+        Your profile can always be edited later at{" "}
+        <Link to="/profile" state={{ isEditing: true }}>
+          /profile
+        </Link>
+        .
+      </>,
+      { autoClose: 10000 }
+    );
   };
 
   if (location.state?.showPromptModal) {

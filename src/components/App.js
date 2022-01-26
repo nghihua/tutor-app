@@ -10,6 +10,8 @@ import NotFound from "./NotFound";
 import ProfileMe from "./ProfileMe";
 import Navbar from "./Navbar";
 import { ModalManager } from "components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -35,6 +37,7 @@ const App = () => {
       <Footer />
 
       <ModalManager />
+      <ToastContainer />
     </div>
   );
 };

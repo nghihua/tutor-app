@@ -38,29 +38,17 @@ const PromptModal = ({ onClosed }) => {
     modal.show();
   }, []);
 
-  // handle prompt agree
+  // modal's content
   const switchContent = () => {
     switchingContentRef.current = true; // enable switching content
     closeModal(); // the remaining actions are in the hidden.bs.modal event handler
   };
 
-  // profile edit callbacks
   const closeModal = () => {
     const modal = Modal.getInstance(modalRef.current);
     modal.hide();
   };
 
-  const handleSaveSuccess = () => {
-    alert("Saved successfully!");
-    closeModal();
-  };
-
-  const handleSaveError = (err) => {
-    console.error(err);
-    alert("Unable to save. An error has occurred.");
-  };
-
-  // modal's content
   const { title, body } = {
     [PROMPT]: {
       title: "Do you want to be a volunteer?",
@@ -81,8 +69,8 @@ const PromptModal = ({ onClosed }) => {
         <ProfileEdit
           user={auth.user}
           checkIsTutor
-          onSaveSuccess={handleSaveSuccess}
-          onSaveError={handleSaveError}
+          onSaveSuccess={closeModal}
+          onSaveError={(err) => console.error(err)}
           onCancel={closeModal}
         />
       ),
