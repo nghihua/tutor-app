@@ -60,31 +60,37 @@ const Home = () => {
     
     <div className="row">
       <div className="subject-display">
-      <img src="icon-math.png"/>
-      Mathematics
+      <img src="home-math.png"/>
+      <h4>Mathematics</h4>
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       </div>
       <div className="subject-display">
-      <img src="icon-physics.png"/>
-      Physics
+      <img src="home-physics.png"/>
+      <h4>Physics</h4>
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet.
       </div>
       <div className="subject-display">
-      <img src="icon-english.png"/>
-      English
+      <img src="home-english.png"/>
+      <h4>English</h4>
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       </div>
     </div>
     
     <div className="row">
       <div className="subject-display">
-      <img src="icon-mathlab.png"/>
-      Matlab
+      <img src="home-matlab.png"/>
+      <h4>Matlab</h4>
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       </div>
       <div className="subject-display">
-      <img src="icon-unix.png"/>
-      Unix
+      <img src="home-unix.png"/>
+      <h4>Unix/ Linux</h4>
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       </div>
       <div className="subject-display">
-      <img src="icon-german.png"/>
-      German
+      <img src="home-german.png"/>
+      <h4>German</h4>
+      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       </div>
     </div>
     
