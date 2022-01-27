@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
+import { toastAbortablePromise } from "utils";
 import { useFetch, useAuth } from "../hooks/custom-hooks";
 
 const subjectList = [
@@ -30,6 +31,7 @@ const ProfileEdit = ({
   onSaveError,
   onCancel,
   checkIsTutor = false,
+  disableToast = false,
 }) => {
   // Profile states
   const [fullName, setFullName] = useState(currFullName);
@@ -57,17 +59,20 @@ const ProfileEdit = ({
       subjects,
     };
 
-    requestSave(`http://localhost:5000/api/user/${id}/edit`, {
+    // make edit request
+    const save = requestSave(`http://localhost:5000/api/user/${id}/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newProfile),
       credentials: "include",
-    }).then(
+    });
+
+    save.then(
       (res) => {
-        const refetchPromise = auth.refetchUser();
-        onSaveSuccess?.(refetchPromise, res);
+        const refetch = auth.refetchUser();
+        onSaveSuccess?.(refetch, res);
       },
       (err) => {
         if (err.name !== "AbortError") {
@@ -75,6 +80,21 @@ const ProfileEdit = ({
         }
       }
     );
+
+    // toast
+    if (!disableToast) {
+      toastAbortablePromise(save, {
+        pending: "Saving...",
+        success: "Saved successfully!",
+        error: (
+          <>
+            Unable to save.
+            <br />
+            An error has occurred.
+          </>
+        ),
+      });
+    }
   };
 
   const handleCancel = () => {
