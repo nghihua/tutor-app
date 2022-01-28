@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../hooks/custom-hooks";
 
 const Home = () => {
+  const auth = useAuth();
+
   return (
 <div className="home">
   <div className="buffer"></div>
@@ -9,13 +12,18 @@ const Home = () => {
     <div className="content">
       <h2>WELCOME TO TUTOR</h2>
       <p>We are the answers to all your questions</p>
-
-      <Link to="/login">
-        <button>Sign in</button>
-      </Link>
-      <Link to="/register">
-        <button>Sign up</button>
-      </Link>
+      
+      {auth.isLoggedIn === false  && 
+      <div>
+        <Link to="/login">
+          <button>Sign in</button>
+        </Link>
+        <Link to="/register">
+          <button>Sign up</button>
+        </Link>
+      </div>
+      }
+      
     </div>
   </div>
 
