@@ -9,6 +9,7 @@ const VolunteerList = ({ volunteers }) => {
 
   const [cvolunteers, setCvolunteers] = useState([]);
 
+  const pageCount = Math.ceil(volunteers.length / volunteersPerPage);
 
   const fetchVolunteers = (currentPage) => {
     // Get current volunteers
@@ -43,7 +44,7 @@ const VolunteerList = ({ volunteers }) => {
         previousLabel={'previous'}
         nextLabel={'next'}
         breakLabel={'...'}
-        pageCount={4}
+        pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
