@@ -1,5 +1,7 @@
 import { useFetch } from "../hooks/custom-hooks";
 import { includeCredentials } from "../utils";
+import ErrorMessage from "./ErrorMessage";
+import LoadingScreen from "./LoadingScreen";
 import VolunteerList from "./VolunteerList";
 
 const Volunteers = () => {
@@ -14,14 +16,8 @@ const Volunteers = () => {
 
   return (
     <div className="volunteers">
-      {isLoading && <h3>Loading...</h3>}
-      {error && (
-        <>
-          <h4>An error has occurred</h4>
-          <p>{error.message}</p>
-        </>
-      )}
-
+      {isLoading && <LoadingScreen />}
+      {error && <ErrorMessage error={error} />}
       {tutors && <VolunteerList volunteers={tutors} />}
     </div>
   );
