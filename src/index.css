@@ -186,12 +186,16 @@ button:hover {
 .home .buffer {
   height: 100px;
 }
+.home h2 {
+  font-size: 33px;
+  padding-bottom: 15px;
+}
 .home h3 {
   font-family: Rubik;
   font-size: 15px;
 }
 .home .Welcome {
-  height: 345px;
+  height: 365px;
   background: url("../public/homeimg1.png");
   background-color: rgba(220,210,220);
   background-blend-mode: multiply;
@@ -207,6 +211,8 @@ button:hover {
   color: white;
   font-family: Rubik;
   font-size: 55px;
+  line-height: 60px;
+  padding-bottom: 10px;
 }
 .Welcome p {
   color: white;
@@ -221,6 +227,7 @@ button:hover {
   border-radius: 20px;
   background: rgba(255,255,255,0.6);
   position: relative;
+  top: 20px;
 }
 .Welcome a{
   color: black;
@@ -233,14 +240,14 @@ button:hover {
   cursor: pointer;
 }
 .home .About-us {
-  height: 300px;
+  min-height: 250px;
   text-align: center;
   position: relative;
-  padding: 20px;
+  padding-top: 50px;
 }
 .About-us .content {
-  height: 250px;
-  max-width: 730px;
+  min-height: 200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 .About-us p {
@@ -251,7 +258,7 @@ button:hover {
   background: orange;
   width: 500px;
   height: 3px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 .home .Privilege {
   min-height: 200px;
@@ -259,7 +266,7 @@ button:hover {
 }
 .Privilege .box {
   display: inline-block;
-  margin: 40px 20px;
+  margin: 30px 20px;
   width: 240px;
   height: 150px;
   background: white;
@@ -275,25 +282,53 @@ button:hover {
 }
 .home .Subject {
   min-height: 250px;
-  background: rgba(211,200,105,0.3);
-  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
   padding-top: 20px;
+  text-align: center;
 }
 .Subject .subject-display {
-  background: yellow;
   margin: 20px auto;
+  width: 250px;
+  text-align: justify;
+  font-family: Rubik;
+  font-size: 12px;
+  line-height: 14px;
+}
+.Subject h4 {
+  font-size: 18px;
+  line-height: 20px;
+  color: orange;
+  margin: 0;
+  margin-bottom: 7px;
+}
+.Subject img {
+  width: 70px;
+  margin-right: 20px;
+  float: left;
 }
 .home .Quote {
   min-height: 200px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   background: #FFD8A9;
   text-align: center;
+  color: white;
+  font-weight: 500;
+  font-style: italic;
 }
 .Quote img{
   width: 100%;
+  margin-bottom: 20px;
 }
-.home .Quote h4 {
+.Quote h4 {
   font-size: 20px;
+  margin: 0;
+}
+.Quote p {
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 /*Profile View*/
@@ -409,15 +444,10 @@ button:hover {
   border: 2px solid black;
 }
 .profileedit button {
-  margin: 0;
 }
 .typo {
   font-size: 30px;
   line-height: 40px;
-}
-input {
-  line-height: 40px;
-  color: red;
 }
 .profileedit .section {
   height: 50px;

@@ -1,13 +1,19 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { React } from "react";
 import { useAuth } from "../hooks/custom-hooks";
+import LoadingScreen from "./LoadingScreen";
+import ErrorMessage from "./ErrorMessage";
 
 const ProtectedRoute = () => {
   const auth = useAuth();
   const location = useLocation();
 
+  if (auth.error) {
+    return <ErrorMessage error={auth.error} />;
+  }
+
   if (auth.isLoggedIn === null) {
-    return <h3>Loading...</h3>;
+    return <LoadingScreen />;
   }
 
   if (!auth.isLoggedIn) {
