@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useAuth } from "../hooks/custom-hooks";
-// import TestModalBtn from "./TestModalBtn";
+// import { TestModalBtn } from "components";
 
 const Navbar = () => {
   const auth = useAuth();
@@ -18,7 +19,7 @@ const Navbar = () => {
         },
         (err) => {
           console.error(err);
-          alert("An error has occurred.");
+          toast.error("An error has occurred.");
         }
       );
     }
