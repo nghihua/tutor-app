@@ -31,7 +31,7 @@ const user_get = (req, res) => {
     else {
         User.get_by_id(user_id, async (error, results) => {
             if (error) {
-                res.send(error);
+                res.status(400).send("Invalid ID");
             }
             else {
                 if (!results.rowCount) {
@@ -61,9 +61,9 @@ const user_put = async (req, res) => {
     }
     else {
         const user_id = req.params.id;
-        const { full_name, major, intake, is_volunteer, subjects } = req.body;
+        const { full_name, major, intake, is_tutor, subjects } = req.body;
         try {
-            await User.update_info(user_id, full_name, major, intake, is_volunteer, subjects);
+            await User.update_info(user_id, full_name, major, intake, is_tutor, subjects);
             res.send({message: "Update successfully!"});
         }
         catch (e) {
