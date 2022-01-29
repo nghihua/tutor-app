@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react'
 
 const useFetch2 = (url, isUseEffect) => {
   const [data, setData] = useState(null);
@@ -6,46 +6,50 @@ const useFetch2 = (url, isUseEffect) => {
   const [error, setError] = useState(null);
   const doFetch = useCallback(async () => {
     fetch(url, {
-      method: "GET",
+      method: 'GET',
       credentials: "include",
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
     })
-      .then((response) => {
+      .then(response => {
         if (!response.ok) {
-          throw Error("can not fetch data");
+          console.log(response.ok);
+          console.log(response);
         }
-        return response.json();
+        else{
+        return response.json()
+        }
       })
-      .then((data) => {
+      .then(data => {
         if (isUseEffect) {
-          setData(data);
+          setData(data)
           setError(null);
           setPending(false);
         }
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.name === "AbortError") {
           console.log("fetch aborted");
-        } else {
+        }
+        else {
           if (isUseEffect) {
             console.log(error.message);
             setError(error.message);
             setPending(false);
           }
         }
-      });
-  }, [url, isUseEffect]);
+      })
+  }, [url, isUseEffect])
   useEffect(() => {
     if (isUseEffect) {
       doFetch();
     }
   }, [isUseEffect, doFetch]);
   return { data, pending, error, doFetch };
-};
+}
 
-export { useFetch2 };
+export default useFetch2;
 
 // .then(response => {
 //   if(!response.ok){
@@ -57,4 +61,4 @@ export { useFetch2 };
 //   console.log(data);
 //   auth.current = data;
 //   console.log(auth.current);
-// })
+// }) 
