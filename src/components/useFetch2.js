@@ -14,9 +14,12 @@ const useFetch2 = (url, isUseEffect) => {
     })
       .then(response => {
         if (!response.ok) {
-          throw Error("can not fetch data")
+          console.log(response.ok);
+          console.log(response);
         }
+        else{
         return response.json()
+        }
       })
       .then(data => {
         if (isUseEffect) {
