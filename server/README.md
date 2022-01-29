@@ -4,7 +4,7 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 
 ## Authentication
 
-[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_volunteer is defaulted to false
+[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_tutor is defaulted to false
 
 	--> if email is invalid, return a 400 code error with message "Invalid email"
 	
@@ -56,7 +56,7 @@ cd vào đây rồi gõ npm start để chạy server nha, default port chị đ
 	--> if has edit permission, return true
 	--> otherwise, return false
 	
-[PUT] /api/user/:id/edit ({ full_name, major, intake, is_volunteer, subjects })
+[PUT] /api/user/:id/edit ({ full_name, major, intake, is_tutor, subjects })
 
 	--> if user is not logged in (no jwt in cookie or jwt is invalid), return a 401 error code with message "Unauthorized!"
 	
