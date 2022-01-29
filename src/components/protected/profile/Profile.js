@@ -1,11 +1,13 @@
 import { useCallback, useEffect } from "react";
-import ProfileEdit from "./ProfileEdit";
-import ProfileView from "./ProfileView";
-import { useFetch, useAuth, useMountStatus } from "../hooks/custom-hooks";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { includeCredentials } from "../utils";
-import LoadingScreen from "./LoadingScreen";
-import ErrorMessage from "./ErrorMessage";
+import { useFetch, useAuth, useMountStatus } from "hooks";
+import { includeCredentials } from "util";
+import {
+  ProfileEdit,
+  ProfileView,
+  LoadingScreen,
+  ErrorMessage,
+} from "components";
 
 const Profile = () => {
   const { id } = useParams();
@@ -85,4 +87,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export { Profile };

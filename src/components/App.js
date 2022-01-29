@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import Footer from "./Footer";
-import Login from "./Login";
-import Register from "./Register";
-import Volunteers from "./Volunteers";
-import Profile from "./Profile";
-import ProtectedRoute from "./ProtectedRoute";
-import Home from "./Home";
-import NotFound from "./NotFound";
-import ProfileMe from "./ProfileMe";
-import Navbar from "./Navbar";
-import { ModalManager } from "components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  Footer,
+  Login,
+  Register,
+  Volunteers,
+  Profile,
+  ProtectedRoute,
+  Home,
+  NotFound,
+  ProfileMe,
+  Navbar,
+  ModalManager,
+} from "components";
 
 const App = () => {
   return (
@@ -46,4 +48,4 @@ const App = () => {
   );
 };
 
-export default App;
+export { App };

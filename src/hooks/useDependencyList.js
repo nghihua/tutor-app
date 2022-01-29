@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { usePrevious } from "./custom-hooks";
+import { usePrevious } from "hooks";
 
 /**
  * Returns an object containing the `changed` property (whether the dependencies array passed in has changed
@@ -26,4 +26,4 @@ const useDependencyList = (deps, singleDep = false, isEqualFn = Object.is) => {
   return { changed, stable: ref.current };
 };
 
-export default useDependencyList;
+export { useDependencyList };
