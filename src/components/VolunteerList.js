@@ -1,7 +1,7 @@
 import VolunteerPreview from "./VolunteerPreview";
 import ReactPaginate from "react-paginate";
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
 const volunteersPerPage = 3;
 
@@ -9,19 +9,20 @@ const VolunteerList = ({ volunteers }) => {
 
   const [cvolunteers, setCvolunteers] = useState([]);
 
+  const pageCount = Math.ceil(volunteers.length / volunteersPerPage);
 
-  const fetchVolunteers = (currentPage) => {
+  const fetchVolunteers = useCallback((currentPage) => {
     // Get current volunteers
     const lastIndex = currentPage * volunteersPerPage;
     const firstIndex = lastIndex - volunteersPerPage;
     const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
     return currentVolunteers;
-  }
+  }, [volunteers])
 
   useEffect(() => {
     const volunteersFormServer =  fetchVolunteers(1);
     setCvolunteers(volunteersFormServer);
-  }, []);
+  }, [fetchVolunteers]);
 
 
   const handlePageClick = (data) => {
@@ -43,7 +44,7 @@ const VolunteerList = ({ volunteers }) => {
         previousLabel={'previous'}
         nextLabel={'next'}
         breakLabel={'...'}
-        pageCount={4}
+        pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
