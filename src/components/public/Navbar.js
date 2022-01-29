@@ -1,9 +1,10 @@
+import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "hooks";
 // import { TestModalBtn } from "components";
 
-const Navbar = () => {
+const Navbar = ({ link, linkName }) => {
   const auth = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -23,7 +24,6 @@ const Navbar = () => {
       );
     }
   };
-
   return (
     <>
       <nav expand="lg" className="main-nav fixed-top b-5">
@@ -35,35 +35,47 @@ const Navbar = () => {
 
           {/* <TestModalBtn /> */}
         </div>
-
-        <div className="secondfloor">
-          <Link to="/" className="redirect">
-            <div className="section">Home</div>
-          </Link>
-
-          <Link to="/volunteers" className="redirect">
-            <div className="section">Volunteers</div>
-          </Link>
-
-          {auth.isLoggedIn === false ? (
-            <Link to="/login" className="redirect" state={{ from: location }}>
-              <div className="section">Log In</div>
+        {link ? (
+          <>
+            <div className="secondfloor">
+              <Link to="/" className="redirect">
+                <div className="section">Home</div>
+              </Link>
+              <Link to={link} className="redirect">
+                <div className="section">{linkName}</div>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <div className="secondfloor">
+            <Link to="/" className="redirect">
+              <div className="section">Home</div>
             </Link>
-          ) : (
-            <>
-              <Link
-                to={`/profile/${auth.user?.user_id ?? ""}`}
-                className="redirect"
-              >
-                <div className="section">My Profile</div>
-              </Link>
 
-              <Link to="/" className="redirect" onClick={handleLogOut}>
-                <div className="section">Log Out</div>
+            <Link to="/volunteers" className="redirect">
+              <div className="section">Volunteers</div>
+            </Link>
+
+            {auth.isLoggedIn === false ? (
+              <Link to="/login" className="redirect" state={{ from: location }}>
+                <div className="section">Log In</div>
               </Link>
-            </>
-          )}
-        </div>
+            ) : (
+              <>
+                <Link
+                  to={`/profile/${auth.user?.user_id ?? ""}`}
+                  className="redirect"
+                >
+                  <div className="section">My Profile</div>
+                </Link>
+
+                <Link to="/" className="redirect" onClick={handleLogOut}>
+                  <div className="section">Log Out</div>
+                </Link>
+              </>
+            )}
+          </div>
+        )}
       </nav>
 
       <Outlet />
