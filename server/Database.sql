@@ -5,7 +5,7 @@ password text NOT NULL,
 full_name text NOT NULL,
 major text NOT NULL,
 intake int NOT NULL,
-is_volunteer boolean DEFAULT false,
+is_tutor boolean DEFAULT false,
 PRIMARY KEY(user_id));
 
 CREATE TABLE tutor_subject (
@@ -18,7 +18,10 @@ CONSTRAINT fk_tutor
 );
 
 CREATE VIEW
-full_info AS SELECT user_id, email, full_name, major, intake, is_volunteer, 
-ARRAY_AGG(subject) FILTER (WHERE subject IS NOT NULL) as subjects
-FROM users u LEFT JOIN tutor_Subject y ON (y.tutor_id = u.user_id)
+full_info AS SELECT user_id, email, full_name, major, intake, is_tutor, 
+CASE 
+	WHEN EXISTS (SELECT subject FROM tutor_subject WHERE tutor_id = user_id) THEN ARRAY_AGG(subject)
+	ELSE ARRAY[]::text[]
+	END as subjects
+FROM users u LEFT JOIN tutor_subject y ON (y.tutor_id = u.user_id)
 GROUP BY user_id, email, full_name, major, intake;
