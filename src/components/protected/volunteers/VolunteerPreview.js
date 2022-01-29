@@ -37,4 +37,4 @@ const VolunteerPreview = ({ user: { user_id, full_name, major, intake } }) => {
   );
 };
 
-export default VolunteerPreview;
+export { VolunteerPreview };

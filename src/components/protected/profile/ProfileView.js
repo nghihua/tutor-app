@@ -58,4 +58,4 @@ const ProfileView = ({
   );
 };
 
-export default ProfileView;
+export { ProfileView };

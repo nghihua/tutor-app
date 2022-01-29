@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../hooks/custom-hooks";
+import { useAuth } from "hooks";
 
 const ProfileMe = () => {
   const auth = useAuth();
@@ -13,4 +13,4 @@ const ProfileMe = () => {
   );
 };
 
-export default ProfileMe;
+export { ProfileMe };
