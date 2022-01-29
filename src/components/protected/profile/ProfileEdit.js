@@ -19,14 +19,7 @@ const arrayEquals = (a, b) =>
   a.length === b.length && a.every((val, index) => val === b[index]);
 
 const ProfileEdit = ({
-  user: {
-    user_id: id,
-    full_name: currFullName,
-    major: currMajor,
-    intake: currIntake,
-    is_volunteer: currIsTutor,
-    subjects: currSubjects,
-  },
+  user: current,
   onSaveSuccess,
   onSaveError,
   onCancel,
@@ -34,11 +27,11 @@ const ProfileEdit = ({
   disableToast = false,
 }) => {
   // Profile states
-  const [fullName, setFullName] = useState(currFullName);
-  const [major, setMajor] = useState(currMajor);
-  const [intake, setIntake] = useState(currIntake);
-  const [isTutor, setIsTutor] = useState(checkIsTutor || currIsTutor);
-  const [subjects, setSubjects] = useState(currSubjects);
+  const [fullName, setFullName] = useState(current.full_name);
+  const [major, setMajor] = useState(current.major);
+  const [intake, setIntake] = useState(current.intake);
+  const [isTutor, setIsTutor] = useState(checkIsTutor || current.is_tutor);
+  const [subjects, setSubjects] = useState(current.subjects);
 
   const auth = useAuth();
 
@@ -55,19 +48,22 @@ const ProfileEdit = ({
       full_name: fullName,
       major,
       intake,
-      is_volunteer: isTutor,
+      is_tutor: isTutor,
       subjects,
     };
 
     // make edit request
-    const save = requestSave(`http://localhost:5000/api/user/${id}/edit`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProfile),
-      credentials: "include",
-    });
+    const save = requestSave(
+      `http://localhost:5000/api/user/${current.user_id}/edit`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newProfile),
+        credentials: "include",
+      }
+    );
 
     save.then(
       (res) => {
@@ -103,11 +99,11 @@ const ProfileEdit = ({
   };
 
   const isNotChanged = () =>
-    currFullName === fullName &&
-    currMajor === major &&
-    currIntake === intake &&
-    currIsTutor === isTutor &&
-    arrayEquals(currSubjects, subjects);
+    current.full_name === fullName &&
+    current.major === major &&
+    current.intake === intake &&
+    current.is_tutor === isTutor &&
+    arrayEquals(current.subjects, subjects);
 
   return (
     <form className="profileedit" onSubmit={handleSubmit}>

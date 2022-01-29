@@ -1,5 +1,5 @@
 const ProfileView = ({
-  user: { full_name, major, intake, is_volunteer, subjects },
+  user: { full_name, major, intake, is_tutor, subjects },
   canEdit,
   onEdit,
 }) => {
@@ -28,7 +28,7 @@ const ProfileView = ({
 
         {
           // Display tutor's information
-          is_volunteer && (
+          is_tutor && (
             <div className="tutor-detail">
               <h2>Tutor's info</h2>
               <div className="row d-flex justify-content-center">
