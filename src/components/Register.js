@@ -63,7 +63,7 @@ const Register = () => {
 
           {/* <input type="text" placeholder="Major" id="major" onChange={(event) => setDetails({ ...details, major: event.target.value })} ></input> */}
           <select id="major" onChange={(event) => setMajor(event.target.value)} value={major}>
-            <option disabled selected value="Please select major">-- Please select major -- </option>
+            <option disabled selected = "true" value="">-- Please select major -- </option>
             <option value="CSE">CSE</option>
             <option value="BBA">BBA</option>
             <option value="BFA">BFA</option>
