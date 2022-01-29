@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 
 // const Register = ({changePage, createUser}) => {
 const Register = () => {
-  const [details, setDetails] = useState({
-    email: "",
-    password: "",
-    full_name: "",
-    major: "",
-    intake: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [full_name, setFull_name] = useState("");
+  const [major, setMajor] = useState("");
+  const [intake, setIntake] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -25,32 +23,27 @@ const Register = () => {
   };
 
   const handleSubmit = (event) => {
-    if (
-      details.email === "" ||
-      details.password === "" ||
-      details.full_name === "" ||
-      details.major === "" ||
-      details.intake === "" ||
-      checkPassword === ""
-    ) {
+    if (!(checkPassword === password)) {
       event.preventDefault();
-      console.log(details);
-      setError("Please insert all input");
+      // add user to the server
+      setError("Password not the same");
     } else {
-      if (!(checkPassword === details.password)) {
-        event.preventDefault();
-        // add user to the server
-        setError("Password not the same");
-      } else {
-        event.preventDefault();
-        console.log(details);
-        sendData("http://localhost:5000/api/auth/signup", details)
-          .then((data) => {
-            console.log("data sent");
-            console.log(data);
-          })
-          .catch((error) => console.log(`error: ${error}`));
-      }
+      event.preventDefault();
+      const details = {
+        email,
+        password,
+        full_name,
+        major,
+        intake,
+      };
+      console.log(details);
+
+      sendData("http://localhost:5000/api/auth/signup", details)
+        .then((data) => {
+          console.log("data sent");
+          setError(data.message);
+        })
+        .catch((error) => console.log(`error: ${error}`));
     }
   };
   //[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_volunteer is defaulted to false
@@ -63,50 +56,51 @@ const Register = () => {
             type="text"
             placeholder="Full Name"
             id="fullname"
-            onChange={(event) =>
-              setDetails({ ...details, full_name: event.target.value })
-            }
-            value={details.value}
+            onChange={(event) => setFull_name(event.target.value)}
+            required
           ></input>
 
-          <input
-            type="text"
-            placeholder="Major"
+          {/* <input type="text" placeholder="Major" id="major" onChange={(event) => setDetails({ ...details, major: event.target.value })} ></input> */}
+          <select
             id="major"
-            onChange={(event) =>
-              setDetails({ ...details, major: event.target.value })
-            }
-            value={details.value}
-          ></input>
-
+            onChange={(event) => setMajor(event.target.value)}
+            value={major}
+          >
+            <option disabled selected="true" value="">
+              -- Please select major --{" "}
+            </option>
+            <option value="CSE">CSE</option>
+            <option value="BBA">BBA</option>
+            <option value="BFA">BFA</option>
+            <option value="ARC">ARC</option>
+            <option value="BCE">BCE</option>
+            <option value="MEN">MEN</option>
+            <option value="ECE">ECE</option>
+          </select>
           <input
-            type="text"
+            type="number"
             placeholder="Intake"
             id="intake"
-            onChange={(event) =>
-              setDetails({ ...details, intake: event.target.value })
-            }
-            value={details.value}
+            onChange={(event) => setIntake(event.target.value)}
+            required
+            step="1"
+            min="2008"
+            max={new Date().getFullYear()}
           ></input>
 
           <input
             type="email"
             placeholder="Email"
             id="email"
-            onChange={(event) =>
-              setDetails({ ...details, email: event.target.value })
-            }
-            value={details.value}
+            onChange={(event) => setEmail(event.target.value)}
+            required
           ></input>
 
           <input
             type="password"
             placeholder="Password"
             id="password"
-            onChange={(event) =>
-              setDetails({ ...details, password: event.target.value })
-            }
-            value={details.value}
+            onChange={(event) => setPassword(event.target.value)}
           ></input>
 
           <input
@@ -114,7 +108,6 @@ const Register = () => {
             placeholder="Repeat password"
             id="repeatpassword"
             onChange={(event) => setCheckPassword(event.target.value)}
-            value={checkPassword.value}
           ></input>
 
           {error !== "" ? (
