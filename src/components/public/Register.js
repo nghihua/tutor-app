@@ -46,7 +46,7 @@ const Register = () => {
         .catch((error) => console.log(`error: ${error}`));
     }
   };
-  //[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_volunteer is defaulted to false
+  //[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_tutor is defaulted to false
   return (
     <div>
       <div className="register">
