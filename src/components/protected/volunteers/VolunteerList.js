@@ -1,31 +1,36 @@
-import { useState, useEffect } from "react";
+import VolunteerPreview from "./VolunteerPreview";
 import ReactPaginate from "react-paginate";
-import { VolunteerPreview } from "components";
+import { useState } from "react";
+import { useEffect, useCallback } from "react";
 
 const volunteersPerPage = 3;
 
 const VolunteerList = ({ volunteers }) => {
+
   const [cvolunteers, setCvolunteers] = useState([]);
 
-  const fetchVolunteers = (currentPage) => {
+  const pageCount = Math.ceil(volunteers.length / volunteersPerPage);
+
+  const fetchVolunteers = useCallback((currentPage) => {
     // Get current volunteers
     const lastIndex = currentPage * volunteersPerPage;
     const firstIndex = lastIndex - volunteersPerPage;
     const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
     return currentVolunteers;
-  };
+  }, [volunteers])
 
   useEffect(() => {
-    const volunteersFormServer = fetchVolunteers(1);
+    const volunteersFormServer =  fetchVolunteers(1);
     setCvolunteers(volunteersFormServer);
-  }, []);
+  }, [fetchVolunteers]);
+
 
   const handlePageClick = (data) => {
     let currentPage = data.selected + 1;
 
-    const volunteersFormServer = fetchVolunteers(currentPage);
+    const volunteersFormServer =  fetchVolunteers(currentPage);
     setCvolunteers(volunteersFormServer);
-  };
+  }
 
   return (
     <div className="volunteer-list">
@@ -35,11 +40,11 @@ const VolunteerList = ({ volunteers }) => {
         ))}
       </div>
 
-      <ReactPaginate
-        previousLabel={"previous"}
-        nextLabel={"next"}
-        breakLabel={"..."}
-        pageCount={4}
+    <ReactPaginate
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
@@ -53,11 +58,13 @@ const VolunteerList = ({ volunteers }) => {
         breakClassName="page-item"
         breakLinkClassName="page-link"
         activeClassName="active"
-      />
+        />
     </div>
   );
 };
 
+
 // Youtube: https://youtu.be/kMuRr53RjcE
 
-export { VolunteerList };
+
+export default VolunteerList;

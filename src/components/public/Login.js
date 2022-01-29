@@ -13,7 +13,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null); // set error if login not correct
-
   // after login, navigate to where the user came from or to the index page by default
   const from = location.state?.from ?? "/";
 
