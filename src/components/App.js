@@ -17,8 +17,12 @@ const App = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route element={<Navbar link={"/login"} linkName={"Log In"} />}>
+          <Route path="/register" element={<Register />} />
+        </Route>
+        <Route element={<Navbar link={"/register"} linkName={"Register"} />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
         <Route element={<Navbar />}>
           <Route index element={<Home />} />
 
