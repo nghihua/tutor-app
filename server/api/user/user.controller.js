@@ -31,7 +31,7 @@ const user_get = (req, res) => {
     else {
         User.get_by_id(user_id, async (error, results) => {
             if (error) {
-                res.send(error);
+                res.status(400).send("Invalid ID");
             }
             else {
                 if (!results.rowCount) {
