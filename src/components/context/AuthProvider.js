@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
-import { useFetch } from "../hooks/custom-hooks";
-import { includeCredentials } from "../utils";
+import { useFetch } from "hooks";
+import { includeCredentials } from "util";
 
 const AuthContext = createContext(null);
 
@@ -157,5 +157,4 @@ const AuthProvider = ({ children }) => {
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
 
-export default AuthProvider;
-export { AuthContext };
+export { AuthProvider, AuthContext };

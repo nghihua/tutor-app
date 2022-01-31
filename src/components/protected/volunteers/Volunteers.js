@@ -1,8 +1,6 @@
-import { useFetch } from "../hooks/custom-hooks";
-import { includeCredentials } from "../utils";
-import ErrorMessage from "./ErrorMessage";
-import LoadingScreen from "./LoadingScreen";
-import VolunteerList from "./VolunteerList";
+import { useFetch } from "hooks";
+import { includeCredentials } from "util";
+import { ErrorMessage, LoadingScreen, VolunteerList } from "components";
 
 const Volunteers = () => {
   const {
@@ -23,4 +21,4 @@ const Volunteers = () => {
   );
 };
 
-export default Volunteers;
+export { Volunteers };

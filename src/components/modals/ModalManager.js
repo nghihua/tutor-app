@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { PromptModal } from "components";
 import { toast } from "react-toastify";
+import { PromptModal } from "components";
 
 const ModalManager = () => {
   const navigate = useNavigate();

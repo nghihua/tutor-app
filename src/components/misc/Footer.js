@@ -4,6 +4,6 @@ const Footer = () => {
       <p>@tutor2021</p>
     </footer>
   );
-}
+};
 
-export default Footer;
+export { Footer };

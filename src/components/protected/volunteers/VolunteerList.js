@@ -1,36 +1,36 @@
-import VolunteerPreview from "./VolunteerPreview";
+import { useState, useEffect, useCallback } from "react";
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
-import { useEffect, useCallback } from "react";
+import { VolunteerPreview } from "components";
 
 const volunteersPerPage = 3;
 
 const VolunteerList = ({ volunteers }) => {
-
   const [cvolunteers, setCvolunteers] = useState([]);
 
   const pageCount = Math.ceil(volunteers.length / volunteersPerPage);
 
-  const fetchVolunteers = useCallback((currentPage) => {
-    // Get current volunteers
-    const lastIndex = currentPage * volunteersPerPage;
-    const firstIndex = lastIndex - volunteersPerPage;
-    const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
-    return currentVolunteers;
-  }, [volunteers])
+  const fetchVolunteers = useCallback(
+    (currentPage) => {
+      // Get current volunteers
+      const lastIndex = currentPage * volunteersPerPage;
+      const firstIndex = lastIndex - volunteersPerPage;
+      const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
+      return currentVolunteers;
+    },
+    [volunteers]
+  );
 
   useEffect(() => {
-    const volunteersFormServer =  fetchVolunteers(1);
+    const volunteersFormServer = fetchVolunteers(1);
     setCvolunteers(volunteersFormServer);
   }, [fetchVolunteers]);
-
 
   const handlePageClick = (data) => {
     let currentPage = data.selected + 1;
 
-    const volunteersFormServer =  fetchVolunteers(currentPage);
+    const volunteersFormServer = fetchVolunteers(currentPage);
     setCvolunteers(volunteersFormServer);
-  }
+  };
 
   return (
     <div className="volunteer-list">
@@ -40,10 +40,10 @@ const VolunteerList = ({ volunteers }) => {
         ))}
       </div>
 
-    <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
+      <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
         pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
@@ -58,13 +58,11 @@ const VolunteerList = ({ volunteers }) => {
         breakClassName="page-item"
         breakLinkClassName="page-link"
         activeClassName="active"
-        />
+      />
     </div>
   );
 };
 
-
 // Youtube: https://youtu.be/kMuRr53RjcE
 
-
-export default VolunteerList;
+export { VolunteerList };
