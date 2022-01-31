@@ -1,4 +1,5 @@
 const pg = require('pg');
+require('dotenv').config();
 
 const Pool = require('pg').Pool
 
@@ -11,10 +12,12 @@ const Pool = require('pg').Pool
 })*/
 
 const pool = new Pool({
-	connectionString: "***REMOVED***",
+	connectionString: process.env.DATABASE_STRING,
 	ssl: {
     		rejectUnauthorized: false // don't check for SSL cert
   	}
 });
+
+console.log(pool);
 
 module.exports = pool;
