@@ -17,4 +17,4 @@ const useMountStatus = () => {
   return { isMounted };
 };
 
-export default useMountStatus;
+export { useMountStatus };

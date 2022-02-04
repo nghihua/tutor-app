@@ -1,8 +1,7 @@
-import { Modal } from "bootstrap";
 import { useEffect, useRef, useState } from "react";
-import { useAuth } from "hooks/custom-hooks";
-import ProfileEdit from "components/ProfileEdit";
-import { ModalComponent } from "components";
+import { Modal } from "bootstrap";
+import { useAuth } from "hooks";
+import { ProfileEdit, ModalComponent } from "components";
 
 // modal's content enum constants
 const PROMPT = "PROMPT";
