@@ -35,7 +35,6 @@ const Profile = () => {
   }, [isOwner, loadProfile]);
 
   const user = isOwner ? auth.user : data;
-  user && (user.subjects ??= []); // set to empty array if null, for display convenience
 
   // isEditing state
   const isEditing = location.state?.isEditing ?? false;
