@@ -1,8 +1,8 @@
 import { useFetch } from "hooks";
 import { includeCredentials } from "util";
-import { ErrorMessage, LoadingScreen, VolunteerList } from "components";
+import { ErrorMessage, LoadingScreen, TutorList } from "components";
 
-const Volunteers = () => {
+const Tutors = () => {
   const {
     data: tutors,
     error,
@@ -13,12 +13,12 @@ const Volunteers = () => {
   });
 
   return (
-    <div className="volunteers">
+    <div className="tutors">
       {isLoading && <LoadingScreen />}
       {error && <ErrorMessage error={error} />}
-      {tutors && <VolunteerList volunteers={tutors} />}
+      {tutors && <TutorList tutors={tutors} />}
     </div>
   );
 };
 
-export { Volunteers };
+export { Tutors };

@@ -1,42 +1,42 @@
 import { useState, useEffect, useCallback } from "react";
 import ReactPaginate from "react-paginate";
-import { VolunteerPreview } from "components";
+import { TutorPreview } from "components";
 
-const volunteersPerPage = 3;
+const tutorsPerPage = 3;
 
-const VolunteerList = ({ volunteers }) => {
-  const [cvolunteers, setCvolunteers] = useState([]);
+const TutorList = ({ tutors }) => {
+  const [ctutors, setCtutors] = useState([]);
 
-  const pageCount = Math.ceil(volunteers.length / volunteersPerPage);
+  const pageCount = Math.ceil(tutors.length / tutorsPerPage);
 
-  const fetchVolunteers = useCallback(
+  const fetchTutors = useCallback(
     (currentPage) => {
-      // Get current volunteers
-      const lastIndex = currentPage * volunteersPerPage;
-      const firstIndex = lastIndex - volunteersPerPage;
-      const currentVolunteers = volunteers.slice(firstIndex, lastIndex);
-      return currentVolunteers;
+      // Get current tutors
+      const lastIndex = currentPage * tutorsPerPage;
+      const firstIndex = lastIndex - tutorsPerPage;
+      const currentTutors = tutors.slice(firstIndex, lastIndex);
+      return currentTutors;
     },
-    [volunteers]
+    [tutors]
   );
 
   useEffect(() => {
-    const volunteersFormServer = fetchVolunteers(1);
-    setCvolunteers(volunteersFormServer);
-  }, [fetchVolunteers]);
+    const tutorsFormServer = fetchTutors(1);
+    setCtutors(tutorsFormServer);
+  }, [fetchTutors]);
 
   const handlePageClick = (data) => {
     let currentPage = data.selected + 1;
 
-    const volunteersFormServer = fetchVolunteers(currentPage);
-    setCvolunteers(volunteersFormServer);
+    const tutorsFormServer = fetchTutors(currentPage);
+    setCtutors(tutorsFormServer);
   };
 
   return (
-    <div className="volunteer-list">
+    <div className="tutor-list">
       <div className="center">
-        {cvolunteers.map((user) => (
-          <VolunteerPreview user={user} key={user.user_id} />
+        {ctutors.map((user) => (
+          <TutorPreview user={user} key={user.user_id} />
         ))}
       </div>
 
@@ -65,4 +65,4 @@ const VolunteerList = ({ volunteers }) => {
 
 // Youtube: https://youtu.be/kMuRr53RjcE
 
-export { VolunteerList };
+export { TutorList };

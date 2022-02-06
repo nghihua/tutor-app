@@ -52,8 +52,8 @@ const Navbar = ({ link, linkName }) => {
               <div className="section">Home</div>
             </Link>
 
-            <Link to="/volunteers" className="redirect">
-              <div className="section">Volunteers</div>
+            <Link to="/tutors" className="redirect">
+              <div className="section">Tutors</div>
             </Link>
 
             {auth.isLoggedIn === false ? (
