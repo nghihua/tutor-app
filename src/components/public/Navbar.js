@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { useAuth } from "hooks";
+import { notifyError } from "util";
 // import { TestModalBtn } from "components";
 
 const Navbar = ({ link, linkName }) => {
@@ -13,15 +13,9 @@ const Navbar = ({ link, linkName }) => {
     event.preventDefault();
 
     if (auth.isLoggedIn) {
-      auth.logOut(
-        () => {
-          navigate("/");
-        },
-        (err) => {
-          console.error(err);
-          toast.error("An error has occurred.");
-        }
-      );
+      auth.logOut(() => {
+        navigate("/");
+      }, notifyError);
     }
   };
   return (
