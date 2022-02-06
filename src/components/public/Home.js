@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="buffer"></div>
+      {/* <div className="buffer"></div> */}
 
       <div className="Welcome">
         <div className="content">

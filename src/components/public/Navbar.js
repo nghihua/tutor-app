@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "hooks";
 import { notifyError } from "app-util";
-// import { TestModalBtn } from "components";
+import { TestModalBtn } from "components";
 
 const Navbar = ({ link, linkName }) => {
   const auth = useAuth();
@@ -19,16 +19,19 @@ const Navbar = ({ link, linkName }) => {
     }
   };
   return (
+    
     <>
-      <nav expand="lg" className="main-nav fixed-top b-5">
+      
+          {/* <TestModalBtn /> */}
+      {/* <nav expand="lg" className="main-nav fixed-top b-5">
         <div className="firstfloor">
           <Link to="/">
             <img src="favicon.png" alt="Tutor" className="logo" />
             <div className="brand">Tutor</div>
           </Link>
 
-          {/* <TestModalBtn /> */}
         </div>
+
         {link ? (
           <>
             <div className="secondfloor">
@@ -70,7 +73,81 @@ const Navbar = ({ link, linkName }) => {
             )}
           </div>
         )}
-      </nav>
+      </nav> */}
+
+      <nav class="navbar navbar-expand-lg main-nav sticky-top pl-5">
+        <Link to="/" class="navbar-brand brand">
+          <img src="favicon.png" alt="Tutor" width="50" height="50"/>
+          Tutor
+        </Link>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse pl-5" id="navbarNav">
+        <ul class="navbar-nav">
+        {link ? (
+            <>
+              <li class="nav-item">
+              <Link to="/" class="nav-link">
+                <span>Home</span>
+              </Link>
+            </li>
+            
+            <li class="nav-item">
+              <Link to={link} class="nav-link">
+                <span>{linkName}</span>
+              </Link>
+            </li>
+            </>
+            
+              
+          
+        ) : (
+          <>
+            <li class="nav-item">
+              <Link to="/" class="nav-link">
+                <span>Home</span>
+              </Link>
+            </li>
+            
+            <li class="nav-item">
+              <Link to="/tutors" class="nav-link">
+                <span>Our Tutors</span>
+              </Link>
+            </li>
+            
+
+            {auth.isLoggedIn === false ? (
+              <li class="nav-item">
+                <Link to="/login" class="nav-link" state={{ from: location }}>
+                  <span>Log In</span>
+                </Link>
+              </li>
+            ) : (
+              <>
+                <Link
+                  to={`/profile/${auth.user?.user_id ?? ""}`}
+                  class="nav-link"
+                >
+                  <span>My Profile</span>
+                </Link>
+
+                <Link to="/" onClick={handleLogOut} class="nav-link">
+                  <span>Log Out</span>
+                </Link>
+              </>
+            )}
+            </>
+        )}
+        </ul>
+        </div>
+
+
+      </nav> 
+
+
 
       <Outlet />
     </>
