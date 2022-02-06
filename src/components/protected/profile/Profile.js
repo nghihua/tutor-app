@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetch, useAuth, useMountStatus } from "hooks";
-import { includeCredentials } from "util";
+import { includeCredentials } from "app-util";
 import {
   ProfileEdit,
   ProfileView,

@@ -1,5 +1,5 @@
 import { useFetch } from "hooks";
-import { includeCredentials } from "util";
+import { includeCredentials } from "app-util";
 import { ErrorMessage, LoadingScreen, TutorList } from "components";
 
 const Tutors = () => {

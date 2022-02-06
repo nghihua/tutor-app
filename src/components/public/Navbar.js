@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "hooks";
-import { notifyError } from "util";
+import { notifyError } from "app-util";
 // import { TestModalBtn } from "components";
 
 const Navbar = ({ link, linkName }) => {

@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { useFetch } from "hooks";
-import { includeCredentials, notifyError } from "util";
+import { includeCredentials, notifyError } from "app-util";
 
 const AuthContext = createContext(null);
 

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import { useFetch, useAuth } from "hooks";
-import { toastAbortablePromise } from "util";
+import { toastAbortablePromise } from "app-util";
 
 const subjectList = [
   "Math",

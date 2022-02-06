@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "hooks";
-import { getFetchErrMsg } from "util";
+import { getFetchErrMsg } from "app-util";
 import { LoadingScreen, ErrorMessage } from "components";
 
 const Login = () => {
