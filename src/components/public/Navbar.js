@@ -53,7 +53,7 @@ const Navbar = ({ link, linkName }) => {
             </Link>
 
             <Link to="/tutors" className="redirect">
-              <div className="section">Tutors</div>
+              <div className="section">Our Tutors</div>
             </Link>
 
             {auth.isLoggedIn === false ? (
