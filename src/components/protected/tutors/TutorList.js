@@ -1,41 +1,39 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
+import { useSearchParams } from "react-router-dom";
 import { TutorPreview } from "components";
 
 const tutorsPerPage = 3;
 
 const TutorList = ({ tutors }) => {
-  const [ctutors, setCtutors] = useState([]);
+  // Get current page from url search parameter
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = parseInt(searchParams.get("page")) || 1; // default to 1 if parsed to NaN
+  const currentPage = Math.max(pageParam, 1); // default to 1 if negative
 
   const pageCount = Math.ceil(tutors.length / tutorsPerPage);
 
-  const fetchTutors = useCallback(
-    (currentPage) => {
-      // Get current tutors
-      const lastIndex = currentPage * tutorsPerPage;
-      const firstIndex = lastIndex - tutorsPerPage;
-      const currentTutors = tutors.slice(firstIndex, lastIndex);
-      return currentTutors;
-    },
-    [tutors]
-  );
+  const [currTutors, setCurrTutors] = useState([]);
 
   useEffect(() => {
-    const tutorsFormServer = fetchTutors(1);
-    setCtutors(tutorsFormServer);
-  }, [fetchTutors]);
+    // Get current tutors
+    const lastIndex = currentPage * tutorsPerPage;
+    const firstIndex = lastIndex - tutorsPerPage;
+    const currentTutors = tutors.slice(firstIndex, lastIndex);
 
-  const handlePageClick = (data) => {
-    let currentPage = data.selected + 1;
+    setCurrTutors(currentTutors);
+  }, [tutors, currentPage]);
 
-    const tutorsFormServer = fetchTutors(currentPage);
-    setCtutors(tutorsFormServer);
+  const handlePageClick = ({ selected }) => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("page", selected + 1);
+    setSearchParams(newParams);
   };
 
   return (
     <div className="tutor-list">
       <div className="center">
-        {ctutors.map((user) => (
+        {currTutors.map((user) => (
           <TutorPreview user={user} key={user.user_id} />
         ))}
       </div>
@@ -44,6 +42,7 @@ const TutorList = ({ tutors }) => {
         previousLabel={"previous"}
         nextLabel={"next"}
         breakLabel={"..."}
+        forcePage={currentPage - 1}
         pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
