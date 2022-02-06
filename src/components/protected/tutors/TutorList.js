@@ -39,15 +39,15 @@ const TutorList = ({ tutors }) => {
       </div>
 
       <ReactPaginate
-        previousLabel={"previous"}
-        nextLabel={"next"}
-        breakLabel={"..."}
+        previousLabel="previous"
+        nextLabel="next"
+        breakLabel="..."
         forcePage={currentPage - 1}
         pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
-        containerClassName={"pagination justify-content-center"}
+        containerClassName="pagination justify-content-center"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"
