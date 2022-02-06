@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-const VolunteerPreview = ({ user: { user_id, full_name, major, intake } }) => {
+const TutorPreview = ({ user: { user_id, full_name, major, intake } }) => {
   const linkTo = `/profile/${user_id}`;
 
   return (
-    <div className="volunteer-preview">
-      <div className="volunteer-block" background-color="white">
+    <div className="tutor-preview">
+      <div className="tutor-block" background-color="white">
         <span className="box1">
           <Link to={linkTo}>
             <img
@@ -18,7 +18,7 @@ const VolunteerPreview = ({ user: { user_id, full_name, major, intake } }) => {
           </Link>
         </span>
 
-        <span className="volunteer-info">
+        <span className="tutor-info">
           <div className="box2">
             <h2>{full_name}</h2>
             <p>
@@ -37,4 +37,4 @@ const VolunteerPreview = ({ user: { user_id, full_name, major, intake } }) => {
   );
 };
 
-export { VolunteerPreview };
+export { TutorPreview };

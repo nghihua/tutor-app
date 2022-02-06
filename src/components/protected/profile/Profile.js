@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetch, useAuth, useMountStatus } from "hooks";
-import { includeCredentials } from "util";
+import { includeCredentials } from "app-util";
 import {
   ProfileEdit,
   ProfileView,
@@ -35,7 +35,6 @@ const Profile = () => {
   }, [isOwner, loadProfile]);
 
   const user = isOwner ? auth.user : data;
-  user && (user.subjects ??= []); // set to empty array if null, for display convenience
 
   // isEditing state
   const isEditing = location.state?.isEditing ?? false;

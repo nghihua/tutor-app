@@ -1,3 +1,3 @@
 export * from "./profile";
-export * from "./volunteers";
+export * from "./tutors";
 export * from "./ProtectedRoute";

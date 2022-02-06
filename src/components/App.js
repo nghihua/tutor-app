@@ -5,7 +5,7 @@ import {
   Footer,
   Login,
   Register,
-  Volunteers,
+  Tutors,
   Profile,
   ProtectedRoute,
   Home,
@@ -29,7 +29,7 @@ const App = () => {
           <Route index element={<Home />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/volunteers" element={<Volunteers />} />
+            <Route path="/tutors" element={<Tutors />} />
             <Route path="/profile">
               <Route index element={<ProfileMe />} />
               <Route path=":id" element={<Profile />} />

@@ -35,13 +35,13 @@ const fetchReducer = (state, action) => {
   const update =
     index !== undefined
       ? // update state as array
-      (value, prev) => {
-        const copy = [...prev];
-        copy[index] = value;
-        return copy;
-      }
+        (value, prev) => {
+          const copy = [...prev];
+          copy[index] = value;
+          return copy;
+        }
       : // update state as a single value
-      (value) => value;
+        (value) => value;
 
   switch (action.type) {
     case "loading":
@@ -268,10 +268,10 @@ const useFetch = (
           if (!response.ok) {
             // HTTP error
             const message = !isJson
-              ? data
+              ? ` ${data}`
               : data.message
-                ? ` ${data.message}`
-                : "";
+              ? ` ${data.message}`
+              : "";
             throw new Error(`[HTTP ${response.status}]` + message);
           }
 

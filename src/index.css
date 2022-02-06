@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Be+Vietnam+Pro:wght@300&family=Lato:ital,wght@1,300&family=Roboto:wght@100;400;700;900&family=Rosarivo&family=Rubik:wght@300;400;500&family=Taprom&family=Tauri&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Be+Vietnam+Pro:wght@300&family=Lato:ital,wght@1,300&family=Roboto:wght@100;400;700;900&family=Rosarivo&family=Rubik:wght@300;400;500&family=Taprom&family=Tauri&display=swap");
 html {
   height: 100%;
   padding: 0;
@@ -35,7 +35,7 @@ body {
   background: #efab5a;
   margin: 0;
   text-align: center;
-  border-bottom: 4px solid rgba(210,120,120,0.4);
+  border-bottom: 4px solid rgba(210, 120, 120, 0.4);
 }
 .main-nav .logo {
   width: 55px;
@@ -59,7 +59,7 @@ body {
   border-radius: 7px;
 }
 .main-nav .section:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 .main-nav a {
   font-family: Rubik;
@@ -197,7 +197,7 @@ button:hover {
 .home .Welcome {
   height: 365px;
   background: url("../public/homeimg1.png");
-  background-color: rgba(220,210,220);
+  background-color: rgba(220, 210, 220);
   background-blend-mode: multiply;
   background-size: cover;
   position: relative;
@@ -225,17 +225,17 @@ button:hover {
   font-family: Rubik;
   font-size: 20px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
   position: relative;
   top: 20px;
 }
-.Welcome a{
+.Welcome a {
   color: black;
   font-family: Rosarivo;
   margin: 0 30px;
 }
 .Welcome button:hover {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   font-weight: bold;
   cursor: pointer;
 }
@@ -251,7 +251,6 @@ button:hover {
   margin: 0 auto;
 }
 .About-us p {
-  
   font-weight: 300;
 }
 .About-us .seperator {
@@ -271,7 +270,7 @@ button:hover {
   height: 150px;
   background: white;
   border-radius: 8px;
-  box-shadow: 5px 5px rgba(0,0,0,0.25);
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.25);
   font-size: 12px;
   padding: 10px;
 }
@@ -310,13 +309,13 @@ button:hover {
 .home .Quote {
   min-height: 200px;
   padding-bottom: 20px;
-  background: #FFD8A9;
+  background: #ffd8a9;
   text-align: center;
   color: white;
   font-weight: 500;
   font-style: italic;
 }
-.Quote img{
+.Quote img {
   width: 100%;
   margin-bottom: 20px;
 }
@@ -467,13 +466,13 @@ button:hover {
   opacity: 0.6;
 }
 
-/*Volunteer page*/
-.volunteers {
+/*Tutor page*/
+.tutors {
   margin: 0 30px 0 30px;
   padding-top: 125px;
   text-align: center;
 }
-.volunteers button {
+.tutors button {
   width: 200px;
   height: 65px;
   border-radius: 15px;
@@ -485,7 +484,7 @@ button:hover {
   color: white;
   font-family: Tauri;
 }
-.volunteers button:disabled {
+.tutors button:disabled {
   opacity: 0.6;
 }
 .pagination {
@@ -493,28 +492,28 @@ button:hover {
   margin: 0 auto;
 }
 /*Option 1:
-  .volunteer-preview {
+  .tutor-preview {
     text-align: center;
     display: inline-block;
     margin: 7px 25px;
   }
-  .volunteer-block {
+  .tutor-block {
     width: 180px;
     height: 300px;
     position: relative;
   }
-  .volunteers .image {
+  .tutors .image {
     position: relative;
     top: 45px;
     border-radius: 50%;
   }
-  .volunteers .box2 {
+  .tutors .box2 {
     background: rgba(210,210,210,1);
     background: linear-gradient(rgba(210,210,210,1), rgba(140,140,140,1));
     height: 210px;
     padding: 100px auto auto auto;
   }
-  .volunteers h2 {
+  .tutors h2 {
     font-family: Rubik;
     font-size: 20px;
     font-weight: bold;
@@ -523,13 +522,13 @@ button:hover {
     color: black;
     padding: 55px 0 0 0;
   }
-  .volunteers p {
+  .tutors p {
     font-family: Rubik;
     font-size: 18px;
     font-style: italic;
     line-height: 22px;
   }
-  .volunteers a {
+  .tutors a {
     color: black;
   }
   .seemore {
@@ -543,18 +542,18 @@ button:hover {
     padding: 5px;
     background: orange;
   }
-  .volunteers button {
+  .tutors button {
     display: block;
     margin: 50px auto;
   }*/
 /*Option 2
-  .volunteers {
+  .tutors {
     margin: 120px auto;
   }
-  .volunteer-preview {
+  .tutor-preview {
 
   }
-  .volunteer-block {
+  .tutor-block {
     width: 600px;
     height: 130px;
     margin: 50px auto;
@@ -563,14 +562,14 @@ button:hover {
     border-radius: 15px;
     box-shadow: 5px 10px rgba(210,207,200,1);
   }
-  .volunteers .image {
+  .tutors .image {
     float: left;
     position: relative;
     top: 15px;
     left: 30px;
     border-radius: 50%;
   }
-  .volunteers h2 {
+  .tutors h2 {
     font-family: Rubik;
     font-size: 20px;
     font-weight: bold;
@@ -578,14 +577,14 @@ button:hover {
     padding: 20px 150px;
     padding-bottom: 0px;
   }
-  .volunteers p {
+  .tutors p {
     font-family: Rubik;
     font-size: 18px;
     font-style: italic;
     text-align: left;
     padding: 0px 150px;
   }
-  .volunteers button {
+  .tutors button {
     display: block;
     margin: 10px auto;
   }
@@ -611,23 +610,23 @@ button:hover {
     top: 50px;
   }*/
 /* Option 3*/
-.volunteer-preview {
+.tutor-preview {
   text-align: center;
   display: inline-block;
   margin: 7px 30px 40px 30px;
 }
-.volunteer-block {
+.tutor-block {
   width: 200px;
   height: 300px;
   position: relative;
   box-shadow: 20px 10px rgba(235, 225, 225);
 }
-.volunteers .image {
+.tutors .image {
   width: 210px;
   height: 190px;
   z-index: -1;
 }
-.volunteers .box2 {
+.tutors .box2 {
   background: white;
   height: 210px;
   padding: 10px 5px auto 5px;
@@ -638,7 +637,7 @@ button:hover {
   height: 150px;
   text-align: left;
 }
-.volunteers h2 {
+.tutors h2 {
   font-family: Be Vietnam Pro;
   font-size: 20px;
   font-weight: bold;
@@ -646,14 +645,14 @@ button:hover {
   color: black;
   padding: 24px 10px 0 10px;
 }
-.volunteers p {
+.tutors p {
   font-family: Rubik;
   font-size: 18px;
   font-style: italic;
   line-height: 22px;
   padding: 0 10px;
 }
-.volunteers a {
+.tutors a {
   color: black;
 }
 .seemore {
@@ -668,7 +667,7 @@ button:hover {
   background: rgba(245, 165, 0, 1);
   text-align: center;
 }
-.volunteers button {
+.tutors button {
   display: block;
   margin: 50px auto;
 }
@@ -681,7 +680,7 @@ footer {
   font-weight: bold;
   line-height: 24px;
   color: white;
-  background: rgba(235,125,0,0.8);
+  background: rgba(235, 125, 0, 0.8);
   position: absolute;
   bottom: 0;
   width: 100%;

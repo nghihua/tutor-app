@@ -1,6 +1,6 @@
 import { createContext, useEffect, useReducer } from "react";
 import { useFetch } from "hooks";
-import { includeCredentials } from "util";
+import { includeCredentials, notifyError } from "app-util";
 
 const AuthContext = createContext(null);
 
@@ -111,7 +111,7 @@ const AuthProvider = ({ children }) => {
           dispatch({ type: UNAUTH });
         } else {
           dispatch({ type: ERROR, payload: err });
-          console.error(err);
+          notifyError(err);
         }
       });
   };
@@ -126,7 +126,6 @@ const AuthProvider = ({ children }) => {
     logOut,
     refetchUser,
   });
-  auth.user && (auth.user.subjects ??= []); // set to empty array if null, for display convenience
 
   useEffect(() => {
     const fetchAuth = async () => {
@@ -146,7 +145,7 @@ const AuthProvider = ({ children }) => {
       } catch (err) {
         if (err.name !== "AbortError") {
           dispatch({ type: ERROR, payload: err });
-          console.error(err);
+          notifyError(err);
         }
       }
     };

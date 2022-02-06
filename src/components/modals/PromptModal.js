@@ -50,7 +50,7 @@ const PromptModal = ({ onClosed }) => {
 
   const { title, body } = {
     [PROMPT]: {
-      title: "Do you want to be a volunteer?",
+      title: "Do you want to be a tutor?",
       body: (
         <>
           <button type="button" onClick={switchContent}>
