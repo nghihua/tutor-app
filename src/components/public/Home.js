@@ -5,20 +5,20 @@ const Home = () => {
   const auth = useAuth();
 
   return (
-    <div className="home">
+    <div className="home ">
       {/* <div className="buffer"></div> */}
 
       <div className="Welcome">
         <div className="content">
-          <h2>WELCOME TO TUTOR</h2>
-          <p>We are the answers to all your questions</p>
+          <h2 className="container">WELCOME TO TUTOR</h2>
+          <p className="container">We are the answers to all your questions</p>
 
           {auth.isLoggedIn === false && (
-            <div>
-              <Link to="/login">
+            <div className="row">
+              <Link to="/login" class="col">
                 <button>Sign in</button>
               </Link>
-              <Link to="/register">
+              <Link to="/register" class="col">
                 <button>Sign up</button>
               </Link>
             </div>
@@ -30,7 +30,7 @@ const Home = () => {
         <div className="content">
           <h3>Who are we?</h3>
           <h2>ABOUT US</h2>
-          <p>
+          <p className="container">
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             sint. Velit officia consequatAmet minim mollit non deserunt ullamco
             est sit aliqua dolor do amet sint. Velit officia consequat.Amet
@@ -43,7 +43,7 @@ const Home = () => {
       </div>
 
       <div className="Privilege">
-        <div className="box">
+        <div className=" box">
           <img
             src="https://i.ibb.co/QMJbLtj/chat-symbol.png"
             alt="Consulting"
@@ -94,9 +94,6 @@ const Home = () => {
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             sint.
           </div>
-        </div>
-
-        <div className="row">
           <div className="subject-display">
             <img src="home-matlab.png" />
             <h4>Matlab</h4>
@@ -116,13 +113,16 @@ const Home = () => {
             sint.
           </div>
         </div>
+
+        {/* <div className="row">
+          
+        </div> */}
       </div>
 
-      <div className="Quote">
+      <div className="Quote text-center">
         <img alt="image" src="homeimg2.png" />
-        <p>
-          Tell me and I forget, teach me and I may remember, involve me and I
-          learn
+        <p className=" container">
+          Tell me and I forget, teach me and I may remember, involve me and I learn
         </p>
         <h4>Benjamin Franklin</h4>
       </div>

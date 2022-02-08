@@ -103,7 +103,7 @@ nav a:hover {
 .register h2 {
   text-align: center;
 }
-input {
+input, select {
   width: 350px;
   height: 65px;
   border-radius: 15px;

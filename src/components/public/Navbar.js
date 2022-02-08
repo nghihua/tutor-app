@@ -75,7 +75,7 @@ const Navbar = ({ link, linkName }) => {
         )}
       </nav> */}
 
-      <nav class="navbar navbar-expand-lg main-nav sticky-top pl-5">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <Link to="/" class="navbar-brand brand">
           <img src="favicon.png" alt="Tutor" width="50" height="50"/>
           Tutor
@@ -86,68 +86,56 @@ const Navbar = ({ link, linkName }) => {
         </button>
 
         <div class="collapse navbar-collapse pl-5" id="navbarNav">
-        <ul class="navbar-nav">
+          <div class="navbar-nav">
         {link ? (
-            <>
-              <li class="nav-item">
-              <Link to="/" class="nav-link">
-                <span>Home</span>
+          
+          <>
+              <Link to="/" class="nav-item nav-link">
+                <span >Home</span>
               </Link>
-            </li>
             
-            <li class="nav-item">
-              <Link to={link} class="nav-link">
+              <Link to={link} class="nav-item nav-link">
                 <span>{linkName}</span>
               </Link>
-            </li>
             </>
             
-              
-          
         ) : (
           <>
-            <li class="nav-item">
-              <Link to="/" class="nav-link">
+              <Link to="/" class="nav-item nav-link">
                 <span>Home</span>
               </Link>
-            </li>
             
-            <li class="nav-item">
-              <Link to="/tutors" class="nav-link">
+              <Link to="/tutors" class="nav-item nav-link">
                 <span>Our Tutors</span>
               </Link>
-            </li>
             
 
             {auth.isLoggedIn === false ? (
-              <li class="nav-item">
-                <Link to="/login" class="nav-link" state={{ from: location }}>
+                <Link to="/login" class="nav-item nav-link" state={{ from: location }}>
                   <span>Log In</span>
                 </Link>
-              </li>
+          
             ) : (
               <>
                 <Link
                   to={`/profile/${auth.user?.user_id ?? ""}`}
-                  class="nav-link"
+                  class="nav-item nav-link"
                 >
                   <span>My Profile</span>
                 </Link>
 
-                <Link to="/" onClick={handleLogOut} class="nav-link">
+                <Link to="/" onClick={handleLogOut} class="nav-item nav-link">
                   <span>Log Out</span>
                 </Link>
               </>
             )}
-            </>
+          </>
         )}
-        </ul>
+        </div>
         </div>
 
 
       </nav> 
-
-
 
       <Outlet />
     </>
