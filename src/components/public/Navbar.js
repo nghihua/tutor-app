@@ -75,11 +75,13 @@ const Navbar = ({ link, linkName }) => {
         )}
       </nav> */}
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top nav-text">
         <Link to="/" class="navbar-brand brand">
-          <img src="favicon.png" alt="Tutor" width="50" height="50"/>
+          <img src="favicon.png" alt="Tutor" width="50" height="50" className="brand logo"/>
           Tutor
         </Link>
+
+        {/* <TestModalBtn /> */}
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -90,48 +92,69 @@ const Navbar = ({ link, linkName }) => {
         {link ? (
           
           <>
-              <Link to="/" class="nav-item nav-link">
+              <Link to="/" class="nav-item nav-link my-4">
                 <span >Home</span>
               </Link>
             
-              <Link to={link} class="nav-item nav-link">
+              <Link to={link} class="nav-item nav-link my-4">
                 <span>{linkName}</span>
               </Link>
             </>
             
         ) : (
           <>
-              <Link to="/" class="nav-item nav-link">
+              <Link to="/" class="nav-item nav-link my-4">
                 <span>Home</span>
               </Link>
             
-              <Link to="/tutors" class="nav-item nav-link">
+              <Link to="/tutors" class="nav-item nav-link my-4">
                 <span>Our Tutors</span>
               </Link>
             
 
             {auth.isLoggedIn === false ? (
-                <Link to="/login" class="nav-item nav-link" state={{ from: location }}>
+                <Link to="/login" class="nav-item nav-link my-4" state={{ from: location }}>
                   <span>Log In</span>
                 </Link>
           
             ) : (
-              <>
-                <Link
+              <div className="float-right nav-item dropdown my-3 mx-2">
+                <a className="nav-link  dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                    alt="profile pic"
+                    width="50"
+                    height="50"
+                    className="rounded-circle"
+                  />
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <Link
                   to={`/profile/${auth.user?.user_id ?? ""}`}
-                  class="nav-item nav-link"
-                >
-                  <span>My Profile</span>
-                </Link>
+                  class="dropdown-item"
+                  >
+                    <span>My Profile</span>
+                  </Link>
 
-                <Link to="/" onClick={handleLogOut} class="nav-item nav-link">
-                  <span>Log Out</span>
-                </Link>
-              </>
+                  <Link to="/" onClick={handleLogOut} class="dropdown-item">
+                    <span>Log Out</span>
+                  </Link>
+                </div>
+              </div>
             )}
           </>
         )}
         </div>
+        {/* <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div> */}
         </div>
 
 

@@ -5,7 +5,7 @@ const Home = () => {
   const auth = useAuth();
 
   return (
-    <div className="home ">
+    <div className="home">
       {/* <div className="buffer"></div> */}
 
       <div className="Welcome">
@@ -121,9 +121,7 @@ const Home = () => {
 
       <div className="Quote text-center">
         <img alt="image" src="homeimg2.png" />
-        <p className=" container">
-          Tell me and I forget, teach me and I may remember, involve me and I learn
-        </p>
+        <p className=" text-center">Tell me and I forget, teach me and I may remember, involve me and I learn</p>
         <h4>Benjamin Franklin</h4>
       </div>
     </div>

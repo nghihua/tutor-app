@@ -5,6 +5,8 @@ html {
   position: relative;
 }
 body {
+  /* position: absolute;
+  overflow: auto; */
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Rubik",
@@ -37,15 +39,15 @@ body {
   text-align: center;
   border-bottom: 4px solid rgba(210, 120, 120, 0.4);
 }
-.main-nav .logo {
+.logo {
   width: 55px;
   display: inline;
   position: relative;
-  top: -10px;
+  top: -5px;
   margin-left: 30px;
   margin-right: 10px;
 }
-.main-nav .brand {
+.brand {
   font-family: Rubik;
   font-size: 45px;
   font-weight: 300;
@@ -61,7 +63,7 @@ body {
 .main-nav .section:hover {
   background: rgba(255, 255, 255, 0.25);
 }
-.main-nav a {
+.nav-text {
   font-family: Rubik;
   font-size: 20px;
   color: black;
@@ -686,4 +688,8 @@ footer {
   width: 100%;
   height: 40px;
   padding-top: 5px;
+}
+
+.avatar {
+  position: relative;
 }
