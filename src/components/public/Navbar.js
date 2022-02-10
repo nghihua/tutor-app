@@ -92,28 +92,28 @@ const Navbar = ({ link, linkName }) => {
         {link ? (
           
           <>
-              <Link to="/" class="nav-item nav-link my-4">
+              <Link to="/" class="nav-item nav-link my-lg-4">
                 <span >Home</span>
               </Link>
             
-              <Link to={link} class="nav-item nav-link my-4">
+              <Link to={link} class="nav-item nav-link my-lg-4">
                 <span>{linkName}</span>
               </Link>
             </>
             
         ) : (
           <>
-              <Link to="/" class="nav-item nav-link my-4">
+              <Link to="/" class="nav-item nav-link my-lg-4">
                 <span>Home</span>
               </Link>
             
-              <Link to="/tutors" class="nav-item nav-link my-4">
+              <Link to="/tutors" class="nav-item nav-link my-lg-4">
                 <span>Our Tutors</span>
               </Link>
             
 
             {auth.isLoggedIn === false ? (
-                <Link to="/login" class="nav-item nav-link my-4" state={{ from: location }}>
+                <Link to="/login" class="nav-item nav-link my-lg-4" state={{ from: location }}>
                   <span>Log In</span>
                 </Link>
           
