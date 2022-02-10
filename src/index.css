@@ -24,9 +24,7 @@ body {
 
 /*Navbar "main-nav": 100px*/
 .main-nav {
-  height: 100px;
-  background: rgba(254, 248, 248, 1);
-  padding: 0px 0px;
+  height: 90px;
 }
 .main-nav .firstfloor {
   height: 60px;
@@ -80,6 +78,22 @@ nav a:hover {
 .main-nav .redirect:hover {
   font-weight: bold;
 }
+/* 
+.background {
+  background: rgba(254, 248, 248, 1) !important;
+} */
+.navbar {
+  padding: 0.5rem 0rem !important;
+  height: 70px;
+}
+@media (max-width: 991.98px) { 
+  #navbarNav {
+    margin: 0 !important;
+    background: white !important;
+  }
+ }
+
+
 
 /*Login*/
 .login {
@@ -493,124 +507,6 @@ button:hover {
   width: 100px;
   margin: 0 auto;
 }
-/*Option 1:
-  .tutor-preview {
-    text-align: center;
-    display: inline-block;
-    margin: 7px 25px;
-  }
-  .tutor-block {
-    width: 180px;
-    height: 300px;
-    position: relative;
-  }
-  .tutors .image {
-    position: relative;
-    top: 45px;
-    border-radius: 50%;
-  }
-  .tutors .box2 {
-    background: rgba(210,210,210,1);
-    background: linear-gradient(rgba(210,210,210,1), rgba(140,140,140,1));
-    height: 210px;
-    padding: 100px auto auto auto;
-  }
-  .tutors h2 {
-    font-family: Rubik;
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 28px;
-    text-align: center;
-    color: black;
-    padding: 55px 0 0 0;
-  }
-  .tutors p {
-    font-family: Rubik;
-    font-size: 18px;
-    font-style: italic;
-    line-height: 22px;
-  }
-  .tutors a {
-    color: black;
-  }
-  .seemore {
-    font-family: Rubik;
-    font-size: 18px;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    width: 180px;
-    height: 35px;
-    padding: 5px;
-    background: orange;
-  }
-  .tutors button {
-    display: block;
-    margin: 50px auto;
-  }*/
-/*Option 2
-  .tutors {
-    margin: 120px auto;
-  }
-  .tutor-preview {
-
-  }
-  .tutor-block {
-    width: 600px;
-    height: 130px;
-    margin: 50px auto;
-    position: relative;
-    background: rgba(243,230,210,1);
-    border-radius: 15px;
-    box-shadow: 5px 10px rgba(210,207,200,1);
-  }
-  .tutors .image {
-    float: left;
-    position: relative;
-    top: 15px;
-    left: 30px;
-    border-radius: 50%;
-  }
-  .tutors h2 {
-    font-family: Rubik;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
-    padding: 20px 150px;
-    padding-bottom: 0px;
-  }
-  .tutors p {
-    font-family: Rubik;
-    font-size: 18px;
-    font-style: italic;
-    text-align: left;
-    padding: 0px 150px;
-  }
-  .tutors button {
-    display: block;
-    margin: 10px auto;
-  }
-  .seemore {
-    font-family: Rubik;
-    font-size: 18px;
-    color: white;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 40px;
-    height: 130px;
-    padding: 2px;
-    background: orange;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-  } 
-  .seemore .rotate {
-    transform: rotate(-90deg);
-    width: 100px;
-    position: relative;
-    left: -30px;
-    top: 50px;
-  }*/
 /* Option 3*/
 .tutor-preview {
   text-align: center;

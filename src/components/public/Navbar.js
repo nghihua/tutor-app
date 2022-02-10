@@ -21,59 +21,6 @@ const Navbar = ({ link, linkName }) => {
   return (
     
     <>
-      
-          {/* <TestModalBtn /> */}
-      {/* <nav expand="lg" className="main-nav fixed-top b-5">
-        <div className="firstfloor">
-          <Link to="/">
-            <img src="favicon.png" alt="Tutor" className="logo" />
-            <div className="brand">Tutor</div>
-          </Link>
-
-        </div>
-
-        {link ? (
-          <>
-            <div className="secondfloor">
-              <Link to="/" className="redirect">
-                <div className="section">Home</div>
-              </Link>
-              <Link to={link} className="redirect">
-                <div className="section">{linkName}</div>
-              </Link>
-            </div>
-          </>
-        ) : (
-          <div className="secondfloor">
-            <Link to="/" className="redirect">
-              <div className="section">Home</div>
-            </Link>
-
-            <Link to="/tutors" className="redirect">
-              <div className="section">Our Tutors</div>
-            </Link>
-
-            {auth.isLoggedIn === false ? (
-              <Link to="/login" className="redirect" state={{ from: location }}>
-                <div className="section">Log In</div>
-              </Link>
-            ) : (
-              <>
-                <Link
-                  to={`/profile/${auth.user?.user_id ?? ""}`}
-                  className="redirect"
-                >
-                  <div className="section">My Profile</div>
-                </Link>
-
-                <Link to="/" className="redirect" onClick={handleLogOut}>
-                  <div className="section">Log Out</div>
-                </Link>
-              </>
-            )}
-          </div>
-        )}
-      </nav> */}
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top nav-text">
         <Link to="/" class="navbar-brand brand">
@@ -88,7 +35,7 @@ const Navbar = ({ link, linkName }) => {
         </button>
 
         <div class="collapse navbar-collapse pl-5" id="navbarNav">
-          <div class="navbar-nav">
+          <div class="navbar-nav d-flex col-12 background">
         {link ? (
           
           <>
@@ -103,11 +50,11 @@ const Navbar = ({ link, linkName }) => {
             
         ) : (
           <>
-              <Link to="/" class="nav-item nav-link my-lg-4">
+              <Link to="/" class="nav-item nav-link my-lg-4 my-2 p-4">
                 <span>Home</span>
               </Link>
             
-              <Link to="/tutors" class="nav-item nav-link my-lg-4">
+              <Link to="/tutors" class="nav-item nav-link my-lg-4 my-2 p-4">
                 <span>Our Tutors</span>
               </Link>
             
@@ -118,8 +65,8 @@ const Navbar = ({ link, linkName }) => {
                 </Link>
           
             ) : (
-              <div className="float-right nav-item dropdown my-3 mx-2">
-                <a className="nav-link  dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div className="float-right nav-item dropdown ml-auto my-4 p-2 d-none d-lg-block d-xl-block">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img
                     src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
                     alt="profile pic"
