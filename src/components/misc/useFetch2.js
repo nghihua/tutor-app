@@ -51,14 +51,25 @@ const useFetch2 = (url, isUseEffect) => {
 
 export default useFetch2;
 
-// .then(response => {
-//   if(!response.ok){
-//     throw Error("Can not fetch data");
+// // .then(response => {
+// //   if(!response.ok){
+// //     throw Error("Can not fetch data");
+// //   }
+// //   return response.json();
+// // })
+// // .then(data => {
+// //   console.log(data);
+// //   auth.current = data;
+// //   console.log(auth.current);
+// // }) 
+// const test = async () => {
+//   const init = {
+//     method: 'GET',
+//     credentials: "include",
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
 //   }
-//   return response.json();
-// })
-// .then(data => {
-//   console.log(data);
-//   auth.current = data;
-//   console.log(auth.current);
-// }) 
+//   const response = await fetch("http://localhost:5000/api/auth/login_status", init)
+//   console.log(response)
+// }

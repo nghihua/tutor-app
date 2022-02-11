@@ -43,7 +43,10 @@ const Register = () => {
           console.log("data sent");
           setError(data.message);
         })
-        .catch((error) => console.log(`error: ${error}`));
+        .catch((error) => {
+          console.log(`error: ${error}`)
+        }
+        );
     }
   };
   //[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_tutor is defaulted to false

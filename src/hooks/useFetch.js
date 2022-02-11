@@ -258,8 +258,8 @@ const useFetch = (
         try {
           // make request
           const response = await fetch(resrc, init);
-
           // get data from response
+          
           const isJson = response.headers
             .get("Content-Type")
             ?.includes("application/json");
