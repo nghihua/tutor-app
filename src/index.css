@@ -78,21 +78,32 @@ nav a:hover {
 .main-nav .redirect:hover {
   font-weight: bold;
 }
-/* 
-.background {
-  background: rgba(254, 248, 248, 1) !important;
-} */
 .navbar {
   padding: 0.5rem 0rem !important;
   height: 70px;
 }
+
 @media (max-width: 991.98px) { 
   #navbarNav {
     margin: 0 !important;
     background: white !important;
   }
+  .navbar {
+    padding: 0.5rem 0rem !important;
+    height: 90px;
+  }
+  .Welcome .content h2{
+    font-size: 40px;
+  }
+
+  .Welcome .content p{
+    font-size: 20px;
+  }
  }
 
+ .dropdown-toggle {
+   color: black !important;
+ }
 
 
 /*Login*/

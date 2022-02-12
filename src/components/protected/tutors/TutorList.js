@@ -47,7 +47,7 @@ const TutorList = ({ tutors }) => {
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         onPageChange={handlePageClick}
-        containerClassName="pagination justify-content-center"
+        containerClassName="pagination justify-content-center py-2"
         pageClassName="page-item"
         pageLinkClassName="page-link"
         previousClassName="page-item"

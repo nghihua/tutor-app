@@ -29,6 +29,29 @@ const Navbar = ({ link, linkName }) => {
         </Link>
 
         {/* <TestModalBtn /> */}
+        <div className="float-right nav-item dropdown ml-auto d-lg-none">
+                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img
+                    src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
+                    alt="profile pic"
+                    width="50"
+                    height="50"
+                    className="rounded-circle"
+                  />
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenu">
+                  <Link
+                  to={`/profile/${auth.user?.user_id ?? ""}`}
+                  class="dropdown-item"
+                  >
+                    <span>My Profile</span>
+                  </Link>
+
+                  <Link to="/" onClick={handleLogOut} class="dropdown-item">
+                    <span>Log Out</span>
+                  </Link>
+                </div>
+              </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -60,7 +83,7 @@ const Navbar = ({ link, linkName }) => {
             
 
             {auth.isLoggedIn === false ? (
-                <Link to="/login" class="nav-item nav-link my-lg-4" state={{ from: location }}>
+                <Link to="/login" class="nav-item nav-link my-lg-4 my-2 p-4" state={{ from: location }}>
                   <span>Log In</span>
                 </Link>
           
@@ -92,16 +115,6 @@ const Navbar = ({ link, linkName }) => {
           </>
         )}
         </div>
-        {/* <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div> */}
         </div>
 
 
