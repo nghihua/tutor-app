@@ -62,11 +62,11 @@ const Navbar = ({ link, linkName }) => {
         {link ? (
           
           <>
-              <Link to="/" class="nav-item nav-link my-lg-4">
+              <Link to="/" class="nav-item nav-link my-lg-4 my-2 p-4">
                 <span >Home</span>
               </Link>
             
-              <Link to={link} class="nav-item nav-link my-lg-4">
+              <Link to={link} class="nav-item nav-link my-lg-4 my-2 p-4">
                 <span>{linkName}</span>
               </Link>
             </>
