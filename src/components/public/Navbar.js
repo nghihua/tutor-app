@@ -24,7 +24,7 @@ const Navbar = ({ link, linkName }) => {
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top nav-text">
         <Link to="/" class="navbar-brand brand">
-          <img src="favicon.png" alt="Tutor" width="50" height="50" className="brand logo"/>
+          <img src="favicon.png" alt="Tutor" className="brand logo"/>
           Tutor
         </Link>
 

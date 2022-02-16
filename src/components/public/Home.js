@@ -15,10 +15,10 @@ const Home = () => {
 
           {auth.isLoggedIn === false && (
             <div className="row">
-              <Link to="/login" class="col">
+              <Link to="/login">
                 <button>Sign in</button>
               </Link>
-              <Link to="/register" class="col">
+              <Link to="/register">
                 <button>Sign up</button>
               </Link>
             </div>
