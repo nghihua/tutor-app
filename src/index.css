@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Be+Vietnam+Pro:wght@300&family=Lato:ital,wght@1,300&family=Roboto:wght@100;400;700;900&family=Rosarivo&family=Rubik:wght@300;400;500&family=Taprom&family=Tauri&display=swap");
 html {
   height: 100%;
+  width: 100%;
   padding: 0;
   position: relative;
 }
@@ -78,21 +79,25 @@ nav a:hover {
 .main-nav .redirect:hover {
   font-weight: bold;
 }
-/* 
-.background {
-  background: rgba(254, 248, 248, 1) !important;
-} */
 .navbar {
   padding: 0.5rem 0rem !important;
   height: 70px;
 }
+
 @media (max-width: 991.98px) { 
   #navbarNav {
     margin: 0 !important;
     background: white !important;
   }
+  .navbar {
+    padding: 0.5rem 0rem !important;
+    height: 90px;
+  }
  }
 
+ .dropdown-toggle {
+   color: black !important;
+ }
 
 
 /*Login*/
@@ -114,9 +119,6 @@ nav a:hover {
   font-size: 48px;
   font-weight: bold;
   line-height: 56px;
-  text-align: center;
-}
-.register h2 {
   text-align: center;
 }
 input, select {
@@ -157,18 +159,15 @@ button:hover {
 /* Register */
 .register {
   margin: 0px auto;
-  padding-top: 50px;
-}
-.defaultavatar {
-  display: block;
-  position: relative;
-  top: 22px;
-  margin: 60px auto;
+  padding-top: 1rem;
 }
 .register h2 {
   text-align: center;
 }
 .register input {
+  height: 45px;
+}
+.register select{
   height: 45px;
 }
 .register button {
@@ -211,7 +210,7 @@ button:hover {
   font-size: 15px;
 }
 .home .Welcome {
-  height: 365px;
+  min-height: 15rem;
   background: url("../public/homeimg1.png");
   background-color: rgba(220, 210, 220);
   background-blend-mode: multiply;
@@ -220,8 +219,8 @@ button:hover {
 }
 .Welcome .content {
   margin: 0 auto;
-  max-width: 700px;
-  padding-top: 80px;
+  width: 50%;
+  padding-top: 4.5rem;
 }
 .Welcome h2 {
   color: white;
@@ -243,16 +242,17 @@ button:hover {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.6);
   position: relative;
-  top: 20px;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
 }
 .Welcome a {
   color: black;
   font-family: Rosarivo;
-  margin: 0 30px;
+  margin: 0 1.8rem;
 }
 .Welcome button:hover {
   background: rgba(255, 255, 255, 0.9);
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
 }
 .home .About-us {
@@ -271,7 +271,7 @@ button:hover {
 }
 .About-us .seperator {
   background: orange;
-  width: 500px;
+  width: 70%;
   height: 3px;
   margin: 10px auto;
 }
@@ -300,6 +300,7 @@ button:hover {
   max-width: 900px;
   margin: 0 auto;
   padding-top: 20px;
+  padding-bottom: 1.5rem;
   text-align: center;
 }
 .Subject .subject-display {
@@ -345,6 +346,39 @@ button:hover {
   margin: 0;
   margin-bottom: 10px;
 }
+@media (max-width: 1000px) {
+  .Welcome .content{
+    width: 60%;
+  }
+  .Welcome .content h2{
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 700px) {
+  .Welcome .content{
+    width: 80%;
+    padding-top: 3rem;
+  }
+  .Welcome button{
+    margin: .5rem 0 2rem 0;
+    width: 8rem;
+  }
+  .Welcome .content h2{
+    font-size: 40px;
+  }
+  .Welcome .content p{
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 500px) {
+  .Welcome .content{
+    width: 95%;
+  }
+  .Welcome a{
+    margin-left: 1.8rem;
+    margin-right: 1rem;
+  }
+}
 
 /*Profile View*/
 .profile {
@@ -356,7 +390,7 @@ button:hover {
 }
 .profile-detail {
   background: rgba(245, 230, 230);
-  margin: 120px auto 0px auto;
+  margin: 3rem auto 0px auto;
   padding: 30px 30px 20px 30px;
   border-radius: 20px;
   position: relative;
@@ -414,6 +448,27 @@ button:hover {
   color: white;
   font-family: Tauri;
   font-size: 17px;
+}
+@media (max-width: 800px) {
+  .profile-detail {
+    width: 95%;
+    margin-top: 1.5rem;
+  }
+  .tutor-detail{
+    padding: 1rem .3rem;
+  }
+  .tutor-detail .title{
+    left: -10px;
+  }
+}
+@media (max-width: 500px) {
+  .profile-detail .title{
+    font-size: 1rem;
+    left: -35px;
+  }
+  .profile-detail .info{
+    font-size: 1rem;
+  }
 }
 
 /*Profile Edit*/
@@ -485,7 +540,7 @@ button:hover {
 /*Tutor page*/
 .tutors {
   margin: 0 30px 0 30px;
-  padding-top: 125px;
+  padding-top: 3rem;
   text-align: center;
 }
 .tutors button {

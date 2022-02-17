@@ -32,7 +32,7 @@ const ProfileView = ({
             <div className="tutor-detail">
               <h2>Tutor's info</h2>
               <div className="row d-flex justify-content-center">
-                <p className="title">Subjects</p>
+                <p className="title">Subjects:</p>
                 <div className="subject-box">
                   <div className="info">
                     {subjects.map((s) => (
