@@ -43,3 +43,4 @@ export const notifyError = (error) => {
   console.error(error);
   toast.error("An error has occurred.");
 };
+

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { toast } from "react-toastify"
 // const Register = ({changePage, createUser}) => {
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -19,29 +19,34 @@ const Register = () => {
       },
       body: JSON.stringify(data),
     });
-    return response.json();
+    const message = await response.json()
+    if (!response.ok) {
+      toast.error(message.message);
+    }
+    else {
+      return message;
+    }
   };
 
   const handleSubmit = (event) => {
+    const details = {
+      email,
+      password,
+      full_name,
+      major,
+      intake,
+    };
     if (!(checkPassword === password)) {
       event.preventDefault();
       // add user to the server
-      setError("Password not the same");
+      toast.error("Password are not the same");
     } else {
       event.preventDefault();
-      const details = {
-        email,
-        password,
-        full_name,
-        major,
-        intake,
-      };
+      
       console.log(details);
-
       sendData("http://localhost:5000/api/auth/signup", details)
         .then((data) => {
-          console.log("data sent");
-          setError(data.message);
+          toast(data.message)
         })
         .catch((error) => {
           console.log(`error: ${error}`)
@@ -68,6 +73,7 @@ const Register = () => {
             id="major"
             onChange={(event) => setMajor(event.target.value)}
             value={major}
+            required
           >
             <option disabled selected="true" value="">
               -- Please select major --{" "}
@@ -103,6 +109,7 @@ const Register = () => {
             type="password"
             placeholder="Password"
             id="password"
+            required
             onChange={(event) => setPassword(event.target.value)}
           ></input>
 
@@ -124,9 +131,9 @@ const Register = () => {
           <div className="center">
             <button type="submit">Submit</button>
             {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
-            <div className="tologin">
+            {/* <div className="tologin">
               <Link to="/login">Return to Login</Link>
-            </div>
+            </div> */}
           </div>
         </form>
       </div>
