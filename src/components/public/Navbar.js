@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "hooks";
 import { notifyError } from "app-util";
 import { TestModalBtn } from "components";
+import { toast } from "react-toastify";
 
 const Navbar = ({ link, linkName }) => {
   const auth = useAuth();
@@ -14,6 +15,7 @@ const Navbar = ({ link, linkName }) => {
 
     if (auth.isLoggedIn) {
       auth.logOut(() => {
+        toast.success("Log out successfully")
         navigate("/");
       }, notifyError);
     }

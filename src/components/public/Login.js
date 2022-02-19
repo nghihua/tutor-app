@@ -3,7 +3,7 @@ import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "hooks";
 import { getFetchErrMsg } from "app-util";
 import { LoadingScreen, ErrorMessage } from "components";
-
+import {toast} from "react-toastify";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,11 +22,12 @@ const Login = () => {
 
     auth.logIn(
       { email, password },
-      () => {
+      (user) => {
         navigate(from, { replace: true, state: from?.state });
+        toast(`Hello ${user.full_name}`);
       },
       (err) => {
-        setError(getFetchErrMsg(err.message));
+        toast.error(getFetchErrMsg(err.message));
         setIsSubmitting(false);
       }
     );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 // const Register = ({changePage, createUser}) => {
 const Register = () => {
@@ -11,6 +11,7 @@ const Register = () => {
   const [checkPassword, setCheckPassword] = useState("");
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
   const sendData = async (url = "", data = {}) => {
     const response = await fetch(url, {
       method: "POST",
@@ -46,7 +47,8 @@ const Register = () => {
       console.log(details);
       sendData("http://localhost:5000/api/auth/signup", details)
         .then((data) => {
-          toast(data.message)
+          toast.success(data.message)
+          
         })
         .catch((error) => {
           console.log(`error: ${error}`)
