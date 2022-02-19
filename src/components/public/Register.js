@@ -47,8 +47,8 @@ const Register = () => {
       console.log(details);
       sendData("http://localhost:5000/api/auth/signup", details)
         .then((data) => {
-          toast.success(data.message)
-          
+          navigate("/login", {replace: true});
+          toast.success(data.message);
         })
         .catch((error) => {
           console.log(`error: ${error}`)
