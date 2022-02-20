@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
+
 // const Register = ({changePage, createUser}) => {
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -10,8 +11,8 @@ const Register = () => {
   const [intake, setIntake] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
+  const toastId = useRef(null);
   const sendData = async (url = "", data = {}) => {
     const response = await fetch(url, {
       method: "POST",
@@ -22,7 +23,7 @@ const Register = () => {
     });
     const message = await response.json()
     if (!response.ok) {
-      toast.error(message.message);
+      throw new Error(message.message);
     }
     else {
       return message;
@@ -30,6 +31,8 @@ const Register = () => {
   };
 
   const handleSubmit = (event) => {
+    toast.dismiss(toastId.current);
+    event.preventDefault();
     const details = {
       email,
       password,
@@ -38,23 +41,20 @@ const Register = () => {
       intake,
     };
     if (!(checkPassword === password)) {
-      event.preventDefault();
-      // add user to the server
-      toast.error("Password are not the same");
+      toast.dismiss(toastId.current);
+      toastId.current = toast.error("Password are not the same");
     } else {
-      event.preventDefault();
-      
-      console.log(details);
       sendData("http://localhost:5000/api/auth/signup", details)
         .then((data) => {
-          navigate("/login", {replace: true});
-          toast.success(data.message);
+          navigate("/login", { replace: true });
+          toastId.current = toast.success(data.message);
         })
         .catch((error) => {
-          console.log(`error: ${error}`)
+          toastId.current = toast.error(error.message);
         }
         );
     }
+  
   };
   //[POST] /api/auth/signup ({ email, password, full_name, major, intake }) //is_tutor is defaulted to false
   return (

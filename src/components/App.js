@@ -43,7 +43,7 @@ const App = () => {
       <Footer />
 
       <ModalManager />
-      <ToastContainer />
+      <ToastContainer newestOnTop={true}/>
     </div>
   );
 };
