@@ -74,11 +74,11 @@ const Login = () => {
           Submit
         </button>
 
-        {/* <div className="toregister">
+         <div className="toregister">
           <Link to="/register" state={location.state}>
             Register here
           </Link>
-        </div> */}
+        </div> 
       </form>
     </div>
   );

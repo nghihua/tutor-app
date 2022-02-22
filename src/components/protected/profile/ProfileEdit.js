@@ -107,19 +107,17 @@ const ProfileEdit = ({
 
   return (
     <form className="profileedit" onSubmit={handleSubmit}>
-      <div className="text-center pb-5 pt-5">
+      <div className="text-center">
         <img
           src="https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"
           alt="profile pic"
-          width="100"
-          height="100"
           className="image rounded-circle"
         />
       </div>
 
       <div className="section form-group row">
         <label className="title" htmlFor="name">
-          Full name:
+          Name:
         </label>
         <input
           id="name"

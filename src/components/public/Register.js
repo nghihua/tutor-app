@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 
 // const Register = ({changePage, createUser}) => {
@@ -133,9 +133,9 @@ const Register = () => {
           <div className="center">
             <button type="submit">Submit</button>
             {/* <button type ="submit" onClick = {returnLogin}>Return</button> */}
-            {/* <div className="tologin">
+            <div className="tologin">
               <Link to="/login">Return to Login</Link>
-            </div> */}
+            </div> 
           </div>
         </form>
       </div>

@@ -3,7 +3,7 @@ import ReactPaginate from "react-paginate";
 import { useSearchParams } from "react-router-dom";
 import { TutorPreview } from "components";
 
-const tutorsPerPage = 3;
+const tutorsPerPage = 4;
 
 const TutorList = ({ tutors }) => {
   // Get current page from url search parameter

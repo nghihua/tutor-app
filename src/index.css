@@ -24,20 +24,6 @@ body {
 }
 
 /*Navbar "main-nav": 100px*/
-.main-nav {
-  height: 90px;
-}
-.main-nav .firstfloor {
-  height: 60px;
-}
-.main-nav .secondfloor {
-  height: 40px;
-  width: 100%;
-  background: #efab5a;
-  margin: 0;
-  text-align: center;
-  border-bottom: 4px solid rgba(210, 120, 120, 0.4);
-}
 .logo {
   width: 55px;
   display: inline;
@@ -83,7 +69,9 @@ nav a:hover {
   padding: 0.5rem 0rem !important;
   height: 70px;
 }
-
+.dropdown-toggle {
+  color: black !important;
+}
 @media (max-width: 991.98px) { 
   #navbarNav {
     margin: 0 !important;
@@ -94,11 +82,15 @@ nav a:hover {
     height: 90px;
   }
  }
-
- .dropdown-toggle {
-   color: black !important;
- }
-
+@media (max-width: 500px) {
+  .navbar .brand{
+    font-size: 2.5rem;
+  }
+  .navbar img{
+    width: 50px;
+    height: 50px;
+  }
+}
 
 /*Login*/
 .login {
@@ -106,13 +98,8 @@ nav a:hover {
   padding-top: 50px;
   height: 550px;
 }
-.loginpicture {
-  width: 420px;
-  margin: auto 30px;
-}
 .login form {
   margin: 0 auto;
-  padding: 20px;
 }
 .login h2 {
   font-family: Rubik;
@@ -158,11 +145,16 @@ button:hover {
 
 /* Register */
 .register {
-  margin: 0px auto;
-  padding-top: 1rem;
+  margin: 0px;
+  padding-top: 0rem;
+}
+.register form {
+  margin: 0 auto;
+  padding: 2rem 0;
 }
 .register h2 {
   text-align: center;
+  font-size: 2.5rem;
 }
 .register input {
   height: 45px;
@@ -185,12 +177,31 @@ button:hover {
   font-size: 17px;
 }
 .tologin {
-  width: 450px;
+  width: 350px;
   text-align: right;
-  margin: 25px auto;
+  margin: 15px auto;
 }
 .register a {
   color: black;
+  position: relative;
+}
+@media (max-width: 500px) {
+  .register form{
+    padding-top: 5px;
+  }
+  .register h2{
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  .register input{
+    margin: 1.7rem auto;
+  }
+  .register select{
+    margin: 1.7rem auto;
+  }
+  .register button{
+    height: 2.5rem;
+  }
 }
 
 /* Home */
@@ -233,6 +244,7 @@ button:hover {
   color: white;
   font-family: Rubik;
   font-size: 20px;
+  padding-bottom: 1.5rem;
 }
 .Welcome button {
   height: 60px;
@@ -242,13 +254,14 @@ button:hover {
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.6);
   position: relative;
-  margin-top: 2rem;
+  margin-top: 0rem;
   margin-bottom: 2.5rem;
 }
 .Welcome a {
   color: black;
   font-family: Rosarivo;
-  margin: 0 1.8rem;
+  margin: 0 1.3rem;
+  margin-top: .1rem;
 }
 .Welcome button:hover {
   background: rgba(255, 255, 255, 0.9);
@@ -324,27 +337,30 @@ button:hover {
   float: left;
 }
 .home .Quote {
-  min-height: 200px;
-  padding-bottom: 20px;
+  min-height: 7rem;
+  padding-bottom: 10px;
   background: #ffd8a9;
   text-align: center;
   color: white;
-  font-weight: 500;
+  font-weight: 00;
   font-style: italic;
 }
 .Quote img {
   width: 100%;
-  margin-bottom: 20px;
+  min-height: 5rem;
+  max-height: 12rem;
 }
 .Quote h4 {
   font-size: 20px;
+  padding-bottom: 10px;
   margin: 0;
 }
 .Quote p {
   font-size: 18px;
   line-height: 18px;
+  padding: 20px;
+  padding-bottom: 10px;
   margin: 0;
-  margin-bottom: 10px;
 }
 @media (max-width: 1000px) {
   .Welcome .content{
@@ -377,6 +393,14 @@ button:hover {
   .Welcome a{
     margin-left: 1.8rem;
     margin-right: 1rem;
+  }
+  .Quote p{
+    font-size: 13px;
+    padding: 10px;
+  }
+  .Quote h4{
+    font-size: 15px;
+    padding-bottom: 0px;
   }
 }
 
@@ -474,16 +498,19 @@ button:hover {
 /*Profile Edit*/
 .profileedit {
   background: rgba(245, 230, 230);
-  margin: 120px auto 0px auto;
+  margin: 50px auto 0px auto;
   padding: 30px;
-  padding-top: 0;
+  padding-top: 10px;
   padding-bottom: 0px;
+  margin-bottom: 20px;
   border-radius: 20px;
   position: relative;
   width: 700px;
 }
 .profileedit img {
-  margin: 0px auto;
+  height: 100px;
+  width: 100px;
+  margin: 20px auto;
 }
 .profileedit input {
   display: inline;
@@ -512,8 +539,7 @@ button:hover {
   position: relative;
   left: 50px;
   border: 2px solid black;
-}
-.profileedit button {
+  border-radius: 5px;
 }
 .typo {
   font-size: 30px;
@@ -535,6 +561,52 @@ button:hover {
 }
 .profileedit button:disabled {
   opacity: 0.6;
+}
+@media (max-width: 700px) {
+  .profileedit{
+    max-width: 95%;
+    margin-top: 20px;
+    padding-bottom: 1rem;
+  }
+  .profileedit img{
+    width: 50px;
+    height: 50px;
+  }
+  .profileedit .title{
+    font-size: .8rem;
+    left: -85px;
+  }
+  .profileedit input{
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: 0px;
+  }
+  .profileedit select{
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: 0px;
+  }
+  .profileedit .checkBox{
+    margin-right: 0px;
+    margin-left: auto;
+    position: relative;
+    left: -65%;
+  }
+  .profileedit .subject-box{
+    max-width: 75%;
+    position: relative;
+    left: 0;
+    margin-right: 0px;
+    margin-left: auto;
+  }
+  .profileedit .data-buttons{
+    padding: 0;
+    margin-top: 3rem;
+  }
+  .profileedit .data-buttons button{
+    display: block;
+    margin: 1rem auto;
+  }
 }
 
 /*Tutor page*/
